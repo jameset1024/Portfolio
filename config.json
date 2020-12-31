@@ -1,0 +1,32 @@
+{
+	"port": 9000,
+	"baseUrl": "./",
+	"url": "http://localhost:8080",
+	"inject": "public/index.html",
+	"entries": {
+		"script": "main.+(js|ts|tsx)",
+		"css": "main.+(sass|scss)",
+		"fonts": [
+			"./node_modules/@fortawesome/fontawesome-free/webfonts/*",
+			"./src/fonts/*"
+		]
+	},
+	"directories": {
+		"source": "src/",
+		"destination": "public/dist/",
+		"public": "public/",
+		"css": "styles/",
+		"scripts": "scripts/",
+		"views": "views/",
+		"images": "img/",
+		"fonts": "fonts/"
+	},
+	"author": {
+		"name": "Erik Thomas",
+		"version": "v1.0.0",
+		"link": "https://www.erikjamesthomas.com",
+		"license": "MIT",
+		"coding": "Coding by Erik Thomas",
+		"email": "erik@brightthought.co"
+	}
+}

@@ -1,0 +1,15 @@
+#app{
+	display:flex;
+	flex-direction: row;
+	min-height:100vh;
+	max-height: 100vh;
+	
+	main {
+		flex-grow: 1;
+	}
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}

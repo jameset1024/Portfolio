@@ -1,0 +1,15 @@
+//Include base styles
+@import "~bootstrap/scss/bootstrap";
+
+//Include variables
+@import "base/variables";
+
+//Include fontawesome
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+
+@import "base/defaults";
+@import "includes/header";

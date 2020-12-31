@@ -1,0 +1,111 @@
+.ejt_mainHeader {
+	background-color: map-get($colors, grey);
+	text-align:center;
+	width: 75px;
+	overflow: hidden;
+	display:flex;
+	flex-direction: row;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	justify-content: center;
+	position:relative;
+
+
+	.ejt_logo {
+		max-width: 30px;
+		transform: rotate(-25deg);
+		text-shadow: -2px -2px 0 map-get($colors, black);
+		margin-top: 15px;
+
+		a {
+			font-size: 3em;
+			color: map-get($colors, white);
+		}
+	}
+
+	nav {
+		flex:0 0 100%;
+		padding:0 50px;
+		opacity:0;
+		visibility: hidden;
+		transition: all 0.3s linear;
+
+		&.active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li{
+				a{
+					color: map-get($colors, white);
+					text-transform: uppercase;
+					margin:0;
+
+					&:hover{
+						text-decoration: none;
+					}
+				}
+				
+				&:last-child{
+					padding-top:5px;
+				}
+				
+				&:not(:last-child){
+					position:relative;
+					margin-bottom:9px;
+					padding:11px 0 15px;
+					border-bottom: lighten(map-get($colors, grey), 5%) solid thin;
+
+					&:after{
+						content:"";
+						position:absolute;
+						left:0;
+						bottom:0;
+						height:1px;
+						width:100%;
+						background-color: darken(map-get($colors, grey), 5%)
+					}
+				}
+			}
+		}
+	}
+
+	.ejt_social {
+		max-width: 100%;
+		padding:0 15px;
+		margin-bottom:20px;
+		align-self: flex-end;
+
+		.d-flex {
+			flex-wrap: wrap;
+			flex-direction: row;
+			transition: all 0.3s linear;
+
+			a {
+				font-size: 1.5em;
+				color: map-get($colors, white);
+				text-align:center;
+				margin:5px 10px;
+			}
+		}
+	}
+
+	.nav-action{
+		position:absolute;
+		right:0;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: lighten(map-get($colors, grey), 15%);
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+		font-size:1.5em;
+		padding:15px 5px;
+		cursor: pointer;
+		box-shadow: -5px 0 15px rgba(map-get($colors, black), 1);
+	}
+}
