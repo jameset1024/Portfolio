@@ -1,0 +1,12 @@
+body.about{
+	main{
+		background-color: map-get($colors, grey);
+		border-left: map-get($colors, blue) solid 5px;
+		
+		section{
+			height: 100vh;
+			display:flex;
+			align-items: center;
+		}
+	}
+}

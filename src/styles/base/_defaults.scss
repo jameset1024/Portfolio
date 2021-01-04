@@ -6,10 +6,43 @@
 	
 	main {
 		flex-grow: 1;
+		height: 100vh;
+		overflow-y: auto;
 	}
+}
+
+.wrap{
+	width:90%;
+	margin:0 auto;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	color: map-get($colors, font_white);
+	font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	font-family: 'Roboto Slab', serif;
+	font-weight: 200;
+	letter-spacing: 0.10em;
+	text-transform:uppercase;
+	color: map-get($colors, blue);
 }
 
 img{
 	max-width: 100%;
 	height: auto;
+}
+
+p{
+	font-weight: 200;
+	letter-spacing: 0.10em;
+	font-size: 14px;
+	line-height: 1.75;
 }

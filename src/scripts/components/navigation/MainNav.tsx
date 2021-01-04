@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link, withRouter } from "react-router-dom";
 import {NavSlide} from "../buttons/AnimationBTNs";
 
 export default class MainNav extends React.Component<any, any>{
@@ -8,22 +9,30 @@ export default class MainNav extends React.Component<any, any>{
 				<NavSlide/>
 				
 				<div className={'ejt_logo'}>
-					<a href={'/'}>E</a>
+					<Link to={'/'}>E</Link>
 				</div>
 				
 				<nav>
 					<ul>
 						<li>
-							<a href={'/about'}>About</a>
+							<Link to={'/about'}>
+								About
+							</Link>
 						</li>
 						<li>
-							<a href={'/skills'}>Skills</a>
+							<Link to={'/skills'}>
+								Skills
+							</Link>
 						</li>
 						<li>
-							<a href={'/work'}>Work</a>
+							<Link to={'/work'}>
+								Work
+							</Link>
 						</li>
 						<li>
-							<a href={'/contact'}>Contact</a>
+							<Link to={'/contact'}>
+								Contact
+							</Link>
 						</li>
 					</ul>
 				</nav>

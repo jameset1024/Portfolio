@@ -1,0 +1,36 @@
+.popoverModal{
+	position:absolute;
+	left:0;
+	top:0;
+	background-color: map-get($colors, grey);
+	height: 100%;
+	width:0;
+	transition: width linear 0.3s;
+	
+	&.active{
+		width: 100%;
+	}
+	
+	.popoverContainer{
+		width: 100%;
+		position:relative;
+		opacity:0;
+		transition: opacity linear 0.3s;
+		
+		&.display{
+			opacity: 1;	
+		}
+		
+		.popoverClose{
+			position:absolute;
+			top:5px;
+			right: 5px;
+			cursor: pointer;
+		}
+		
+		.popoverContents{
+			top: 50px;
+			position: relative;
+		}
+	}
+}

@@ -12772,6 +12772,32 @@ readers do not read off random characters that represent icons */
 
 #app main {
   flex-grow: 1;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.wrap {
+  margin: 0 auto;
+  width: 90%;
+}
+
+body {
+  color: #f6f6f6;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #49a0d9;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 200;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
 }
 
 img {
@@ -12779,15 +12805,22 @@ img {
   height: auto;
 }
 
+p {
+  font-size: 14px;
+  font-weight: 200;
+  letter-spacing: 0.10em;
+  line-height: 1.75;
+}
+
 .ejt_mainHeader {
   display: flex;
   position: relative;
+  flex: 0 0 65px;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  background-color: #1e1e1e;
-  width: 75px;
+  background-color: #111111;
   overflow: hidden;
   text-align: center;
 }
@@ -12840,7 +12873,7 @@ img {
 .ejt_mainHeader nav ul li:not(:last-child) {
   position: relative;
   margin-bottom: 9px;
-  border-bottom: #2b2b2b solid thin;
+  border-bottom: #1e1e1e solid thin;
   padding: 11px 0 15px;
 }
 
@@ -12848,7 +12881,7 @@ img {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #111111;
+  background-color: #040404;
   width: 100%;
   height: 1px;
   content: "";
@@ -12875,17 +12908,97 @@ img {
 }
 
 .ejt_mainHeader .nav-action {
+  display: flex;
   position: absolute;
   top: 50%;
   right: 0;
+  flex-direction: column;
+  align-items: center;
   transform: translateY(-50%);
   cursor: pointer;
   box-shadow: -5px 0 15px black;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  background-color: #444444;
+  background-color: #49a0d9;
   padding: 15px 5px;
   font-size: 1.5em;
+}
+
+.ejt_mainHeader .nav-action span {
+  display: inline-block;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  background-color: #49a0d9;
+  width: 10px;
+  height: 10px;
+  overflow: hidden;
+  text-indent: 100%;
+}
+
+.ejt_mainHeader .nav-action span:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+body.home main {
+  background-color: #49a0d9;
+}
+
+body.about main {
+  border-left: #49a0d9 solid 5px;
+  background-color: #111111;
+}
+
+body.about main section {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.skills-component > div {
+  margin-bottom: 25px;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.skills-component > div > i {
+  cursor: pointer;
+}
+
+.popoverModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width linear 0.3s;
+  background-color: #111111;
+  width: 0;
+  height: 100%;
+}
+
+.popoverModal.active {
+  width: 100%;
+}
+
+.popoverModal .popoverContainer {
+  position: relative;
+  opacity: 0;
+  transition: opacity linear 0.3s;
+  width: 100%;
+}
+
+.popoverModal .popoverContainer.display {
+  opacity: 1;
+}
+
+.popoverModal .popoverContainer .popoverClose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.popoverModal .popoverContainer .popoverContents {
+  position: relative;
+  top: 50px;
 }
 
 @media (min-width: 576px) {
@@ -14890,6 +15003,11 @@ img {
 
   .text-md-center {
     text-align: center !important;
+  }
+
+  .col-md-1-5 {
+    flex: 0 0 20%;
+    max-width: 20%;
   }
 }
 

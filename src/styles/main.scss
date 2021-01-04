@@ -12,4 +12,12 @@
 
 
 @import "base/defaults";
+@import "base/bootstrap-fifth";
 @import "includes/header";
+
+//Include Views
+@import "views/home";
+@import "views/about";
+
+@import "components/skills";
+@import "components/popover";

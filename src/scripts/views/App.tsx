@@ -1,31 +1,35 @@
 import * as React from "react";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
-import { Home } from "./index";
+import { Home, About } from "./index";
 import { MainNav } from "./../components/navigation";
+import { Main } from "../components/elements/Tags";
 
 export default class App extends React.Component<any, any>{
 	render(){
 		return(
 			<>
-				<MainNav />
 				<Router>
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route path="/about">
+					<MainNav />
 
-						</Route>
-						<Route path="/work">
+					<Main>
+						<Switch>
+							<Route exact path="/">
+								<Home />
+							</Route>
+							<Route path="/about">
+								<About />
+							</Route>
+							<Route path="/work">
 
-						</Route>
-						<Route path="/contact">
+							</Route>
+							<Route path="/contact">
 
-						</Route>
-						<Route path="/start-project">
+							</Route>
+							<Route path="/start-project">
 
-						</Route>
-					</Switch>
+							</Route>
+						</Switch>
+					</Main>
 				</Router>
 			</>
 		)
