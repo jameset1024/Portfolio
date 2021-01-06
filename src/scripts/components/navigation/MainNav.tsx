@@ -39,10 +39,10 @@ export default class MainNav extends React.Component<any, any>{
 				
 				<div className={'ejt_social'}>
 					<div className={'d-flex'}>
-						<a href={'https://github.com/jameset1024'}>
+						<a href={'https://github.com/jameset1024'} target={'_blank'}>
 							<i className={'fab fa-github'}></i>
 						</a>
-						<a href={'https://www.linkedin.com/in/erikthomas1024/'}>
+						<a href={'https://www.linkedin.com/in/erikthomas1024/'} target={'_blank'}>
 							<i className={'fab fa-linkedin-in'}></i>
 						</a>
 					</div>

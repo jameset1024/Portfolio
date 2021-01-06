@@ -139,3 +139,4 @@ typings/
 *.zip
 tmp
 build
+public/dist

@@ -1,5 +1,6 @@
 import * as React from "react";
 import Skills from "./Skills";
+import { Spring } from "react-spring/renderprops-universal";
 
 type PopoverType = {
 	trigger: boolean,
@@ -11,69 +12,104 @@ type PopoverType = {
 	}
 }
 
-export default class Popover extends React.Component<PopoverType>{
+type StateType = {
+	slideIn: boolean,
+	fadeIn: boolean,
+	rating: boolean
+}
 
-	componentDidUpdate(prevProps: Readonly<PopoverType>, prevState: Readonly<{}>, snapshot?: any) {
-		if(this.props.trigger){
-			this.activate();
+/**
+ *
+ * Handles the skills popover on the about page
+ *
+ */
+export default class Popover extends React.Component<PopoverType, StateType>{
+
+	state = {
+		slideIn: false,
+		fadeIn: false,
+		rating: false
+	}
+
+	slideInToggle = () => this.setState( state => ({slideIn: !state.slideIn}));
+
+	fadeInToggle = () => this.setState(state => ({fadeIn: !state.fadeIn}));
+
+	ratingToggle = () => this.setState( state => ({rating: !state.rating}));
+
+	componentDidUpdate(prevProps: Readonly<PopoverType>, prevState: Readonly<StateType>, snapshot?: any) {
+		if(prevProps.trigger === false){
+			this.slideInToggle();
+		}
+	}
+	
+	fadeCallback(){
+		if(this.state.fadeIn){
+			this.ratingToggle();
+		}else{
+			this.slideInToggle();
+		}
+	}
+	
+	closeBtn(){
+		this.ratingToggle();
+		this.fadeInToggle();
+	}
+	
+	slideCallback(){
+		if(!this.state.slideIn){
+			this.props.parent.setState({popupDisplay: false});
+		}else{
+			this.fadeInToggle();
 		}
 	}
 
-	async watchAnimation ( el: HTMLElement): Promise<boolean>{
-		return new Promise((resolve, reject) => {
-			el.addEventListener('transitionend', e => {
-				return resolve(true);
-			});
-		});
-	}
-
-
-	async animate(): Promise<boolean>{
-		const modal: HTMLElement = document.querySelector('.popoverModal');
-		const container: HTMLElement = document.querySelector('.popoverContainer');
-		
-		if (modal.clientWidth > 0) {
-			container.classList.remove('display');
-			await this.watchAnimation(container);
-			modal.classList.remove('active');
-			await this.watchAnimation(modal);
-
-		} else {
-			modal.classList.add('active');
-			await this.watchAnimation(modal);
-			container.classList.add('display');
-			await this.watchAnimation(container);
+	ratingCallback(){
+		const rating: HTMLElement = document.querySelector('.ratingBar');
+		if(!rating.classList.contains('active')){
+			rating.classList.add('active');
 		}
-
-
-		return true;
-	}
-
-
-	async closeModal(){
-		let result = await this.animate();
-		if(result){
-			setTimeout(() => { this.props.parent.setState({popupDisplay: false}) }, 500);
-		}
-	}
-
-	activate(){
-		this.animate().then();
 	}
 
 	render(){
 		if(this.props.trigger) {
 
+			const { slideIn, fadeIn, rating } = this.state;
+
 			return (
-				<div className={'popoverModal'}>
-					<div className={'popoverContainer'}>
-						<div className={'popoverClose'} onClick={this.closeModal.bind(this)}><i className={'fas fa-times'}></i></div>
-						<div className={'popoverContents'}>
-							<h4>{this.props.content.title}</h4>
-							<p>{this.props.content.description}</p>
+				<Spring from={{ width: '0%' }} to={{width: slideIn ? '100%' : '0%'}} onRest={() => this.slideCallback()}>
+
+					{ props =>
+						<div className={'popoverModal'} style={props}>
+							<Spring from={{opacity: 0}} to={{opacity: fadeIn ? 1 : 0}} onRest={() => this.fadeCallback()}>
+
+								{ propsFade =>
+									<div className={'popoverContainer'} style={ propsFade }>
+										<div className={'popoverClose'} onClick={this.closeBtn.bind(this)}><i className={'fas fa-times'}></i></div>
+
+										<div className={'popoverContents'}>
+											<h4>{this.props.content.title}</h4>
+
+											<div className={'ratingDescription'}>Skill Rating:</div>
+
+											<div className={'skillRating'} >
+												<Spring
+													from={{width: '0%', number: 0}}
+													to={{width: rating ? this.props.content.rating + '%' : '0%', number: rating ? this.props.content.rating : 0}}
+													onRest={() => this.ratingCallback()}
+												>
+													{ props => <div className={'ratingBar'} data-rating={Math.ceil(props.number) + '%'} style={props} /> }
+												</Spring>
+											</div>
+
+											<p>{this.props.content.description}</p>
+										</div>
+									</div>
+								}
+							</Spring>
 						</div>
-					</div>
-				</div>
+					}
+				</Spring>
 			);
 		}
 

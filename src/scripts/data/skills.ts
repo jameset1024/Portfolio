@@ -12,99 +12,99 @@ skills = {
 		"rating": 80
 	},
 	"fa-bootstrap": {
-		"title" : "AWS Cloud",
+		"title" : "Boostrap",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	},
 	"fa-css3-alt": {
-		"title" : "AWS Cloud",
+		"title" : "CSS3",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 95
 	},
 	"fa-docker": {
-		"title" : "AWS Cloud",
+		"title" : "Docker",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
 		"rating": 80
 	},
 	"fa-git-alt": {
-		"title" : "AWS Cloud",
+		"title" : "GIT",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 90
 	},
 	"fa-github": {
-		"title" : "AWS Cloud",
+		"title" : "GitHub",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	},
 	"fa-grunt": {
-		"title" : "AWS Cloud",
+		"title" : "Grunt",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 90
 	},
 	"fa-gulp": {
-		"title" : "AWS Cloud",
+		"title" : "Gulp",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	},
 	"fa-html5": {
-		"title" : "AWS Cloud",
+		"title" : "HTML5",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	},
 	"fa-jira": {
-		"title" : "AWS Cloud",
+		"title" : "Jira",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	},
 	"fa-js-square": {
-		"title" : "AWS Cloud",
+		"title" : "JS",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 90
 	},
 	"fa-laravel": {
-		"title" : "AWS Cloud",
+		"title" : "Laravel",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 95
 	},
 	"fa-less": {
-		"title" : "AWS Cloud",
+		"title" : "Less",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 85
 	},
 	"fa-node-js": {
-		"title" : "AWS Cloud",
+		"title" : "NodeJS",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
 		"rating": 80
 	},
 	"fa-npm": {
-		"title" : "AWS Cloud",
+		"title" : "NPM",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	},
 	"fa-php": {
-		"title" : "AWS Cloud",
+		"title" : "PHP",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	},
 	"fa-python": {
-		"title" : "AWS Cloud",
+		"title" : "Python",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 60
 	},
 	"fa-react": {
-		"title" : "AWS Cloud",
+		"title" : "React",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 90
 	},
 	"fa-sass": {
-		"title" : "AWS Cloud",
+		"title" : "Sass",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 95
 	},
 	"fa-wordpress": {
-		"title" : "AWS Cloud",
+		"title" : "WordPress",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
-		"rating": 80
+		"rating": 100
 	}
 }
 
