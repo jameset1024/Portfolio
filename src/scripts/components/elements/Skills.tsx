@@ -1,6 +1,7 @@
 import * as React from "react";
 import Popover from "./Popover";
 import { skills } from "../../data/skills";
+import ReactTooltip from "react-tooltip";
 
 
 export default class Skills extends React.Component<any, any>{
@@ -24,7 +25,7 @@ export default class Skills extends React.Component<any, any>{
 	render(){
 
 		const icons = Object.keys(skills).map( (e: string) => {
-			return <div className={'col-md-1-5 col-sm-3'} key={e} onClick={this.skillDisplay.bind(this, e)}><i className={'fab ' + e}></i></div>
+			return <div className={'col-md-1-5 col-sm-3'} key={e} onClick={this.skillDisplay.bind(this, e)}><i className={'fab ' + e} data-for={'skills'} data-tip={skills[e].title} /></div>
 		})
 
 		return (
@@ -33,6 +34,7 @@ export default class Skills extends React.Component<any, any>{
 					{ icons }
 				</div>
 				<Popover trigger={this.state.popupDisplay} content={this.state.popupContent} parent={this} />
+				<ReactTooltip id={'skills'} backgroundColor={'#49a0d9'}/>
 			</>
 		);
 	}
