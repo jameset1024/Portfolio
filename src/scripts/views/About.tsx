@@ -8,8 +8,22 @@ type SectionTypes =  {
 	companies: string
 }
 
+type PositionTypes = {
+	[aboutIntro: string]: number, 
+	aboutSkills: number, 
+	aboutCompanies: number
+};
+
 export default class About extends React.Component<any, any>{
 
+	main: HTMLElement;
+
+	positions: PositionTypes = {
+		aboutIntro: 0,
+		aboutSkills: 0,
+		aboutCompanies: 0
+	};
+	
 	sections: SectionTypes = {
 		about: "aboutIntro",
 		skills: "aboutSkills",
@@ -18,36 +32,56 @@ export default class About extends React.Component<any, any>{
 
 	componentDidMount() {
 		document.body.className = 'about';
+		this.main = document.querySelector('main');
 		this.watchPosition();
 	}
 	
 	componentWillUnmount() {
 		let positions = {};
-		document.removeEventListener('click', this.mapScroll.bind(positions));
+		this.main.removeEventListener('click', this.mapScroll.bind(this));
 	}
 
-	watchPosition(){
-		let positions: {[index: string]: number} = {aboutIntro: 0, aboutSkills: 0, aboutCompanies: 0 };
-		
+	watchPosition(){		
 		for(var i in this.sections){
 			let position: HTMLElement = document.querySelector('.' + this.sections[i]);
-			positions[this.sections[i]] = position.offsetTop;
+			this.positions[this.sections[i]] = position.offsetTop;
 		}
 		
-		document.addEventListener('scroll', this.mapScroll.bind(positions));
+		this.main.addEventListener('scroll', this.mapScroll.bind(this));
 	}
 
-	mapScroll( e:any, positions: object ){
+	mapScroll( e:any ){
+		let dHeight = window.innerHeight;
 		
+		for(let i in this.positions){
+			if(e.target.scrollTop >= this.positions[i] && e.target.scrollTop < (this.positions[i] + dHeight)){
+				let el = document.getElementById(i);
+				if(!el.classList.contains('active')){
+					document.querySelectorAll('.aboutNavItem').forEach( e => {
+						e.classList.remove('active');
+					});
+					
+					el.classList.add('active');
+				}
+			}	
+		}
 	} 
+	
+	scrollToPosition( element: string ){
+		document.querySelector('main').scrollTo({
+			top: this.positions[element],
+			left: 0,
+			behavior: "smooth"
+		});
+	}
 	
 	render(){
 		return(
 			<>
 				<div className={'pageNav'}>
 					<ul>
-						{Object.keys(this.sections).map( k => {
-							return <li id={this.sections[k]} key={this.sections[k]}><span>{k}</span></li>
+						{Object.keys(this.sections).map( (k, i) => {
+							return <li id={this.sections[k]} className={i === 0 ? 'aboutNavItem active' : 'aboutNavItem'} key={this.sections[k]} onClick={() => {this.scrollToPosition( this.sections[k] )}}><span>{k}</span></li>
 						})}
 					</ul>
 				</div>
