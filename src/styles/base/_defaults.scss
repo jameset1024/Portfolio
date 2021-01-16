@@ -1,21 +1,3 @@
-#app{
-	display:flex;
-	flex-direction: row;
-	min-height:100vh;
-	max-height: 100vh;
-	
-	main {
-		flex-grow: 1;
-		height: 100vh;
-		overflow-y: auto;
-	}
-}
-
-.wrap{
-	width:90%;
-	margin:0 auto;
-}
-
 body{
 	font-family: 'Open Sans', sans-serif;
 	color: map-get($colors, font_white);
@@ -40,9 +22,63 @@ img{
 	height: auto;
 }
 
-p{
+p,
+ul{
 	font-weight: 200;
 	letter-spacing: 0.10em;
 	font-size: 14px;
 	line-height: 1.75;
+}
+
+
+#app{
+	display:flex;
+	flex-direction: row;
+	min-height:100vh;
+	max-height: 100vh;
+
+	main {
+		flex-grow: 1;
+		height: 100vh;
+		overflow-y: auto;
+	}
+}
+
+.wrap{
+	width:90%;
+	margin:0 auto;
+}
+
+.btn{
+	position:relative;
+	padding:0 20px 0 0;
+	margin-top: 15px;
+	display:inline-block;
+	color: map-get($colors, white);
+	font-weight: 200;
+	
+	&.blue{
+		&:after, &:before{
+			background-color: map-get($colors, blue);
+		}
+	}
+	
+	&:after{
+		content: "";
+		right: -10px;
+		height: calc(100% + 10px);
+		top:80%;
+		transform: translateY(-50%) rotate(35deg);
+		width:2px;
+		position: absolute;
+	}
+	
+	&:before{
+		content: "";
+		width: 100%;
+		bottom:-10px;
+		height: 2px;
+		position:absolute;
+		left:0;
+	}
 }

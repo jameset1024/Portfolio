@@ -1,0 +1,63 @@
+.ejtExperience{
+	h3{
+		margin-bottom:0;
+	}
+
+	a{
+		display:block;
+		margin-bottom:20px;
+		color: map-get($colors, white);
+		font-weight: 200;
+		font-size:0.9em;
+		letter-spacing: 0.10em;
+	}
+
+	.dates{
+		margin-bottom:0;
+	}
+
+	h6{
+		margin-bottom:15px;
+	}
+	ul{
+		list-style: none;
+		padding:0;
+		margin:0;
+
+		> li{
+			position:relative;
+			padding-left:20px;
+
+			&:not(:last-child){
+				margin-bottom:8px;
+			}
+
+			&:before{
+				content: '';
+				width: 8px;
+				height:8px;
+				border-radius: 50%;
+				border: solid thin map-get($colors, blue);
+				position:absolute;
+				top:50%;
+				left:0;
+				transform: translateY(-50%);
+			}
+
+			&:after{
+				content: '';
+				width: 8px;
+				height:8px;
+				border-radius: 50%;
+				border: solid 2px map-get($colors, blue);
+				position:absolute;
+				top:50%;
+				left:0;
+				opacity:1;
+				transform: translateY(-50%) scale(1);
+				filter: blur(1px);
+				animation: 2s infinite borderGrow;
+			}
+		}
+	}
+}

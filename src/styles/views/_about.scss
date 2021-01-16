@@ -8,6 +8,7 @@ body.about{
 			position:fixed;
 			top:15px;
 			right:35px;
+			z-index:999;
 			
 			ul{
 				list-style:none;
@@ -78,6 +79,73 @@ body.about{
 			height: 100vh;
 			display:flex;
 			align-items: center;
+			
+			//Profile image styling
+			.profileImage{
+				transform: perspective(600px) rotateY(-10deg) translateX(-50%);
+				display:inline-block;
+				max-width:65%;
+				position:relative;
+				left: 50%;
+				z-index: 9;
+				
+				&:before, &:after{
+					content: "";
+					width: 110%;
+					height: 110%;
+					border: solid thin map-get($colors, blue);
+					position:absolute;
+					top:-5%;
+					left: -5%;
+					opacity:0;
+					animation: 4s infinite borderSlide;
+					z-index: -1;
+				}
+				
+				&:after{
+					animation:4s 2s infinite borderSlide;
+				}
+			}
+			
+			//Company icon styling
+			.companyIcons{
+				> div{
+					height: 150px;
+					display:flex;
+					align-items: center;
+					padding:0 25px;
+					
+					&:nth-child(4){
+						img{
+							max-width:70%;
+						}	
+					}
+
+					&:nth-child(6){
+						img{
+							max-width:80%;
+						}
+					}
+					
+					&:nth-child(5){
+						img{
+							max-width:50%;
+						}
+					}
+					
+					&:nth-child(-n+3){
+						border-bottom: thin solid darken(map-get($colors, white), 75%);
+					}
+					
+					&:nth-child(3n+1), &:nth-child(3n+2){
+						border-right: thin solid darken(map-get($colors, white), 75%);
+					}
+					
+					img{
+						cursor: pointer;
+					}
+				}
+			}
 		}
 	}
 }

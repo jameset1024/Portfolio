@@ -5,8 +5,10 @@ type SectionContainer = {
 	className: string
 }
 
+//Main page wrapper
 export const Main: FunctionComponent = ({ children }) => <main>{ children }</main>
 
+//Section wrapper with bootstrap pre-defined classes
 export const Wrap: FunctionComponent<SectionContainer> = ({className, children}) => {
 	return (
 		<section className={className}>

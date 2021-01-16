@@ -1,8 +1,8 @@
 //Include base styles
 @import "~bootstrap/scss/bootstrap";
 
-//Include variables
-@import "base/variables";
+//Include base styles
+@import "base/index";
 
 //Include fontawesome
 @import "~@fortawesome/fontawesome-free/scss/brands";
@@ -10,14 +10,13 @@
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
-
-@import "base/defaults";
-@import "base/bootstrap-fifth";
 @import "includes/header";
 
 //Include Views
-@import "views/home";
-@import "views/about";
+@import "views/index";
 
-@import "components/skills";
-@import "components/popover";
+//Include Components
+@import "components/index";
+
+//Include Sections
+@import "sections/index";

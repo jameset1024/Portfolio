@@ -3,8 +3,16 @@ import Popover from "./Popover";
 import { skills } from "../../data/skills";
 import ReactTooltip from "react-tooltip";
 
+type SkillsType = {
+	popupDisplay: boolean,
+	popupContent: {
+		title: string,
+		description: string,
+		rating: number
+	}
+};
 
-export default class Skills extends React.Component<any, any>{
+export default class Skills extends React.Component<any, SkillsType>{
 
 	state = {
 		popupDisplay: false,

@@ -1,0 +1,51 @@
+.ejtModalCover{
+	position:fixed;
+	background-color: rgba(map-get($colors, black), 0.8);
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	overflow:hidden;
+	visibility: hidden;
+	transform:scale(0);
+	transition: all 0.5s linear 0.5s;
+	z-index:999999;
+
+	.modalClose{
+		position:absolute;
+		top:0;
+		right:0;
+		border-left: solid thin darken(map-get($colors, white), 50%);
+		border-bottom: solid thin darken(map-get($colors, white), 50%);
+
+		a{
+			color: white;
+			display:block;
+			padding:15px 20px;
+		}
+	}
+	
+	.modalContainer{
+		position: absolute;
+		top:150%;
+		left:50%;
+		width:50%;
+		background-color: rgba(map-get($colors, black), 0.7);
+		transform: translate(-50%, -50%);
+		border: solid thin map-get($colors, blue);
+		border-radius: 10px;
+		padding: 25px;
+		transition: top linear 0.5s;
+	}
+	
+	&.active{
+		visibility: visible;
+		transform: scale(1);
+		transition: all linear 0.5s;
+		
+		.modalContainer{
+			top:50%;
+			transition: top 0.5s linear 0.5s;
+		}
+	}
+}

@@ -1,17 +1,18 @@
 import * as React from "react";
 import { Wrap } from "../components/elements/Tags";
 import Skills from "../components/elements/Skills";
+import Experience from "../components/elements/Experience";
 
 type SectionTypes =  {
 	[about: string]: string,
 	skills: string,
-	companies: string
+	experience: string
 }
 
 type PositionTypes = {
 	[aboutIntro: string]: number, 
 	aboutSkills: number, 
-	aboutCompanies: number
+	aboutExperience: number
 };
 
 export default class About extends React.Component<any, any>{
@@ -21,13 +22,13 @@ export default class About extends React.Component<any, any>{
 	positions: PositionTypes = {
 		aboutIntro: 0,
 		aboutSkills: 0,
-		aboutCompanies: 0
+		aboutExperience: 0
 	};
 	
 	sections: SectionTypes = {
 		about: "aboutIntro",
 		skills: "aboutSkills",
-		companies: "aboutCompanies"
+		experience: "aboutExperience"
 	}
 
 	componentDidMount() {
@@ -37,7 +38,6 @@ export default class About extends React.Component<any, any>{
 	}
 	
 	componentWillUnmount() {
-		let positions = {};
 		this.main.removeEventListener('click', this.mapScroll.bind(this));
 	}
 
@@ -54,7 +54,7 @@ export default class About extends React.Component<any, any>{
 		let dHeight = window.innerHeight;
 		
 		for(let i in this.positions){
-			if(e.target.scrollTop >= this.positions[i] && e.target.scrollTop < (this.positions[i] + dHeight)){
+			if(e.target.scrollTop >= (this.positions[i] * .8) && e.target.scrollTop < (this.positions[i] + dHeight)){
 				let el = document.getElementById(i);
 				if(!el.classList.contains('active')){
 					document.querySelectorAll('.aboutNavItem').forEach( e => {
@@ -92,7 +92,11 @@ export default class About extends React.Component<any, any>{
 						<p>Having worked with various company's in various sectors I've been exposed to numerous technologies, development practices and methodologies, and workflows it has allowed me to become a more well rounded developer.</p>
 						<p>I'm currently a full time employee of Nearby Creative but I'm always open to contract projects. If you want to learn more about my skills or things I'm personally interested in keep scrolling and thank for checking out my site.</p>
 					</div>
-					<div className={'col-md-6 offset-md-1'}></div>
+					<div className={'col-md-6 offset-md-1'}>
+						<div className={'profileImage'}>
+							<img src={'./dist/img/erik.jpg'} alt={'Erik Thomas Profile Image'} />
+						</div>
+					</div>
 				</Wrap>
 
 				<Wrap className={'aboutSkills'}>
@@ -107,11 +111,17 @@ export default class About extends React.Component<any, any>{
 					</div>
 				</Wrap>
 
-				<Wrap className={'aboutCompanies'}>
-					<div className={'col-12'}>
-						<h2 className={'text-center'}>Companies I've Worked With</h2>
+				<Wrap className={'aboutExperience'}>
+					<div className={'col-md-5'}>
+						<h2>Experience</h2>
+						<p>Over the years I had the opportunity to work with some amazing companies, where each experience allowed me to grow as a developer.</p>
+						<p>There are so many new skills, practices, and technologies that I've used and learned further expanding my developer toolkit.</p>
+						<p>To learn more click on one of the logos or download a copy of my resume by clicking the button below.</p>
+						<a href={'#'} className={'btn blue'}>View My Resume</a>
 					</div>
-					<div className={'companiesList'}></div>
+					<div className={'col-md-6 offset-md-1'}>
+						<Experience />
+					</div>
 				</Wrap>
 			</>
 		)
