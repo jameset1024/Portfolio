@@ -1,5 +1,6 @@
 import { args } from "./utils";
 import TerserPlugin from "terser-webpack-plugin";
+import Dotenv from "dotenv-webpack";
 
 const WebpackConfig = {
 	mode: !args.production ? "development" : "production",
@@ -27,7 +28,12 @@ const WebpackConfig = {
 				}
 			}
 		]
-	}
+	},
+	plugins: [
+		new Dotenv({
+			path: './.env'
+		})
+	]
 };
 
 if (args.production) {

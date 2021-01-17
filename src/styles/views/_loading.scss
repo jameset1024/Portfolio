@@ -1,0 +1,62 @@
+.loadingScreen{
+	position: fixed;
+	top:0;
+	left:0;
+	height: 100%;
+	width:0;
+	background-color: map-get($colors, grey);
+	z-index: 99999;
+	transition:all 0.3s linear 0.3s;
+
+	> div {
+		position: absolute;
+		opacity:0;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		transition: all linear 0.3s;
+
+		.bouncingText {
+			display: inline-block;
+			font-size: 5em;
+			transform: rotate(-25deg);
+			padding-top:20px;
+
+			> span {
+				display: block;
+				position: relative;
+				animation: 2s infinite textBounce;
+			}
+		}
+		
+		&:after{
+			content: "";
+			background-color: map-get($colors, black);
+			width:75px;
+			opacity: 0.85;
+			height: 8px;
+			position:absolute;
+			bottom:40px;
+			left:calc(50% - 10px);
+			transform: translateX(-50%);
+			border-radius: 50%;
+			filter:blur(2px);
+			animation: 2s infinite shadow;
+		}
+		
+		.loadingText{
+			font-size:1.25em;
+			font-weight: 200;
+		}
+	}
+
+	&.active{
+		transition:all linear 0.3s;
+		width: 100vw;
+
+		> div{
+			transition: all 0.3s linear 0.3s;
+			opacity: 1;
+		}
+	}
+}

@@ -20,3 +20,15 @@ export const Wrap: FunctionComponent<SectionContainer> = ({className, children})
 		</section>
 	);
 }
+
+export const WrapFull: FunctionComponent<SectionContainer> = ({className, children}) => {
+	return (
+		<section className={className}>
+			<div className={'container-fluid'}>
+				<div className={'row'}>
+					{ children }
+				</div>
+			</div>
+		</section>
+	);
+}

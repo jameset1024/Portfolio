@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
-import { Home, About } from "./index";
+import {Home, About, Contact, Work} from "./index";
 import { MainNav } from "./../components/navigation";
 import { Main } from "../components/elements/Tags";
+import withSplashScreen from "../components/hoc/withSplashScreen";
 
-export default class App extends React.Component<any, any>{
+class App extends React.Component<any, any>{
 	render(){
 		return(
 			<>
@@ -20,13 +21,13 @@ export default class App extends React.Component<any, any>{
 								<About />
 							</Route>
 							<Route path="/work">
-
+								<Work />
 							</Route>
 							<Route path="/contact">
-
+								<Contact />
 							</Route>
-							<Route path="/start-project">
-
+							<Route path="/what-im-up-to">
+								
 							</Route>
 						</Switch>
 					</Main>
@@ -35,3 +36,5 @@ export default class App extends React.Component<any, any>{
 		)
 	}
 }
+
+export default withSplashScreen(App);

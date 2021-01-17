@@ -1,0 +1,114 @@
+body.contact{
+	main{
+		background-color: map-get($colors, grey);
+		position:relative;
+		
+		section{
+			height: 100vh;
+			
+			.sendingControl{
+				position:absolute;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				background-color: map-get($colors, grey);
+				display:flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 9999;
+				opacity:0;
+				visibility: hidden;
+				transition: all linear 0.3s;
+				
+				> div{
+					text-align:center;
+					
+					p{
+						margin-bottom:5px;
+						font-size: 1.5em;
+					}
+				}
+				
+				&.sending{
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+			
+			> div {
+				height: inherit;
+				
+				> div {
+					height:inherit;
+					
+					.homeTown{
+						background:url('../img/pittsburgh.jpg') no-repeat center center;
+						background-size: cover;
+						position:relative;
+						
+						&:before{
+							content: "";
+							position: absolute;
+							background:linear-gradient(90deg, map-get($colors, grey) 15%, rgba(map-get($colors, grey), 0));
+							top:0;
+							left:0;
+							right:0;
+							bottom:0;
+						}
+					}
+					
+					form{
+						margin-top:50px;
+						
+						textarea{
+							min-height: 200px;
+						}
+
+						label{
+							position: absolute;
+							top:0;
+							left:15px;
+							width: 2px;
+							height: 0;
+							margin-bottom:0;
+							background-color: map-get($colors, blue);
+							transition: all linear 0.3s;
+						}
+
+						.labelShort{
+							label{
+								left:5px;
+							}
+						}
+						
+						input, textarea{
+							border-radius: 0;
+							background-color: lighten(map-get($colors, grey), 10%);
+							border:none;
+							font-weight: 200;
+							color: map-get($colors, white);
+							padding:10px;
+							transition: border-bottom-width linear 0.3s;
+							
+							&:focus{
+								background-color: lighten(map-get($colors, grey), 10%);
+								outline:none;
+								box-shadow: none;
+								color: map-get($colors, white);	
+								
+								&::placeholder{
+									color: transparent;
+								}
+								
+								& ~ label{
+									height: 100%;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

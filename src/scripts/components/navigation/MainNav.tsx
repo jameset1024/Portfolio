@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {NavSlide} from "../buttons/AnimationBTNs";
 
 export default class MainNav extends React.Component<any, any>{
@@ -12,16 +12,11 @@ export default class MainNav extends React.Component<any, any>{
 					<Link to={'/'}>E</Link>
 				</div>
 				
-				<nav>
+				<nav className={'ejt_mainNavigation'}>
 					<ul>
 						<li>
 							<Link to={'/about'}>
 								About
-							</Link>
-						</li>
-						<li>
-							<Link to={'/skills'}>
-								Skills
 							</Link>
 						</li>
 						<li>
@@ -32,6 +27,11 @@ export default class MainNav extends React.Component<any, any>{
 						<li>
 							<Link to={'/contact'}>
 								Contact
+							</Link>
+						</li>
+						<li>
+							<Link to={'/what-im-up-to'}>
+								What I'm Up To
 							</Link>
 						</li>
 					</ul>

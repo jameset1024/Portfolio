@@ -2,6 +2,7 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	color: map-get($colors, font_white);
 	font-size: 16px;
+	background-color: map-get($colors, black);
 }
 
 h1,
@@ -41,6 +42,32 @@ ul{
 		flex-grow: 1;
 		height: 100vh;
 		overflow-y: auto;
+		position:relative;
+		transition:all linear 0.3s;
+		
+		&:after{
+			content: "";
+			position:absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			visibility: hidden;
+			opacity:0;
+			background-color:rgba(map-get($colors, grey), 0.8);
+			transition: all linear 0.3s;
+		}
+		
+		&.setBack{
+			transform: scale(0.99);
+			filter: blur(3px);
+			overflow: hidden;
+			
+			&:after{
+				visibility: visible;
+				opacity: 1;
+			}
+		}
 	}
 }
 
