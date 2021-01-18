@@ -1,4 +1,5 @@
 import * as React from "react";
+import {hideLoading} from "../controllers/Loading";
 
 export default class Home extends React.Component<any, any>{
 	
@@ -8,9 +9,8 @@ export default class Home extends React.Component<any, any>{
 	
 	componentDidMount() {
 		document.body.className = 'home';
+		hideLoading();
 	}
-	
-	
 
 	render(){
 		return(

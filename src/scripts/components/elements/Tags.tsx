@@ -32,3 +32,17 @@ export const WrapFull: FunctionComponent<SectionContainer> = ({className, childr
 		</section>
 	);
 }
+
+export const Loading: FunctionComponent = () => {
+	return (
+		<div className={'loadingScreen active'}>
+			<div>
+				<div className={'bouncingText'}>
+					<span>E</span>
+				</div>
+
+				<div className={'loadingText'}>Loading...</div>
+			</div>
+		</div>
+	);
+}

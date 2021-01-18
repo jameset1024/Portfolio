@@ -1,36 +1,39 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {NavSlide} from "../buttons/AnimationBTNs";
+import {handleLoading} from "../../controllers/Loading";
+import {SyntheticEvent} from "react";
 
-export default class MainNav extends React.Component<any, any>{
+class MainNav extends React.Component<any, any>{
+	
 	render(){
 		return(
 			<header className={'ejt_mainHeader'}>
-				<NavSlide/>
+				<NavSlide />
 				
-				<div className={'ejt_logo'}>
+				<div className={'ejt_logo'} onClick={( e: SyntheticEvent ) => handleLoading( '/', this, e)}>
 					<Link to={'/'}>E</Link>
 				</div>
 				
 				<nav className={'ejt_mainNavigation'}>
 					<ul>
 						<li>
-							<Link to={'/about'}>
+							<Link to={'/about'}  onClick={(e: SyntheticEvent) => handleLoading( '/about', this, e)}>
 								About
 							</Link>
 						</li>
 						<li>
-							<Link to={'/work'}>
+							<Link to={'/work'} onClick={(e: SyntheticEvent) => handleLoading( '/work', this, e)}>
 								Work
 							</Link>
 						</li>
 						<li>
-							<Link to={'/contact'}>
+							<Link to={'/contact'} onClick={(e: SyntheticEvent) => handleLoading( '/contact', this, e)}>
 								Contact
 							</Link>
 						</li>
 						<li>
-							<Link to={'/what-im-up-to'}>
+							<Link to={'/what-im-up-to'} onClick={(e: SyntheticEvent) => handleLoading( '/what-im-up-to', this, e)}>
 								What I'm Up To
 							</Link>
 						</li>
@@ -51,3 +54,5 @@ export default class MainNav extends React.Component<any, any>{
 		);
 	}
 }
+
+export default withRouter(MainNav);

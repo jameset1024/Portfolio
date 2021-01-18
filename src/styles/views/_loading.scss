@@ -25,7 +25,7 @@
 			> span {
 				display: block;
 				position: relative;
-				animation: 2s infinite textBounce;
+				animation: 1.5s infinite textBounce;
 			}
 		}
 		
@@ -41,7 +41,7 @@
 			transform: translateX(-50%);
 			border-radius: 50%;
 			filter:blur(2px);
-			animation: 2s infinite shadow;
+			animation: 1.5s infinite shadow;
 		}
 		
 		.loadingText{

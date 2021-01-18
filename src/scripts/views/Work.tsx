@@ -6,7 +6,6 @@ export default class Work extends React.Component<any, any>{
 	componentDidMount() {
 		document.body.className = 'work';
 	}
-	
 	render(){
 		return(
 			<>

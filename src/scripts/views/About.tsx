@@ -2,6 +2,7 @@ import * as React from "react";
 import { Wrap } from "../components/elements/Tags";
 import Skills from "../components/elements/Skills";
 import Experience from "../components/elements/Experience";
+import {hideLoading} from "../controllers/Loading";
 
 type SectionTypes =  {
 	[about: string]: string,
@@ -31,10 +32,11 @@ export default class About extends React.Component<any, any>{
 		experience: "aboutExperience"
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		document.body.className = 'about';
 		this.main = document.querySelector('main');
 		this.watchPosition();
+		await hideLoading();
 	}
 	
 	componentWillUnmount() {

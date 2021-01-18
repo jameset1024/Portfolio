@@ -2,6 +2,7 @@ import * as React from "react";
 import { WrapFull } from "../components/elements/Tags";
 import {FormEvent} from "react";
 import axios from "axios";
+import {hideLoading} from "../controllers/Loading";
 
 type FormSubmit = {
 	[name: string]: string,
@@ -20,8 +21,9 @@ export default class Contact extends React.Component<any, FormSubmit>{
 		message: ''
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		document.body.className = 'contact';
+		await hideLoading();
 	}
 
 	onChangeHandler( name: string, value: string){
