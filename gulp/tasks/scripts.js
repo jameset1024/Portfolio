@@ -14,6 +14,7 @@ gulp.task("scripts", () => {
 		.pipe(webpackstream(webpackConfig))
 		.on("error", function(err) {
 			plugins.util.log(err);
+			this.emit('end');
 		})
 		.on("error", plugins.notify.onError(config.defaultNotification))
 		.pipe(gulp.dest(`${taskTarget}/${dirs.scripts}`));

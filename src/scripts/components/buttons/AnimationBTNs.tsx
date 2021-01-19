@@ -26,16 +26,18 @@ const animateIn = ( main: HTMLElement, header: HTMLElement ) => {
 
 		const headerInterval = setInterval(() => {
 			if(header.clientWidth < 250) {
+				
 				header.style.flex = '0 0 ' + (header.clientWidth + 1) + 'px';
 				if (header.clientWidth === 250) {
 					clearInterval(headerInterval);
 					header.querySelector('nav').classList.add('active');
 					resolve(true);
 				}
-			}
+			} else {
 
-			clearInterval(headerInterval);
-			resolve(true);
+				clearInterval(headerInterval);
+				resolve(true);
+			}
 		}, 3);
 	});
 }
@@ -46,15 +48,17 @@ const animateOut = ( main: HTMLElement, header: HTMLElement) => {
 
 		const headerInterval = setInterval(() => {
 			if(header.clientWidth > 65) {
+				
 				header.style.flex = '0 0 ' + (header.clientWidth - 1) + 'px';
 				if (header.clientWidth === 65) {
 					clearInterval(headerInterval);
 					resolve(true);
 				}
-			}
+			} else {
 
-			clearInterval(headerInterval);
-			resolve(true);			
+				clearInterval(headerInterval);
+				resolve(true);
+			}
 		}, 3);
 	});
 }

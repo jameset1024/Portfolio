@@ -1,11 +1,11 @@
-let skills:{ [index: string] : {
+interface Skills{ [index: string] : {
 		title: string,
 		description: string,
 		rating: number
 	}
-};
+}
 
-skills = {
+export const skills: Skills = {
 	"fa-aws" : {
 		"title" : "AWS Cloud",
 		"description": "I have worked with various services within AWS such as EC2, S3, Lambda functions, SES, SQS, SNS, as well as working with Kubernetes within an EC2 container.",
@@ -107,5 +107,3 @@ skills = {
 		"rating": 100
 	}
 }
-
-export { skills };
