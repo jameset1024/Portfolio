@@ -3,7 +3,15 @@ import { WrapFull } from "../components/elements/Tags";
 import { hideLoading } from "../controllers/Loading";
 import { projects } from "../data/projects";
 
-export default class Work extends React.Component<any, any>{
+type WorkStateType = {
+	modalDisplay: boolean
+}
+
+export default class Work extends React.Component<any, WorkStateType>{
+
+	state = {
+		modalDisplay: false
+	}
 
 	async componentDidMount() {
 		document.body.className = 'work';
@@ -12,8 +20,8 @@ export default class Work extends React.Component<any, any>{
 	}
 
 	calcHeight(){
-		let cols = document.querySelectorAll('.col-md-6'),
-		height = window.innerHeight / 3;
+		let cols = document.querySelectorAll('.col-md-3'),
+		height = window.innerHeight / 2;
 		
 		cols.forEach( (e: HTMLElement) => {
 			e.style.height = height + 'px';
@@ -29,8 +37,8 @@ export default class Work extends React.Component<any, any>{
 				<WrapFull className={'workSection'}>
 					{Object.keys(projects).map( (e, i) => {
 						return (
-							<div className={'col-md-6'} key={i} onClick={this.showProject.bind(this, e)}>
-								<img src={'./dist/img/' + projects[e].image} alt={projects[e].title} />
+							<div className={'col-md-3 '} key={i} onClick={this.showProject.bind(this, e)} style={{backgroundColor: projects[e].background}}>
+								<img src={'./dist/img/' + projects[e].logo} alt={projects[e].title} />
 
 								<div className={'projectCover'} >
 									<h2>{projects[e].title}</h2>

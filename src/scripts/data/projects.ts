@@ -4,12 +4,28 @@ interface Projects {
 		description: string,
 		link: string,
 		languages: object,
+		logo: string,
 		image: string,
-		company: string
+		company: string,
+		background: string
 	}
 }
 
 export const projects: Projects = {
+	forging: {
+		title: "Forging PGH",
+		description: "",
+		link: "https://forgingpgh.org",
+		languages: [
+			"JS",
+			"PHP",
+			"WordPress"
+		],
+		logo: "forgingpgh-logo.png",
+		image: "forging.png",
+		background: "#FFFFFF",
+		company: "Thought Form"
+	},
 	encore: {
 		title: "Encore Global",
 		description: "",
@@ -20,7 +36,9 @@ export const projects: Projects = {
 			"PHP",
 			"WordPress"
 		],
+		logo: "encore-logo.png",
 		image: "encore.png",
+		background: "#e2e2e2",
 		company: "Cognistx"
 	},
 	venture: {
@@ -32,11 +50,13 @@ export const projects: Projects = {
 			"PHP",
 			"WordPress"
 		],
+		logo: "venture-logo.png",
 		image: "venture.png",
+		background: "#FFFFFF",
 		company: "Shift Collaborative"
 	},
 	sustainable: {
-		title: "Sustainable Pittsburg",
+		title: "Sustainable Pittsburgh",
 		description: "",
 		link: "https://sustainablepghrestaurants.org/site/restaurant-finder/",
 		languages: [
@@ -44,7 +64,9 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
+		logo: "spr-logo.png",
 		image: "sustainable.png",
+		background: "#E4F1F1",
 		company: "Shift Collaborative"
 	},
 	scopd: {
@@ -56,7 +78,9 @@ export const projects: Projects = {
 			"ReactNative",
 			"Laravel"
 		],
+		logo: "scopd-logo.png",
 		image: "scopd.png",
+		background: "#eceef4",
 		company: "Nearby Creative"
 	},
 	minstrel: {
@@ -68,7 +92,9 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
+		logo: "forgingpgh-logo.png",
 		image: "minstrel.png",
+		background: "#FFFFFF",
 		company: "Bright Thought"
 	},
 	msa: {
@@ -80,7 +106,9 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
+		logo: "msa-logo.png",
 		image: "msa.png",
+		background: "#000000",
 		company: "Shift Collaborative"
 	},
 	apogee: {
@@ -92,7 +120,9 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
+		logo: "apogee-logo.png",
 		image: "argpgh.png",
+		background: "#FFFFFF",
 		company: "Bright Thought"
 	}
 }

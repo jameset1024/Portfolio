@@ -2,35 +2,40 @@ body.work{
 	main{
 		background-color: map-get($colors, grey);
 		position:relative;
-		
+
 		.workSection{
 			.row{
 				> div{
 					overflow: hidden;
 					position:relative;
-					
+					cursor: pointer;
+
 					img{
 						position:absolute;
 						top:50%;
 						left:50%;
-						transform: translate(-50%, -50%);
+						transform: translate(-50%, -50%) scale(0.5);
+						transition: transform ease 1s;
+						max-width: 100%;
 					}
-					
+
 					.projectCover{
 						position:absolute;
-						bottom:15px;
+						bottom:-50%;
 						left:0;
 						background-color:map-get($colors, blue);
-						width:60%;
+						width:100%;
 						padding: 15px;
+						box-shadow: 0 -2px 5px rgba(map-get($colors, black), 0.3);
 						z-index: 99;
-						
+						transition: bottom linear 0.3s;
+
 						h2{
 							color: map-get($colors, white);
 							font-size: 1.5em;
 						}
 					}
-					
+
 					&:before{
 						content: "";
 						position:absolute;
@@ -38,8 +43,18 @@ body.work{
 						left:0;
 						right:0;
 						bottom:0;
+						display:none;
 						background-color:rgba(map-get($colors, black), 0.6);
 						z-index:9;
+					}
+
+					&:hover{
+						img{
+							transform: translate(-50%, -50%) scale(0.65);
+						}
+						.projectCover{
+							bottom:0;
+						}
 					}
 				}
 			}
