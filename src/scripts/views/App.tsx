@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import {Home, About, Contact, Work} from "./index";
 import { MainNav } from "./../components/navigation";
 import {Loading, Main} from "../components/elements/Tags";
+import UpTo from "./UpTo";
 
 export default class App extends React.Component<any, any>{
 		
@@ -27,7 +28,7 @@ export default class App extends React.Component<any, any>{
 								<Contact />
 							</Route>
 							<Route path="/what-im-up-to">
-								
+								<UpTo />
 							</Route>
 						</Switch>
 					</Main>

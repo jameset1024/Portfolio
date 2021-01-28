@@ -2,15 +2,37 @@ import * as React from "react";
 import { WrapFull } from "../components/elements/Tags";
 import { hideLoading } from "../controllers/Loading";
 import { projects } from "../data/projects";
+import Modal from "../components/elements/Modal";
+import Project from "../components/elements/Project";
 
 type WorkStateType = {
-	modalDisplay: boolean
+	modalDisplay: boolean,
+	active: {
+		title: string,
+		description: string,
+		link: string,
+		languages: object,
+		logo: string,
+		image: string,
+		company: string,
+		background: string
+	}
 }
 
 export default class Work extends React.Component<any, WorkStateType>{
 
 	state = {
-		modalDisplay: false
+		modalDisplay: false,
+		active: {
+			title: '',
+			description: '',
+			link: '',
+			languages: {},
+			logo: '',
+			image: '',
+			company: '',
+			background: ''
+		}
 	}
 
 	async componentDidMount() {
@@ -29,7 +51,12 @@ export default class Work extends React.Component<any, WorkStateType>{
 		
 	}
 	
-	showProject( name: string ){}
+	showProject( name: string ){
+		this.setState({
+			modalDisplay: true,
+			active: projects[name]
+		});
+	}
 
 	render(){
 		return(
@@ -47,6 +74,10 @@ export default class Work extends React.Component<any, WorkStateType>{
 						);
 					})}
 				</WrapFull>
+
+				<Modal display={this.state.modalDisplay} parent={this}>
+					<Project project={this.state.active} />
+				</Modal>
 			</>
 		)
 	}

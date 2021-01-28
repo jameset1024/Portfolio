@@ -14,7 +14,7 @@ interface Projects {
 export const projects: Projects = {
 	forging: {
 		title: "Forging PGH",
-		description: "",
+		description: "A custom WordPress theme created for the City Of Pittsburgh geared towards accessibility and custom functionality.",
 		link: "https://forgingpgh.org",
 		languages: [
 			"JS",
@@ -28,7 +28,7 @@ export const projects: Projects = {
 	},
 	encore: {
 		title: "Encore Global",
-		description: "",
+		description: "A highly customized WordPress theme created for a global event company. This was a collective effort of developers working on the backend dashboard and front end functionality.",
 		link: "https://encoreglobal.com/",
 		languages: [
 			"React",
@@ -43,7 +43,7 @@ export const projects: Projects = {
 	},
 	venture: {
 		title: "Venture Outdoors",
-		description: "",
+		description: "A custom WordPress theme that was built to integrate with third-party service Salesforce and Authorize.net. The website was primarily built to accept outing reservations and payments.",
 		link: "https://ventureoutdoors.org/",
 		languages: [
 			"JS",
@@ -57,7 +57,7 @@ export const projects: Projects = {
 	},
 	sustainable: {
 		title: "Sustainable Pittsburgh",
-		description: "",
+		description: "A custom section of the site that was built to display restaurants based on their sustainable score and link to their individual restaurant landing page.",
 		link: "https://sustainablepghrestaurants.org/site/restaurant-finder/",
 		languages: [
 			"PHP",
@@ -71,7 +71,7 @@ export const projects: Projects = {
 	},
 	scopd: {
 		title: "Scopd",
-		description: "",
+		description: "A mobile application build in ReactNative that connects people in businesses and college campuses. A chat feature was also built into the app using Laravel and Node on the backend of the service.",
 		link: "https://apps.apple.com/us/app/scopd/id1498082593",
 		languages: [
 			"PHP",
@@ -85,7 +85,7 @@ export const projects: Projects = {
 	},
 	minstrel: {
 		title: "Minstrel School",
-		description: "",
+		description: "A custom WordPress theme built for selling music lessons and musical tracks.",
 		link: "https://minstrelschool.com/",
 		languages: [
 			"PHP",
@@ -99,7 +99,7 @@ export const projects: Projects = {
 	},
 	msa: {
 		title: "MSA",
-		description: "",
+		description: "A custom blog theme for for a Safety company with custom filtering.",
 		link: "https://blog.msasafety.com/",
 		languages: [
 			"PHP",
@@ -113,7 +113,7 @@ export const projects: Projects = {
 	},
 	apogee: {
 		title: "Apogee Resources Group",
-		description: "",
+		description: "A custom WordPress theme for a local staffing agency.",
 		link: "http://argpgh.com/",
 		languages: [
 			"PHP",

@@ -1,0 +1,7 @@
+body.upto{
+	main{
+		background-color: map-get($colors, grey);
+		position:relative;
+		
+	}
+}
