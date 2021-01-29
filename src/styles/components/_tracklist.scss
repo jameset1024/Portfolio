@@ -1,0 +1,11 @@
+.trackList{
+	.trackListItem{
+		display:flex;
+		position:relative;
+		
+		.trackImage{
+			flex:0 0 15%;
+			max-width: 15%;
+		}
+	}
+}

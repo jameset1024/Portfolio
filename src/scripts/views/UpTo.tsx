@@ -3,6 +3,9 @@ import {hideLoading} from "../controllers/Loading";
 import {Wrap} from "../components/elements/Tags";
 import axios from "axios";
 import {StateType} from "../types/Spotify";
+import {spotify} from "../data/test";
+import AudioPlayer from "../components/elements/AudioPlayer";
+import TrackList from "../components/elements/TrackList";
 
 
 export default class UpTo extends React.Component<any, any>{
@@ -14,7 +17,7 @@ export default class UpTo extends React.Component<any, any>{
 	async componentDidMount() {
 		document.body.className = 'upto';
 
-		try {
+		/*try {
 			let spotify = await axios({
 				url: `${process.env.ENDPOINT}/getSpotify`,
 				method: 'GET'
@@ -27,8 +30,9 @@ export default class UpTo extends React.Component<any, any>{
 			}
 		} catch ( e ){
 			console.log(e.response);
-		}
-
+		}*/
+		
+		this.setState({spotify: spotify});
 		await hideLoading();
 	}
 
@@ -42,11 +46,21 @@ export default class UpTo extends React.Component<any, any>{
 							if(typeof this.state.spotify.currentlyPlaying !== 'undefined' && typeof this.state.spotify.currentlyPlaying.item !== 'undefined') {
 								return (
 									<>
-										<video title={this.state.spotify.currentlyPlaying.item.name} src={this.state.spotify.currentlyPlaying.item.preview_url} controls width={'100%'} />
+										<AudioPlayer spotify={this.state.spotify.currentlyPlaying} />
 									</>
 								);
 							}
+							return (<></>);
+						})()}
 
+						{(() => {
+							if(typeof this.state.spotify.playHistory !== 'undefined' && typeof this.state.spotify.playHistory.items !== 'undefined') {
+								return (
+									<>
+										<TrackList spotify={this.state.spotify.playHistory} />
+									</>
+								);
+							}
 							return (<></>);
 						})()}
 					</div>
