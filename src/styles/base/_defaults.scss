@@ -78,34 +78,39 @@ ul{
 
 .btn{
 	position:relative;
-	padding:0 20px 0 0;
+	padding:10px 25px;
 	margin-top: 15px;
 	display:inline-block;
-	color: map-get($colors, white);
+	color: map-get($colors, blue);
 	font-weight: 200;
-	
-	&.blue{
-		&:after, &:before{
-			background-color: map-get($colors, blue);
-		}
-	}
-	
-	&:after{
-		content: "";
-		right: -10px;
-		height: calc(100% + 10px);
-		top:80%;
-		transform: translateY(-50%) rotate(35deg);
-		width:2px;
-		position: absolute;
-	}
-	
+	border: solid thin map-get($colors, blue);
+	overflow: hidden;
+	transition: color ease 0.3s;
+	z-index: 9;
+
 	&:before{
 		content: "";
-		width: 100%;
-		bottom:-10px;
-		height: 2px;
 		position:absolute;
-		left:0;
+		width:150%;
+		height:225%;
+		top:100%;
+		right:100%;
+		background-color: map-get($colors, blue);
+		transition: all ease 0.3s;
+		transform:rotate(45deg);
+		z-index: -1;
+	}
+	
+	&:focus{
+		outline:none;	
+	}
+	
+	&:hover{
+		color:map-get($colors, white);
+		
+		&:before{
+			top:-50%;
+			right:-30%;
+		}
 	}
 }

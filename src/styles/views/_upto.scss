@@ -3,5 +3,10 @@ body.upto{
 		background-color: map-get($colors, grey);
 		position:relative;
 		
+		.uptoSection{
+			h2{
+				margin-bottom:35px;
+			}
+		}
 	}
 }

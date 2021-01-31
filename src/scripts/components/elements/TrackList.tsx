@@ -4,6 +4,7 @@ export default class TrackList extends React.Component<any, any>{
 	render(){
 		return(
 			<div className={'trackList'}>
+				<h3>Listening History:</h3>
 				{
 					this.props.spotify.items.map( ( e: any, i: number ) => {
 						return (

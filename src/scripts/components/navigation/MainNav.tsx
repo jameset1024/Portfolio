@@ -11,8 +11,8 @@ class MainNav extends React.Component<any, any>{
 			<header className={'ejt_mainHeader'}>
 				<NavSlide />
 				
-				<div className={'ejt_logo'} onClick={( e: SyntheticEvent ) => handleLoading( '/', this, e)}>
-					<Link to={'/'}>E</Link>
+				<div className={'ejt_logo'}>
+					<Link to={'/'} onClick={( e: SyntheticEvent ) => handleLoading( '/', this, e)}>E</Link>
 				</div>
 				
 				<nav className={'ejt_mainNavigation'}>

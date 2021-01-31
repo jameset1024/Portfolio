@@ -1,11 +1,74 @@
 .trackList{
+	overflow:auto;
+	width: 100%;
+	height: 50vh;	
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: map-get($colors, white);
+	padding: 20px 15px 15px;
+	position:relative;
+	top:-5px;
+	
+	h3{
+		font-family: "Open Sans", sans-serif;
+		text-transform: none;
+		font-size:1.15em;
+		margin-bottom: 20px;
+	}
+	
 	.trackListItem{
 		display:flex;
 		position:relative;
 		
+		&:not(:last-child){
+			margin-bottom:10px;
+			padding-bottom: 10px;
+			border-bottom: solid thin map-get($colors, black);
+		}
+		
 		.trackImage{
-			flex:0 0 15%;
-			max-width: 15%;
+			flex:0 0 10%;
+			max-width: 10%;
+		}
+		
+		.trackData{
+			padding-left:25px;
+			color:map-get($colors, black);
+			display:flex;
+			align-items: center;
+			
+			.trackTitle{
+				font-size: 1em;
+				text-transform: uppercase;
+			}
+			
+			.trackArtist{
+				position: relative;
+				margin-left: 25px;
+				padding-left: 15px;
+				font-size: 0.8em;
+
+				&:before {
+					content: "";
+					width: 10px;
+					height: 1px;
+					background-color: map-get($colors, black);
+					position: absolute;
+					left: -10px;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+		}
+		
+		.trackLink{
+			position: absolute;
+			top:5px;
+			right: 15px;
+			
+			a{
+				color: map-get($colors, grey);
+			}
 		}
 	}
 }

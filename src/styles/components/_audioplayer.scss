@@ -5,7 +5,9 @@
 	display:flex;
 	background-color: map-get($colors, white);
 	color: map-get($colors, black);
-	
+	box-shadow: 0 3px 8px rgba(map-get($colors, black), 0.35);
+	position:relative;
+	z-index:9;
 	
 	.audioImage{
 		flex:0 0 25%;
@@ -21,6 +23,26 @@
 		
 		.audioInner {
 			flex: 1;
+			
+			.audioLabel{
+				display:inline-block;
+				background-color: map-get($colors, blue);
+				padding:5px 10px;
+				border-radius: 20px;
+				position:absolute;
+				top:10px;
+				left:10px;
+				box-shadow: 0 0 3px rgba(map-get($colors, black), 0.35);
+				
+				h4 {
+					font-family: 'Open Sans', sans-serif;
+					font-weight: bold;
+					font-size:0.6em;
+					text-transform: none;
+					color:map-get($colors, white);
+					margin:0;
+				}
+			}
 			
 			.audioLink {
 				position: absolute;

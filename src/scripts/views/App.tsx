@@ -4,6 +4,7 @@ import {Home, About, Contact, Work} from "./index";
 import { MainNav } from "./../components/navigation";
 import {Loading, Main} from "../components/elements/Tags";
 import UpTo from "./UpTo";
+import Error404 from "./Error404";
 
 export default class App extends React.Component<any, any>{
 		
@@ -29,6 +30,9 @@ export default class App extends React.Component<any, any>{
 							</Route>
 							<Route path="/what-im-up-to">
 								<UpTo />
+							</Route>
+							<Route path={"*"}>
+								<Error404 />
 							</Route>
 						</Switch>
 					</Main>
