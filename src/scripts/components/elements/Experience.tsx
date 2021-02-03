@@ -25,12 +25,12 @@ export default class Experience extends React.Component<any, ExperienceStateType
 	}
 	
 	companies: ExperienceType = {
-		nearby: "Nearby.png",
-		cognistx: "cognistx.png",
-		ascender: "ascender.svg",
-		dlc: "dlc-logo.png",
-		marc: "marc-usa.png",
-		shift: "shift.png"
+		nearby: "https://erik-portfolio.s3.amazonaws.com/Nearby.png",
+		cognistx: "https://erik-portfolio.s3.amazonaws.com/cognistx.png",
+		ascender: "https://erik-portfolio.s3.amazonaws.com/ascender.svg",
+		dlc: "https://erik-portfolio.s3.amazonaws.com/dlc-logo.png",
+		marc: "https://erik-portfolio.s3.amazonaws.com/marc-usa.png",
+		shift: "https://erik-portfolio.s3.amazonaws.com/shift.png"
 	}
 	
 	experienceClick ( company: string ){
@@ -40,7 +40,7 @@ export default class Experience extends React.Component<any, ExperienceStateType
 	render(){
 		
 		const images = Object.keys(this.companies).map( e => {
-			return <div className={'col-md-4 col-sm-6 d-flex justify-content-center align-items-center'} key={e}><img src={'./dist/img/' + this.companies[e]} onClick={() => this.experienceClick(e) }/></div>
+			return <div className={'col-md-4 col-sm-6 d-flex justify-content-center align-items-center'} key={e}><img src={this.companies[e]} onClick={() => this.experienceClick(e) }/></div>
 		});
 		
 		const company: string = this.state.company;

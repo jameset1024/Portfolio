@@ -1,6 +1,6 @@
 import * as React from "react";
 import {hideLoading} from "../controllers/Loading";
-import {Wrap} from "../components/elements/Tags";
+import { WrapFull } from "../components/elements/Tags";
 import axios from "axios";
 import {StateType} from "../types/Spotify";
 import {spotify} from "../data/test";
@@ -31,7 +31,7 @@ export default class UpTo extends React.Component<any, any>{
 		} catch ( e ){
 			console.log(e.response);
 		}*/
-		
+
 		this.setState({spotify: spotify});
 		await hideLoading();
 	}
@@ -39,32 +39,37 @@ export default class UpTo extends React.Component<any, any>{
 	render(){
 		return(
 			<>
-				<Wrap className={'uptoSection'}>
-					<div className={'col-md-6'}>
-						<h2>What I'm Listening Too</h2>
-						{(() => {
-							if(typeof this.state.spotify.currentlyPlaying !== 'undefined' && typeof this.state.spotify.currentlyPlaying.item !== 'undefined') {
-								return (
-									<>
-										<AudioPlayer spotify={this.state.spotify.currentlyPlaying} />
-									</>
-								);
-							}
-							return (<></>);
-						})()}
+				<WrapFull className={'uptoSection'}>
+					<div className={'col-md-6 currentMusic d-flex align-items-center'}>
+						<div className={'musicWrap'}>
+							<h2>Music I Work To</h2>
+							{(() => {
+								if(typeof this.state.spotify.currentlyPlaying !== 'undefined' && typeof this.state.spotify.currentlyPlaying.item !== 'undefined') {
+									return (
+										<>
+											<AudioPlayer spotify={this.state.spotify.currentlyPlaying} />
+										</>
+									);
+								}
+								return (<></>);
+							})()}
 
-						{(() => {
-							if(typeof this.state.spotify.playHistory !== 'undefined' && typeof this.state.spotify.playHistory.items !== 'undefined') {
-								return (
-									<>
-										<TrackList spotify={this.state.spotify.playHistory} />
-									</>
-								);
-							}
-							return (<></>);
-						})()}
+							{(() => {
+								if(typeof this.state.spotify.playHistory !== 'undefined' && typeof this.state.spotify.playHistory.items !== 'undefined') {
+									return (
+										<>
+											<TrackList spotify={this.state.spotify.playHistory} />
+										</>
+									);
+								}
+								return (<></>);
+							})()}
+						</div>
 					</div>
-				</Wrap>
+					<div className={'col-md-6 currentWork'}>
+						<h2>What I'm currently working on</h2>
+					</div>
+				</WrapFull>
 			</>
 		)
 	}

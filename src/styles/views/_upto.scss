@@ -4,8 +4,50 @@ body.upto{
 		position:relative;
 		
 		.uptoSection{
-			h2{
-				margin-bottom:35px;
+			height: 100vh;
+			display:flex;
+			align-items: center;
+			
+			.container-fluid{
+				height: inherit;
+				
+				.row {
+					&, & > div {
+						height: inherit;
+					}
+				}
+				
+				.currentMusic{
+					background:white;
+					position:relative;
+					
+					.musicWrap{
+						max-width:80%;
+						margin:0 auto;
+						z-index:99;
+						
+						h2{
+							margin-bottom:35px;
+						}			
+					}
+					
+					&:after{
+						content: '';
+						//background-color: rgba(map-get($colors, black), 0.5);
+						top:0;
+						left:0;
+						right:0;
+						bottom:0;
+						position:absolute;
+					}
+				}
+				
+				.currentWork{
+					h2{
+						font-size: 1.5em;
+						padding: 10px 0;
+					}
+				}
 			}
 		}
 	}

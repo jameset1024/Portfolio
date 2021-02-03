@@ -96,7 +96,7 @@ export default class About extends React.Component<any, any>{
 					</div>
 					<div className={'col-md-6 offset-md-1'}>
 						<div className={'profileImage'}>
-							<img src={'./dist/img/erik.jpg'} alt={'Erik Thomas Profile Image'} />
+							<img src={'https://erik-portfolio.s3.amazonaws.com/erik.jpg'} alt={'Erik Thomas Profile Image'} />
 						</div>
 					</div>
 				</Wrap>

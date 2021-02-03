@@ -30,6 +30,7 @@ export default class AudioPlayer extends React.Component<any, any>{
 			this.setState((state: { playing: boolean; }) => ({playing: !state.playing}));
 		});
 
+		//Update the play timer
 		audioControls.addEventListener('timeupdate', _ => {
 			tracker.setAttribute('style', '--current-track:' + Math.round((audioControls.currentTime / 30) * 100) + '%');
 
@@ -37,8 +38,7 @@ export default class AudioPlayer extends React.Component<any, any>{
 			this.setState({current: '0:' + time + Math.floor(audioControls.currentTime)});
 
 			if(Math.floor(audioControls.currentTime) === 30){
-				this.setState({playing: false, current: '0:00'});
-				tracker.setAttribute('style', '--current-track:0');
+				this.setState({playing: false});
 			}
 		});
 	}

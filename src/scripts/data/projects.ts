@@ -21,8 +21,8 @@ export const projects: Projects = {
 			"PHP",
 			"WordPress"
 		],
-		logo: "forgingpgh-logo.png",
-		image: "forging.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/forgingpgh-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/forging.png",
 		background: "#FFFFFF",
 		company: "Thought Form"
 	},
@@ -36,8 +36,8 @@ export const projects: Projects = {
 			"PHP",
 			"WordPress"
 		],
-		logo: "encore-logo.png",
-		image: "encore.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/encore-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/encore.png",
 		background: "#e2e2e2",
 		company: "Cognistx"
 	},
@@ -50,8 +50,8 @@ export const projects: Projects = {
 			"PHP",
 			"WordPress"
 		],
-		logo: "venture-logo.png",
-		image: "venture.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/venture-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/venture.png",
 		background: "#FFFFFF",
 		company: "Shift Collaborative"
 	},
@@ -64,8 +64,8 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
-		logo: "spr-logo.png",
-		image: "sustainable.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/spr-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/sustainable.png",
 		background: "#E4F1F1",
 		company: "Shift Collaborative"
 	},
@@ -78,8 +78,8 @@ export const projects: Projects = {
 			"ReactNative",
 			"Laravel"
 		],
-		logo: "scopd-logo.png",
-		image: "scopd.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/scopd-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/scopd.png",
 		background: "#eceef4",
 		company: "Nearby Creative"
 	},
@@ -92,8 +92,8 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
-		logo: "forgingpgh-logo.png",
-		image: "minstrel.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/forgingpgh-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/minstrel.png",
 		background: "#FFFFFF",
 		company: "Bright Thought"
 	},
@@ -106,8 +106,8 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
-		logo: "msa-logo.png",
-		image: "msa.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/msa-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/msa.png",
 		background: "#000000",
 		company: "Shift Collaborative"
 	},
@@ -120,8 +120,8 @@ export const projects: Projects = {
 			"WordPress",
 			"JS"
 		],
-		logo: "apogee-logo.png",
-		image: "argpgh.png",
+		logo: "https://erik-portfolio.s3.amazonaws.com/apogee-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/argpgh.png",
 		background: "#FFFFFF",
 		company: "Bright Thought"
 	}

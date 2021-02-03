@@ -65,7 +65,7 @@ export default class Work extends React.Component<any, WorkStateType>{
 					{Object.keys(projects).map( (e, i) => {
 						return (
 							<div className={'col-md-3 '} key={i} onClick={this.showProject.bind(this, e)} style={{backgroundColor: projects[e].background}}>
-								<img src={'./dist/img/' + projects[e].logo} alt={projects[e].title} />
+								<img src={ projects[e].logo } alt={projects[e].title} />
 
 								<div className={'projectCover'} >
 									<h2>{projects[e].title}</h2>

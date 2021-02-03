@@ -18,7 +18,6 @@ gulp.task(
 			'sass',
 			'scripts',
 			'fonts',
-			'images'
 		),
 		'inject',
 		'browserSync'
@@ -32,7 +31,6 @@ gulp.task(
 		gulp.parallel(
 			'sass',
 			'fonts',
-			'images',
 			'scripts',
 		),
 		'inject',
@@ -47,7 +45,6 @@ gulp.task(
 		gulp.parallel(
 			'sass',
 			'fonts',
-			'images',
 			'scripts',
 		),
 		'rev',
