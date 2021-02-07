@@ -28,7 +28,7 @@ export default class Project extends React.Component<ProjectType, any> {
 						
 						<div className={'metadata'}>
 							<div className={'metadataItem'}><span>Company: </span> {this.props.project.company}</div>
-							<div className={'metadataItem'}><span>Code:</span> <ul>{Object.values(this.props.project.languages).map( (e: string) => { return <li>{e}</li>})}</ul></div>
+							<div className={'metadataItem'}><span>Code:</span> <ul>{Object.values(this.props.project.languages).map( (e: string, i: number) => { return <li key={i}>{e}</li>})}</ul></div>
 						</div>
 					</div>
 					<div className={'col-12'}>

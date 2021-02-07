@@ -66,6 +66,7 @@ ul{
 			&:after{
 				visibility: visible;
 				opacity: 1;
+				z-index:999999;
 			}
 		}
 	}
