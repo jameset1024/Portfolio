@@ -1,6 +1,6 @@
 import * as React from "react";
 import {hideLoading} from "../controllers/Loading";
-import { WrapFull } from "../components/elements/Tags";
+import {Main, WrapFull} from "../components/elements/Tags";
 import axios from "axios";
 import {StateType} from "../types/Spotify";
 import {spotify} from "../data/test";
@@ -38,7 +38,7 @@ export default class UpTo extends React.Component<any, any>{
 
 	render(){
 		return(
-			<>
+			<Main>
 				<WrapFull className={'uptoSection'}>
 					<div className={'col-md-6 currentMusic d-flex align-items-center'}>
 						<div className={'musicWrap'}>
@@ -66,11 +66,16 @@ export default class UpTo extends React.Component<any, any>{
 							})()}
 						</div>
 					</div>
-					<div className={'col-md-6 currentWork'}>
-						<h2>What I'm currently working on</h2>
+					<div className={'col-md-6 currentlyWatching'}>
+						<h2>Shows I'm Watching</h2>
+						<div className={'watchingContainer'}>
+							<img src={'https://erik-portfolio.s3.amazonaws.com/wandavision.jpg'} alt={'WandaVision'} />
+							<img src={'https://erik-portfolio.s3.amazonaws.com/rickandmorty.jpg'} alt={'WandaVision'} />
+							<img src={'https://erik-portfolio.s3.amazonaws.com/archer.jpg'} alt={'WandaVision'} />
+						</div>
 					</div>
 				</WrapFull>
-			</>
+			</Main>
 		)
 	}
 }

@@ -42,10 +42,23 @@ body.upto{
 					}
 				}
 				
-				.currentWork{
+				.currentlyWatching{
+					position:relative;
+					
 					h2{
 						font-size: 1.5em;
 						padding: 10px 0;
+					}
+					
+					.watchingContainer{
+						height: calc(100vh - 60px);
+						overflow-y: auto;
+						text-align:center;
+						margin: 0 -15px;
+						
+						img{
+							max-width:800px;
+						}
 					}
 				}
 			}

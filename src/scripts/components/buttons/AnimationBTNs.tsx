@@ -10,7 +10,6 @@ export const action = async ( close ?: boolean ) => {
 	} else {
 		await linkAnimation( close );
 		await animateOut(main, header);
-		await new Promise()
 		main.removeAttribute('style');
 		main.classList.remove('setBack');
 	}
@@ -39,22 +38,15 @@ const animateIn = ( main: HTMLElement, header: HTMLElement ) => {
 				clearInterval(headerInterval);
 				resolve(true);
 			}
-		}, 2);
+		}, 3);
 	});
 }
 
 const animateOut = ( main: HTMLElement, header: HTMLElement) => {
 	return new Promise( (resolve, reject) => {
-		header.querySelector('nav').classList.remove('active');
-
-		if(header.clientWidth > 65) {
-			window.requestAnimationFrame(animateOutCallback(header));	
-		} else {
-			resolve(true);
-		}
+		header.querySelector('nav').classList.remove('active');		
 		
-		
-/*		const headerInterval = setInterval(() => {
+		const headerInterval = setInterval(() => {
 			if(header.clientWidth > 65) {
 				
 				header.style.flex = '0 0 ' + (header.clientWidth - 1) + 'px';
@@ -67,15 +59,8 @@ const animateOut = ( main: HTMLElement, header: HTMLElement) => {
 				clearInterval(headerInterval);
 				resolve(true);
 			}
-		}, 2);*/
+		}, 2);
 	});
-}
-
-const animateOutCallback = ( header: HTMLElement ): FrameRequestCallback{
-	header.style.flex = '0 0 ' + (header.clientWidth - 1) + 'px';
-	if(header.clientWidth > 65){
-		window.requestAnimationFrame(animateOutCallback(header));
-	}
 }
 
 const linkAnimation = ( close: boolean) => {

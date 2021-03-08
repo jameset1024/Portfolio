@@ -32,11 +32,11 @@ class MainNav extends React.Component<any, any>{
 								Contact
 							</Link>
 						</li>
-						<li>
+						{/*<li>
 							<Link to={'/what-im-up-to'} onClick={(e: SyntheticEvent) => handleLoading( '/what-im-up-to', this, e)}>
 								What I'm Up To
 							</Link>
-						</li>
+						</li>*/}
 					</ul>
 				</nav>
 				

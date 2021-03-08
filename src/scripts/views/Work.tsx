@@ -1,5 +1,5 @@
 import * as React from "react";
-import { WrapFull } from "../components/elements/Tags";
+import {Main, WrapFull} from "../components/elements/Tags";
 import { hideLoading } from "../controllers/Loading";
 import { projects } from "../data/projects";
 import Modal from "../components/elements/Modal";
@@ -60,7 +60,7 @@ export default class Work extends React.Component<any, WorkStateType>{
 
 	render(){
 		return(
-			<>
+			<Main>
 				<WrapFull className={'workSection'}>
 					{Object.keys(projects).map( (e, i) => {
 						return (
@@ -78,7 +78,7 @@ export default class Work extends React.Component<any, WorkStateType>{
 				<Modal display={this.state.modalDisplay} parent={this}>
 					<Project project={this.state.active} />
 				</Modal>
-			</>
+			</Main>
 		)
 	}
 }

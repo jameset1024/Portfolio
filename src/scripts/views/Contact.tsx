@@ -1,5 +1,5 @@
 import * as React from "react";
-import { WrapFull } from "../components/elements/Tags";
+import {Main, WrapFull} from "../components/elements/Tags";
 import {FormEvent} from "react";
 import axios from "axios";
 import {hideLoading} from "../controllers/Loading";
@@ -76,7 +76,7 @@ export default class Contact extends React.Component<any, FormSubmit>{
 
 	render(){
 		return(
-			<>
+			<Main>
 				<WrapFull className={'contactArea'}>
 					<div className={'col-md-5 d-flex align-items-center offset-md-1'}>
 						<div className={'sendingControl'}>
@@ -115,9 +115,9 @@ export default class Contact extends React.Component<any, FormSubmit>{
 							</form>
 						</div>
 					</div>
-					<div className={'col-md-6 homeTown'}></div>
+					<div className={'col-md-6 homeTown'} />
 				</WrapFull>
-			</>
+			</Main>
 		)
 	}
 }

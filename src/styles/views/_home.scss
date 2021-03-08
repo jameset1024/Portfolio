@@ -1,5 +1,27 @@
 body.home{
 	main{
-		background-color: map-get($colors, blue);
+		background-color: map-get($colors, grey);
+		
+		section{
+			height: 100vh;
+			display:flex;
+			align-items: center;
+			
+			&.homeIntro{
+				h6{
+					margin-bottom:10px;
+				}
+				
+				h1{
+					font-size: 4em;
+					margin-bottom:20px;
+				}
+				
+				p{
+					font-size:1em;
+					margin-bottom:20px;
+				}
+			}
+		}
 	}
 }

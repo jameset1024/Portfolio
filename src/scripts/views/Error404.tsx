@@ -1,5 +1,5 @@
 import * as React from "react";
-import { WrapFull } from "../components/elements/Tags";
+import {Main, WrapFull} from "../components/elements/Tags";
 import { Link, withRouter } from "react-router-dom";
 import {handleLoading, hideLoading} from "../controllers/Loading";
 import {SyntheticEvent} from "react";
@@ -21,7 +21,7 @@ class Error404 extends React.Component<any, FormSubmit>{
 
 	render(){
 		return(
-			<>
+			<Main>
 				<WrapFull className={'errorPage'}>
 					<div className={'col-12'}>
 						<h1>404</h1>
@@ -29,7 +29,7 @@ class Error404 extends React.Component<any, FormSubmit>{
 						<Link to={'/'} className={'btn blue'} onClick={( e: SyntheticEvent ) => handleLoading( '/', this, e)}>Home</Link>
 					</div>
 				</WrapFull>
-			</>
+			</Main>
 		)
 	}
 }

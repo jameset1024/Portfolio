@@ -13,14 +13,16 @@ type ProjectType = {
 	}	
 }
 
-export default class Project extends React.Component<ProjectType, any> {
-	
+export default class Project extends React.Component<ProjectType, any> {	
 	render() {
+		let img = new Image();
+		img.src = this.props.project.image;
+		
 		return (
 			<div className={'projectModal'}>
 				<div className={'row'}>
 					<div className={'col-12 mb-3'}>
-						<img src={this.props.project.image} alt={this.props.project.title} />
+						<img src={ img.src } alt={this.props.project.title} />
 					</div>
 					<div className={'col-12'}>
 						<h3>{this.props.project.title}</h3>
