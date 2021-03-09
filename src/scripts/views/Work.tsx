@@ -43,14 +43,14 @@ export default class Work extends React.Component<any, WorkStateType>{
 
 	calcHeight(){
 		let cols = document.querySelectorAll('.col-md-3'),
-		height = window.innerHeight / 2;
-		
+			height = window.innerHeight / 2;
+
 		cols.forEach( (e: HTMLElement) => {
 			e.style.height = height + 'px';
 		});
-		
+
 	}
-	
+
 	showProject( name: string ){
 		this.setState({
 			modalDisplay: true,
@@ -60,25 +60,26 @@ export default class Work extends React.Component<any, WorkStateType>{
 
 	render(){
 		return(
-			<Main>
-				<WrapFull className={'workSection'}>
-					{Object.keys(projects).map( (e, i) => {
-						return (
-							<div className={'col-md-3 '} key={i} onClick={this.showProject.bind(this, e)} style={{backgroundColor: projects[e].background}}>
-								<img src={ projects[e].logo } alt={projects[e].title} />
+			<>
+				<Main>
+					<WrapFull className={'workSection'}>
+						{Object.keys(projects).map( (e, i) => {
+							return (
+								<div className={'col-md-3 '} key={i} onClick={this.showProject.bind(this, e)} style={{backgroundColor: projects[e].background}}>
+									<img src={ projects[e].logo } alt={projects[e].title} />
 
-								<div className={'projectCover'} >
-									<h2>{projects[e].title}</h2>
+									<div className={'projectCover'} >
+										<h2>{projects[e].title}</h2>
+									</div>
 								</div>
-							</div>
-						);
-					})}
-				</WrapFull>
-
+							);
+						})}
+					</WrapFull>
+				</Main>
 				<Modal display={this.state.modalDisplay} parent={this}>
 					<Project project={this.state.active} />
 				</Modal>
-			</Main>
+			</>
 		)
 	}
 }

@@ -13,7 +13,6 @@ type PopoverType = {
 }
 
 type StateType = {
-	slideIn: boolean,
 	fadeIn: boolean,
 	rating: boolean
 }
@@ -26,58 +25,51 @@ type StateType = {
 export default class Popover extends React.Component<PopoverType, StateType>{
 
 	state = {
-		slideIn: false,
 		fadeIn: false,
 		rating: false
 	}
-
-	slideInToggle = () => this.setState( state => ({slideIn: !state.slideIn}));
+	
+	slideInToggle = () => this.props.parent.setState( state => ({slideIn: !state.slideIn}));
 
 	fadeInToggle = () => this.setState(state => ({fadeIn: !state.fadeIn}));
 
 	ratingToggle = () => this.setState( state => ({rating: !state.rating}));
-
-	componentDidUpdate(prevProps: Readonly<PopoverType>, prevState: Readonly<StateType>, snapshot?: any) {
-		if(prevProps.trigger === false){
-			this.slideInToggle();
-		}
-	}
 	
-	fadeCallback(){
-		if(this.state.fadeIn){
+	fadeCallback() {
+		if( this.state.fadeIn ){
 			this.ratingToggle();
-		}else{
+		} else {
 			this.slideInToggle();
 		}
 	}
 	
-	closeBtn(){
+	closeBtn() {
 		this.ratingToggle();
 		this.fadeInToggle();
 	}
 	
-	slideCallback(){
-		if(!this.state.slideIn){
+	slideCallback() {
+		if( ! this.props.parent.state.slideIn ){
 			this.props.parent.setState({popupDisplay: false});
 		}else{
 			this.fadeInToggle();
 		}
 	}
 
-	ratingCallback(){
+	ratingCallback() {
 		const rating: HTMLElement = document.querySelector('.ratingBar');
 		if(!rating.classList.contains('active')){
 			rating.classList.add('active');
 		}
 	}
 
-	render(){
+	render() {
 		if(this.props.trigger) {
 
-			const { slideIn, fadeIn, rating } = this.state;
+			const { fadeIn, rating } = this.state;
 
 			return (
-				<Spring from={{ width: '0%' }} to={{width: slideIn ? '100%' : '0%'}} onRest={() => this.slideCallback()}>
+				<Spring from={{ width: '0%' }} to={{width: this.props.parent.state.slideIn ? '100%' : '0%'}} onRest={() => this.slideCallback()}>
 
 					{ props =>
 						<div className={'popoverModal'} style={props}>

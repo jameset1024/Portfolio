@@ -9,7 +9,8 @@ type SkillsType = {
 		title: string,
 		description: string,
 		rating: number
-	}
+	},
+	slideIn: boolean
 };
 
 export default class Skills extends React.Component<any, SkillsType>{
@@ -20,13 +21,15 @@ export default class Skills extends React.Component<any, SkillsType>{
 			title: "",
 			description: "",
 			rating: 0
-		}
+		},
+		slideIn: false
 	}
 
 	skillDisplay( type: string ){
 		this.setState({
 			popupDisplay: true,
-			popupContent: skills[type]
+			popupContent: skills[type],
+			slideIn: true
 		});
 	}
 

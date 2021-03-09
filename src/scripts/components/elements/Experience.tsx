@@ -1,6 +1,8 @@
 import * as React from "react";
 import Modal from "./Modal";
 import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../experience";
+import {Component} from "react";
+import {About} from "../../views";
 
 
 type ExperienceType = {
@@ -12,18 +14,12 @@ type ExperienceType = {
 	shift: string
 };
 
-type ExperienceStateType = {
-	modalDisplay: boolean,
-	company: string
+type PropsType = {
+	parent: About
 }
 
-export default class Experience extends React.Component<any, ExperienceStateType>{
-	
-	state = {
-		modalDisplay: false,
-		company: 'nearby'
-	}
-	
+export default class Experience extends React.Component<PropsType, any>{
+		
 	companies: ExperienceType = {
 		nearby: "https://erik-portfolio.s3.amazonaws.com/Nearby.png",
 		cognistx: "https://erik-portfolio.s3.amazonaws.com/cognistx.png",
@@ -34,49 +30,20 @@ export default class Experience extends React.Component<any, ExperienceStateType
 	}
 	
 	experienceClick ( company: string ){
-		this.setState({modalDisplay: true, company: company});
+		this.props.parent.setState({ modalDisplay: true, company: company });
 	}
 	
 	render(){
 		
 		const images = Object.keys(this.companies).map( e => {
-			return <div className={'col-md-4 col-sm-6 d-flex justify-content-center align-items-center'} key={e}><img src={this.companies[e]} onClick={() => this.experienceClick(e) }/></div>
+			return <div className={'col-md-4 col-sm-6 d-flex justify-content-center align-items-center'} key={e}><img src={this.companies[e]} alt={e + ' Logo'} onClick={() => this.experienceClick(e) }/></div>
 		});
-		
-		const company: string = this.state.company;
 		
 		return (
 			<>
 				<div className={'row companyIcons'}>
 					{ images }
 				</div>
-				<Modal display={this.state.modalDisplay} parent={this}>
-					{(() => {
-						switch( company ){
-							case 'nearby':
-								return <Nearby />
-								break;
-							case 'cognistx':
-								return <Cognistx />
-								break;
-							case 'ascender':
-								return <Ascender />
-								break;
-							case 'dlc':
-								return <DLC />
-								break;
-							case 'marc':
-								return <Marc />
-								break;
-							case 'shift':
-								return <Shift />
-								break;
-							default : 
-								return <></>
-							break;
-						}
-					})()}
-				</Modal>
 			</>
 		);
 	}

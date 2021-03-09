@@ -3,6 +3,8 @@ import {Main, Wrap} from "../components/elements/Tags";
 import Skills from "../components/elements/Skills";
 import Experience from "../components/elements/Experience";
 import {hideLoading} from "../controllers/Loading";
+import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../components/experience";
+import Modal from "../components/elements/Modal";
 
 type SectionTypes =  {
 	[about: string]: string,
@@ -16,10 +18,20 @@ type PositionTypes = {
 	aboutExperience: number
 };
 
-export default class About extends React.Component<any, any>{
+type AboutStateType = {
+	modalDisplay: boolean,
+	company: string
+}
+
+export default class About extends React.Component<any, AboutStateType>{
 
 	main: HTMLElement;
 
+	state = {
+		modalDisplay: false,
+		company: "nearby"
+	}
+	
 	positions: PositionTypes = {
 		aboutIntro: 0,
 		aboutSkills: 0,
@@ -78,6 +90,8 @@ export default class About extends React.Component<any, any>{
 	}
 
 	render(){
+		const company: string = this.state.company;
+		
 		return(
 			<>
 				<div className={'pageNav'}>
@@ -105,7 +119,7 @@ export default class About extends React.Component<any, any>{
 
 					<Wrap className={'aboutSkills'}>
 						<div className={'col-md-6 d-flex align-center'}>
-							<Skills/>
+							<Skills />
 						</div>
 						<div className={'col-md-5 offset-md-1'}>
 							<h2>Skills</h2>
@@ -124,10 +138,38 @@ export default class About extends React.Component<any, any>{
 							<a href={'#'} className={'btn blue'}>View My Resume</a>
 						</div>
 						<div className={'col-md-6 offset-md-1'}>
-							<Experience />
+							<Experience parent={this} />
 						</div>
 					</Wrap>
 				</Main>
+				
+				<Modal display={this.state.modalDisplay} parent={this}>
+					{(() => {
+						switch( company ){
+							case 'nearby':
+								return <Nearby />
+								break;
+							case 'cognistx':
+								return <Cognistx />
+								break;
+							case 'ascender':
+								return <Ascender />
+								break;
+							case 'dlc':
+								return <DLC />
+								break;
+							case 'marc':
+								return <Marc />
+								break;
+							case 'shift':
+								return <Shift />
+								break;
+							default :
+								return <></>
+								break;
+						}
+					})()}
+				</Modal>
 			</>
 		)
 	}
