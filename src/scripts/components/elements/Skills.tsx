@@ -36,7 +36,7 @@ export default class Skills extends React.Component<any, SkillsType>{
 	render(){
 
 		const icons = Object.keys(skills).map( (e: string) => {
-			return <div className={'col-md-1-5 col-sm-3'} key={e} onClick={this.skillDisplay.bind(this, e)}><i className={'fab ' + e} data-for={'skills'} data-tip={skills[e].title} /></div>
+			return <div className={'col-md-1-5 col-3'} key={e} onClick={this.skillDisplay.bind(this, e)}><i className={'fab ' + e} data-for={'skills'} data-tip={skills[e].title} /></div>
 		})
 
 		return (

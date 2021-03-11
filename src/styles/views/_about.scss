@@ -69,16 +69,16 @@ body.about{
 			}
 		}
 	}
-	
+
 	main{
 		background-color: map-get($colors, grey);
 		position:relative;
-		
+
 		section{
 			height: 100vh;
 			display:flex;
 			align-items: center;
-			
+
 			//Profile image styling
 			.profileImage{
 				transform: perspective(600px) rotateY(-10deg) translateX(-50%);
@@ -87,7 +87,7 @@ body.about{
 				position:relative;
 				left: 50%;
 				z-index: 9;
-				
+
 				&:before, &:after{
 					content: "";
 					width: 110%;
@@ -100,12 +100,12 @@ body.about{
 					animation: 4s infinite borderSlide;
 					z-index: -1;
 				}
-				
+
 				&:after{
 					animation:4s 2s infinite borderSlide;
 				}
 			}
-			
+
 			//Company icon styling
 			.companyIcons{
 				> div{
@@ -113,11 +113,11 @@ body.about{
 					display:flex;
 					align-items: center;
 					padding:0 25px;
-					
+
 					&:nth-child(4){
 						img{
 							max-width:70%;
-						}	
+						}
 					}
 
 					&:nth-child(6){
@@ -125,23 +125,76 @@ body.about{
 							max-width:80%;
 						}
 					}
-					
+
 					&:nth-child(5){
 						img{
 							max-width:50%;
 						}
 					}
-					
+
 					&:nth-child(-n+3){
 						border-bottom: thin solid darken(map-get($colors, white), 75%);
 					}
-					
+
 					&:nth-child(3n+1), &:nth-child(3n+2){
 						border-right: thin solid darken(map-get($colors, white), 75%);
 					}
-					
+
 					img{
 						cursor: pointer;
+					}
+				}
+			}
+
+			@include media-breakpoint-down(md){
+				height: auto;
+				margin-top: 100px;
+
+				&.aboutIntro {
+					.row {
+						> div{
+							&:first-child{
+								order:1
+							}
+
+							&:last-child{
+								order: 0;
+								margin-bottom: 100px;
+							}
+						}
+					}
+				}
+
+				&.aboutSkills{
+					> div >.row{
+						> div{
+							&:first-child {
+								margin-top:50px;
+								order: 1;
+							}
+
+							&:last-child {
+								order: 0;
+							}
+						}
+					}
+				}
+				
+				&.aboutExperience{
+					padding-bottom: 50px;
+					
+					> div >.row{
+						> div{
+							&:last-child {
+								margin-top: 50px;
+								
+								.companyIcons{
+									> div {
+										border: none;
+									}
+								}
+							}
+						}
 					}
 				}
 			}

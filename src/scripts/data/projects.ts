@@ -12,19 +12,19 @@ interface Projects {
 }
 
 export const projects: Projects = {
-	forging: {
-		title: "Forging PGH",
-		description: "A custom WordPress theme created for the City Of Pittsburgh geared towards accessibility and custom functionality.",
-		link: "https://forgingpgh.org",
+	minstrel: {
+		title: "Minstrel School",
+		description: "A custom WordPress theme built for selling music lessons and musical tracks.",
+		link: "https://minstrelschool.com/",
 		languages: [
-			"JS",
 			"PHP",
-			"WordPress"
+			"WordPress",
+			"JS"
 		],
-		logo: "https://erik-portfolio.s3.amazonaws.com/forgingpgh-logo.png",
-		image: "https://erik-portfolio.s3.amazonaws.com/forging.png",
-		background: "#FFFFFF",
-		company: "Thought Form"
+		logo: "https://erik-portfolio.s3.amazonaws.com/minstrel-logo.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/minstrel.png",
+		background: "#000000",
+		company: "Bright Thought"
 	},
 	encore: {
 		title: "Encore Global",
@@ -83,19 +83,19 @@ export const projects: Projects = {
 		background: "#eceef4",
 		company: "Nearby Creative"
 	},
-	minstrel: {
-		title: "Minstrel School",
-		description: "A custom WordPress theme built for selling music lessons and musical tracks.",
-		link: "https://minstrelschool.com/",
+	forging: {
+		title: "Forging PGH",
+		description: "A custom WordPress theme created for the City Of Pittsburgh geared towards accessibility and custom functionality.",
+		link: "https://forgingpgh.org",
 		languages: [
+			"JS",
 			"PHP",
-			"WordPress",
-			"JS"
+			"WordPress"
 		],
 		logo: "https://erik-portfolio.s3.amazonaws.com/forgingpgh-logo.png",
-		image: "https://erik-portfolio.s3.amazonaws.com/minstrel.png",
+		image: "https://erik-portfolio.s3.amazonaws.com/forging.png",
 		background: "#FFFFFF",
-		company: "Bright Thought"
+		company: "Thought Form"
 	},
 	msa: {
 		title: "MSA",

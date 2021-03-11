@@ -36,7 +36,7 @@ export default class Experience extends React.Component<PropsType, any>{
 	render(){
 		
 		const images = Object.keys(this.companies).map( e => {
-			return <div className={'col-md-4 col-sm-6 d-flex justify-content-center align-items-center'} key={e}><img src={this.companies[e]} alt={e + ' Logo'} onClick={() => this.experienceClick(e) }/></div>
+			return <div className={'col-md-4 col-6 d-flex justify-content-center align-items-center'} key={e}><img src={this.companies[e]} alt={e + ' Logo'} onClick={() => this.experienceClick(e) }/></div>
 		});
 		
 		return (

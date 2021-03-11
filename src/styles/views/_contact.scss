@@ -56,6 +56,10 @@ body.contact{
 							right:0;
 							bottom:0;
 						}
+						
+						@include media-breakpoint-down(md){
+							display:none;
+						}
 					}
 					
 					form{
@@ -104,6 +108,12 @@ body.contact{
 								& ~ label{
 									height: 100%;
 								}
+							}
+						}
+						
+						@include media-breakpoint-down(md){
+							.pr-md-1{
+								margin-bottom: 1rem;
 							}
 						}
 					}

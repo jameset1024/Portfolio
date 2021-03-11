@@ -5,6 +5,7 @@ import Experience from "../components/elements/Experience";
 import {hideLoading} from "../controllers/Loading";
 import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../components/experience";
 import Modal from "../components/elements/Modal";
+import {checkScreenSize} from "../components/buttons/AnimationBTNs";
 
 type SectionTypes =  {
 	[about: string]: string,
@@ -23,7 +24,7 @@ type AboutStateType = {
 	company: string
 }
 
-export default class About extends React.Component<any, AboutStateType>{
+export default class About extends React.Component<any, AboutStateType> {
 
 	main: HTMLElement;
 
@@ -31,7 +32,7 @@ export default class About extends React.Component<any, AboutStateType>{
 		modalDisplay: false,
 		company: "nearby"
 	}
-	
+
 	positions: PositionTypes = {
 		aboutIntro: 0,
 		aboutSkills: 0,
@@ -56,12 +57,14 @@ export default class About extends React.Component<any, AboutStateType>{
 	}
 
 	watchPosition(){
-		for(var i in this.sections){
-			let position: HTMLElement = document.querySelector('.' + this.sections[i]);
-			this.positions[this.sections[i]] = position.offsetTop;
-		}
+		if( document.querySelector('.pageNav') ) {
+			for (var i in this.sections) {
+				let position: HTMLElement = document.querySelector('.' + this.sections[i]);
+				this.positions[this.sections[i]] = position.offsetTop;
+			}
 
-		this.main.addEventListener('scroll', this.mapScroll.bind(this));
+			this.main.addEventListener('scroll', this.mapScroll.bind(this));
+		}
 	}
 
 	mapScroll( e:any ){
@@ -91,17 +94,23 @@ export default class About extends React.Component<any, AboutStateType>{
 
 	render(){
 		const company: string = this.state.company;
-		
+
 		return(
 			<>
+				{ checkScreenSize() > 991 &&
 				<div className={'pageNav'}>
 					<ul>
-						{Object.keys(this.sections).map( (k, i) => {
-							return <li id={this.sections[k]} className={i === 0 ? 'aboutNavItem active' : 'aboutNavItem'} key={this.sections[k]} onClick={() => {this.scrollToPosition( this.sections[k] )}}><span>{k}</span></li>
+						{Object.keys(this.sections).map((k, i) => {
+							return <li id={this.sections[k]}
+									   className={i === 0 ? 'aboutNavItem active' : 'aboutNavItem'}
+									   key={this.sections[k]} onClick={() => {
+								this.scrollToPosition(this.sections[k])
+							}}><span>{k}</span></li>
 						})}
 					</ul>
 				</div>
-				
+				}
+
 				<Main>
 					<Wrap className={'aboutIntro'}>
 						<div className={'col-md-5'}>
@@ -142,7 +151,7 @@ export default class About extends React.Component<any, AboutStateType>{
 						</div>
 					</Wrap>
 				</Main>
-				
+
 				<Modal display={this.state.modalDisplay} parent={this}>
 					{(() => {
 						switch( company ){
@@ -171,6 +180,6 @@ export default class About extends React.Component<any, AboutStateType>{
 					})()}
 				</Modal>
 			</>
-		)
+		);
 	}
 }

@@ -15,7 +15,7 @@ class Home extends React.Component<any, any>{
 		return(
 			<Main>
 				<Wrap className={'homeIntro'}>
-					<div className={'col-md-6'}>
+					<div className={'col-lg-6'}>
 						<h6>Hello! My Name Is</h6>
 						<h1>Erik Thomas</h1>
 						<p>I'm a full stack software engineer building things for the web since <strong>2013</strong>. Based in Pittsburgh, PA I build custom web and mobile application along with the occasional WordPress theme/plugin.</p>

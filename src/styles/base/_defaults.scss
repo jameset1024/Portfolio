@@ -75,6 +75,10 @@ section{
 			}
 		}
 	}
+
+	@include media-breakpoint-down(md){
+		flex-direction: column;
+	}
 }
 
 .wrap{

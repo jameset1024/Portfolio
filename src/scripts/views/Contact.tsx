@@ -92,11 +92,11 @@ export default class Contact extends React.Component<any, FormSubmit>{
 							<form onSubmit={this.contactSubmit.bind(this)} method={'post'} autoComplete={'off'}>
 								<div className={'alert alert-danger d-none'}>You're message could not be sent at this time</div>
 								<div className={'row'}>
-									<div className={'col-md-6 pr-1'}>
+									<div className={'col-md-6 pr-md-1'}>
 										<input type={'text'} name={'name'} className={'form-control'} placeholder={'Name'} onChange={(e) => this.onChangeHandler('name', e.target.value)} required autoComplete={'off'} />
 										<label className={'input-animation'} />
 									</div>
-									<div className={'col-md-6 pl-1 labelShort'}>
+									<div className={'col-md-6 pl-md-1 labelShort'}>
 										<input type={'email'} name={'email'} className={'form-control'} placeholder={'Email'} onChange={(e) => this.onChangeHandler('email', e.target.value)} required autoComplete={'off'} />
 										<label className={'input-animation'} />
 									</div>
