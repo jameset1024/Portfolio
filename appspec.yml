@@ -1,0 +1,13 @@
+version: 1.0.0
+os: linux
+files:
+    - source: /
+      destination: /var/www/html/ejt
+permissions: 
+    - object: /var/www/html/ejt
+      owner: ubuntu
+      group: ubuntu
+      type:
+          - directory
+          - file
+      
