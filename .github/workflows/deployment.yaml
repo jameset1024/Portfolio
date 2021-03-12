@@ -2,8 +2,8 @@ name: portfolio-prod
 
 on:
     push:
-        branches:
-            - master
+        tags:
+            - 'v*'
 
 
 jobs:
