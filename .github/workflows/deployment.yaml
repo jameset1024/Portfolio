@@ -31,9 +31,6 @@ jobs:
               
             - name: Run build
               run: npm run production
-              
-            - name: Remove Node Folder
-              run: rm -rf node_modules
                   
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v1
