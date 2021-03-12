@@ -13,8 +13,8 @@ jobs:
         strategy:
             matrix: 
                 node-version: ['12.x']
-                appname: ['erik-portfolio']
-                deploy-group: ['portfolio-production']
+                appname: ['ErikPortfolio']
+                deploy-group: ['production']
                 s3-bucket: ['bt-codedeploy-deployments']
                 s3-filename: ['production-portfolio-${{ github.sha }}']
 
