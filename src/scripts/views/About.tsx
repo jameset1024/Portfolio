@@ -6,6 +6,7 @@ import {hideLoading} from "../controllers/Loading";
 import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../components/experience";
 import Modal from "../components/elements/Modal";
 import {checkScreenSize} from "../components/buttons/AnimationBTNs";
+import ReactTooltip from "react-tooltip";
 
 type SectionTypes =  {
 	[about: string]: string,
@@ -151,6 +152,8 @@ export default class About extends React.Component<any, AboutStateType> {
 						</div>
 					</Wrap>
 				</Main>
+
+				<ReactTooltip id={'skills'} backgroundColor={'#49a0d9'}/>
 
 				<Modal display={this.state.modalDisplay} parent={this}>
 					{(() => {

@@ -16,6 +16,7 @@ gulp.task(
 		'clean',
 		gulp.parallel(
 			'sass',
+			'images',
 			'scripts',
 			'fonts',
 		),
@@ -30,6 +31,7 @@ gulp.task(
 		'clean',
 		gulp.parallel(
 			'sass',
+			'images',
 			'fonts',
 			'scripts',
 		),
@@ -44,6 +46,7 @@ gulp.task(
 		'clean',
 		gulp.parallel(
 			'sass',
+			'images',
 			'fonts',
 			'scripts',
 		),

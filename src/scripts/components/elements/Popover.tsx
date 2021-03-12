@@ -1,6 +1,8 @@
 import * as React from "react";
 import Skills from "./Skills";
 import { Spring } from "react-spring/renderprops-universal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 type PopoverType = {
 	trigger: boolean,
@@ -77,7 +79,7 @@ export default class Popover extends React.Component<PopoverType, StateType>{
 
 								{ propsFade =>
 									<div className={'popoverContainer'} style={ propsFade }>
-										<div className={'popoverClose'} onClick={this.closeBtn.bind(this)}><i className={'fas fa-times'}></i></div>
+										<div className={'popoverClose'} onClick={this.closeBtn.bind(this)}><FontAwesomeIcon icon={faTimes} /></div>
 
 										<div className={'popoverContents'}>
 											<h4>{this.props.content.title}</h4>

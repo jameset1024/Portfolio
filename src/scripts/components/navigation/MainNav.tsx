@@ -3,6 +3,8 @@ import {Link, withRouter} from "react-router-dom";
 import {NavSlide} from "../buttons/AnimationBTNs";
 import {handleLoading} from "../../controllers/Loading";
 import {SyntheticEvent} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 class MainNav extends React.Component<any, any>{
 	
@@ -43,10 +45,10 @@ class MainNav extends React.Component<any, any>{
 				<div className={'ejt_social'}>
 					<div className={'d-flex'}>
 						<a href={'https://github.com/jameset1024'} target={'_blank'}>
-							<i className={'fab fa-github'}></i>
+							<FontAwesomeIcon icon={ faGithub } />
 						</a>
 						<a href={'https://www.linkedin.com/in/erikthomas1024/'} target={'_blank'}>
-							<i className={'fab fa-linkedin-in'}></i>
+							<FontAwesomeIcon icon={ faLinkedinIn } />
 						</a>
 					</div>
 				</div>

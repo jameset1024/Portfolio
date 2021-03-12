@@ -1,7 +1,11 @@
 import * as React from "react";
 import Popover from "./Popover";
 import { skills } from "../../data/skills";
-import ReactTooltip from "react-tooltip";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+library.add(fab);
 
 type SkillsType = {
 	popupDisplay: boolean,
@@ -36,7 +40,8 @@ export default class Skills extends React.Component<any, SkillsType>{
 	render(){
 
 		const icons = Object.keys(skills).map( (e: string) => {
-			return <div className={'col-md-1-5 col-3'} key={e} onClick={this.skillDisplay.bind(this, e)}><i className={'fab ' + e} data-for={'skills'} data-tip={skills[e].title} /></div>
+			// @ts-ignore
+			return <div className={'col-md-1-5 col-3'} key={e} onClick={this.skillDisplay.bind(this, e)}><FontAwesomeIcon icon={['fab', e]} className={'fab ' + e} data-for={'skills'} data-tip={skills[e].title} /></div>
 		})
 
 		return (
@@ -45,7 +50,6 @@ export default class Skills extends React.Component<any, SkillsType>{
 					{ icons }
 				</div>
 				<Popover trigger={this.state.popupDisplay} content={this.state.popupContent} parent={this} />
-				<ReactTooltip id={'skills'} backgroundColor={'#49a0d9'}/>
 			</>
 		);
 	}

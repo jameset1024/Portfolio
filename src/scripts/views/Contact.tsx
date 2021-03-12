@@ -3,6 +3,8 @@ import {Main, WrapFull} from "../components/elements/Tags";
 import {FormEvent} from "react";
 import axios from "axios";
 import {hideLoading} from "../controllers/Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 type FormSubmit = {
 	[name: string]: string,
@@ -82,7 +84,7 @@ export default class Contact extends React.Component<any, FormSubmit>{
 						<div className={'sendingControl'}>
 							<div>
 								<p>Sending...</p>
-								<p><i className={'fas fa-spinner fa-spin'} /></p>
+								<p><FontAwesomeIcon icon={faSpinner} spin /></p>
 							</div>
 						</div>
 						<div className={'contactWrap'}>
