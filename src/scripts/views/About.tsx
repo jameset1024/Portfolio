@@ -145,7 +145,7 @@ export default class About extends React.Component<any, AboutStateType> {
 							<p>Over the years I had the opportunity to work with some amazing companies, where each experience allowed me to grow as a developer.</p>
 							<p>There are so many new skills, practices, and technologies that I've used and learned further expanding my developer toolkit.</p>
 							<p>To learn more click on one of the logos or download a copy of my resume by clicking the button below.</p>
-							<a href={'#'} className={'btn blue'}>View My Resume</a>
+							<a href={'https://erik-portfolio.s3.amazonaws.com/ET_Resume.pdf'} className={'btn blue'} target={'_blank'}>View My Resume</a>
 						</div>
 						<div className={'col-md-6 offset-md-1'}>
 							<Experience parent={this} />
