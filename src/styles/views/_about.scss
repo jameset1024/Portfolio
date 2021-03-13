@@ -68,6 +68,10 @@ body.about{
 				}
 			}
 		}
+		
+		@include media-breakpoint-down(md){
+			display:none;
+		}
 	}
 
 	main{
@@ -103,6 +107,14 @@ body.about{
 
 				&:after{
 					animation:4s 2s infinite borderSlide;
+				}
+
+				@include media-breakpoint-down(md){
+					transform: translateX(-50%);
+					
+					&:before, &:after{
+						display:none;
+					}
 				}
 			}
 
