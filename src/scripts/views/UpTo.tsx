@@ -1,5 +1,5 @@
 import * as React from "react";
-import {hideLoading} from "../controllers/Loading";
+import {hideLoading, showLoading} from "../controllers/Loading";
 import {Main, WrapFull} from "../components/elements/Tags";
 import axios from "axios";
 import {StateType} from "../types/Spotify";
@@ -34,6 +34,10 @@ export default class UpTo extends React.Component<any, any>{
 
 		this.setState({spotify: spotify});
 		await hideLoading();
+	}
+
+	async componentWillMount(){
+		await showLoading();
 	}
 
 	render(){

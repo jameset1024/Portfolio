@@ -6,7 +6,7 @@ export const showLoading = () => {
 		const loader: HTMLElement = document.querySelector('.loadingScreen');
 		loader.classList.add('active');
 		
-		setTimeout(() => resolve(true), 500);
+		setTimeout(() => resolve(true), 1000);
 	});
 }
 

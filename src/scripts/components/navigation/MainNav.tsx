@@ -1,13 +1,21 @@
 import * as React from "react";
-import {Link, withRouter} from "react-router-dom";
-import {NavSlide} from "../buttons/AnimationBTNs";
-import {handleLoading} from "../../controllers/Loading";
+import { Link, withRouter } from "react-router-dom";
+import { NavSlide } from "../buttons/AnimationBTNs";
+import { handleLoading, showLoading } from "../../controllers/Loading";
 import {SyntheticEvent} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 class MainNav extends React.Component<any, any>{
 	
+	componentDidMount() {
+		window.onpopstate = async ( e:PopStateEvent ) => {
+			e.preventDefault();
+
+			await showLoading();
+		}
+	}
+
 	render(){
 		return(
 			<header className={'ejt_mainHeader'}>

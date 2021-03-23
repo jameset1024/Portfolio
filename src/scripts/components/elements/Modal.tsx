@@ -10,7 +10,8 @@ type ModalType = {
 
 export default class Modal extends React.Component<ModalType, any>{
 
-	closeModal(){
+	closeModal( e: Event ){
+		e.preventDefault();
 		this.props.parent.setState({modalDisplay: false});
 	}
 
@@ -18,7 +19,7 @@ export default class Modal extends React.Component<ModalType, any>{
 		return (
 			<div className={'ejtModalCover' + (this.props.display ? ' active' : '')}>
 				<div className={'modalClose'}>
-					<a href={"#"} onClick={this.closeModal.bind(this)}><FontAwesomeIcon icon={faTimes}/></a>
+					<a href={""} onClick={this.closeModal.bind(this)}><FontAwesomeIcon icon={faTimes}/></a>
 				</div>
 
 				<div className={'modalContainer'}>

@@ -9,10 +9,10 @@ export const action = async ( close ?: boolean ) => {
 	const header: HTMLElement = document.querySelector('.ejt_mainHeader');
 	const main: HTMLElement = document.querySelector('main');
 
-	if( checkScreenSize() > 991) {
-		await desktopAnimate( main, header, close);
+	if (checkScreenSize() > 991) {
+		await desktopAnimate(main, header, close);
 	} else {
-		await mobileAnimate( main, header, close );
+		await mobileAnimate(main, header, close);
 	}
 }
 
@@ -30,8 +30,12 @@ const desktopAnimate = async ( main: HTMLElement, header: HTMLElement, close ?: 
 	} else {
 		await linkAnimation( close );
 		await desktopAnimateOut(main, header);
-		main.removeAttribute('style');
-		main.classList.remove('setBack');
+		
+		if( main ) {
+			main.removeAttribute('style');
+			main.classList.remove('setBack');
+		}
+		
 		document.body.removeAttribute('style');
 	}
 }
@@ -50,8 +54,11 @@ const mobileAnimate = async ( main: HTMLElement, header: HTMLElement, close ?: b
 	} else {
 		await linkAnimation( close );
 		await mobileAnimateOut( main, header );
-		main.removeAttribute('style');
-		main.classList.remove('setBack');
+
+		if( main ) {
+			main.removeAttribute('style');
+			main.classList.remove('setBack');
+		}
 	}
 }
 
@@ -77,7 +84,7 @@ const mobileAnimateIn = ( main: HTMLElement, header: HTMLElement): Promise<boole
 				if( header.clientHeight === 330 ) {
 					clearInterval(headerInterval);
 					header.querySelector('nav').classList.add('active');
-					
+
 					setTimeout(() => {
 						resolve(true);
 					}, 300);

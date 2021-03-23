@@ -1,17 +1,19 @@
 import * as React from "react";
-import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router, useHistory, useLocation } from "react-router-dom";
 import {Home, About, Contact, Work} from "./index";
 import { MainNav } from "./../components/navigation";
 import { Loading } from "../components/elements/Tags";
 import UpTo from "./UpTo";
 import Error404 from "./Error404";
+import {showLoading} from "../controllers/Loading";
 
 export default class App extends React.Component<any, any>{
-
+	
 	render(){
 		return(
 			<>
 				<Router>
+					<Loading />
 					<MainNav />
 
 					<Switch>
@@ -34,8 +36,6 @@ export default class App extends React.Component<any, any>{
 							<Error404 />
 						</Route>
 					</Switch>
-					
-					<Loading />
 				</Router>
 			</>
 		)
