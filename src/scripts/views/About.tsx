@@ -2,7 +2,7 @@ import * as React from "react";
 import {Main, Wrap} from "../components/elements/Tags";
 import Skills from "../components/elements/Skills";
 import Experience from "../components/elements/Experience";
-import {hideLoading, showLoading} from "../controllers/Loading";
+import {hideLoading} from "../controllers/Loading";
 import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../components/experience";
 import Modal from "../components/elements/Modal";
 import {checkScreenSize} from "../components/buttons/AnimationBTNs";

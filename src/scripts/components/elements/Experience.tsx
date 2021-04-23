@@ -1,7 +1,4 @@
 import * as React from "react";
-import Modal from "./Modal";
-import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../experience";
-import {Component} from "react";
 import {About} from "../../views";
 
 

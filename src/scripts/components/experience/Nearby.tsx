@@ -7,7 +7,7 @@ export default function Nearby(){
 			<a href={'https://nearbycreative.com'} target={'_blank'}>nearbycreative.com</a>
 			<p className={'dates'}>March 2019 - Present</p>
 			
-			<h6 className={'title'}>Senior Software Engineer</h6>
+			<h6 className={'title'}>Director Of Engineering</h6>
 			<ul>
 				<li>Manage/Refactor existing client code bases to enhance and improve functionality.</li>
 				<li>Development web applications and APIs using the Laravel PHP framework.</li>
