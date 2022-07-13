@@ -1,17 +1,14 @@
 import * as React from "react";
-import Skills from "./Skills";
 import { Spring } from "react-spring/renderprops-universal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../experience";
+import Experience from "./Experience";
 
 type PopoverType = {
 	trigger: boolean,
-	parent: Skills,
-	content: {
-		title: string,
-		description: string,
-		rating: number
-	}
+	parent: Experience,
+	company: string
 }
 
 type StateType = {
@@ -24,19 +21,19 @@ type StateType = {
  * Handles the skills popover on the about page
  *
  */
-export default class Popover extends React.Component<PopoverType, StateType>{
+export default class PopoverExperience extends React.Component<PopoverType, StateType>{
 
 	state = {
 		fadeIn: false,
-		rating: false
+		rating: false,
 	}
-	
-	slideInToggle = () => this.props.parent.setState( state => ({slideIn: !state.slideIn}));
+
+	slideInToggle = () => this.props.parent.setState( (state: { slideIn: boolean }) => ({slideIn: !state.slideIn}));
 
 	fadeInToggle = () => this.setState(state => ({fadeIn: !state.fadeIn}));
 
 	ratingToggle = () => this.setState( state => ({rating: !state.rating}));
-	
+
 	fadeCallback() {
 		if( this.state.fadeIn ){
 			this.ratingToggle();
@@ -44,37 +41,30 @@ export default class Popover extends React.Component<PopoverType, StateType>{
 			this.slideInToggle();
 		}
 	}
-	
+
 	closeBtn() {
 		this.ratingToggle();
 		this.fadeInToggle();
 	}
-	
+
 	slideCallback() {
 		if( ! this.props.parent.state.slideIn ){
-			this.props.parent.setState({popupDisplay: false});
+			this.props.parent.setState({display: false});
 		}else{
 			this.fadeInToggle();
-		}
-	}
-
-	ratingCallback() {
-		const rating: HTMLElement = document.querySelector('.ratingBar');
-		if(!rating.classList.contains('active')){
-			rating.classList.add('active');
 		}
 	}
 
 	render() {
 		if(this.props.trigger) {
 
-			const { fadeIn, rating } = this.state;
+			const { fadeIn } = this.state;
 
 			return (
 				<Spring from={{ width: '0%' }} to={{width: this.props.parent.state.slideIn ? '100%' : '0%'}} onRest={() => this.slideCallback()}>
 
 					{ props =>
-						<div className={'popoverModal'} style={props}>
+						<div className={'popoverModal experiencePopover'} style={props}>
 							<Spring from={{opacity: 0}} to={{opacity: fadeIn ? 1 : 0}} onRest={() => this.fadeCallback()}>
 
 								{ propsFade =>
@@ -82,21 +72,24 @@ export default class Popover extends React.Component<PopoverType, StateType>{
 										<div className={'popoverClose'} onClick={this.closeBtn.bind(this)}><FontAwesomeIcon icon={faTimes} /></div>
 
 										<div className={'popoverContents'}>
-											<h4>{this.props.content.title}</h4>
-
-											<div className={'ratingDescription'}>Skill Rating:</div>
-
-											<div className={'skillRating'} >
-												<Spring
-													from={{width: '0%', number: 0}}
-													to={{width: rating ? this.props.content.rating + '%' : '0%', number: rating ? this.props.content.rating : 0}}
-													onRest={() => this.ratingCallback()}
-												>
-													{ props => <div className={'ratingBar'} data-rating={Math.ceil(props.number) + '%'} style={props} /> }
-												</Spring>
-											</div>
-
-											<p>{this.props.content.description}</p>
+											{(() => {
+												switch (this.props.company) {
+													case 'nearby':
+														return <Nearby/>
+													case 'cognistx':
+														return <Cognistx/>
+													case 'ascender':
+														return <Ascender/>
+													case 'dlc':
+														return <DLC/>
+													case 'marc':
+														return <Marc/>
+													case 'shift':
+														return <Shift/>
+													default :
+														return <></>
+												}
+											})()}
 										</div>
 									</div>
 								}

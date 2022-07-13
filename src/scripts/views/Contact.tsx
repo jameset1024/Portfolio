@@ -1,8 +1,8 @@
 import * as React from "react";
-import {Main, WrapFull} from "../components/elements/Tags";
+import { Main, WrapFull} from "../components/elements/Tags";
 import {FormEvent} from "react";
 import axios from "axios";
-import {hideLoading, showLoading} from "../controllers/Loading";
+import { hideLoading } from "../controllers/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
@@ -25,9 +25,9 @@ export default class Contact extends React.Component<any, FormSubmit>{
 		loading: 'true'
 	}
 
-	async componentDidMount() {		
+	async componentDidMount() {
 		document.body.className = 'contact';
-		
+
 		hideLoading().then( _ => {
 			this.setState({loading: 'false'});
 		});
@@ -41,48 +41,51 @@ export default class Contact extends React.Component<any, FormSubmit>{
 		e.preventDefault();
 
 		//Hide the form on sending
-		let sending: HTMLElement = document.querySelector('.sendingControl');
-		sending.classList.add('sending');
+		let sending = document.querySelector('.sendingControl');
+        if ( sending ) sending.classList.add('sending');
 
 		//Get the error box
 		const error = document.querySelector('.alert-danger');
-		
+
 		const {name, email, subject, message} = this.state;
 
 		const from = name + '<' + email + '>';
 
 		const response = await axios({
 			method: 'post',
-			url: process.env.REACT_APP_MAILGUN,
+			url: process.env.REACT_APP_MAILGUN as string,
 			auth:{
 				username: 'api',
-				password: process.env.REACT_APP_MAILGUN_API
+				password: process.env.REACT_APP_MAILGUN_API as string
 			},
 			params: {
 				from: from,
-				to: process.env.REACT_APP_SEND_TO,
+				to: process.env.REACT_APP_SEND_TO as string,
 				subject: subject,
 				text: message
 			}
 		});
 
-		if(response.status === 200){
-			this.handleSuccessfulSend( sending );
-		} else {
-			error.classList.remove('d-none');
-			sending.classList.remove('sending');
-		}
+        if ( sending && error ) {
+            if (response.status === 200) {
+                this.handleSuccessfulSend(sending);
+            } else {
+                error.classList.remove('d-none');
+                sending.classList.remove('sending');
+            }
+        }
 	}
 
-	handleSuccessfulSend( wrap:HTMLElement ){
+	handleSuccessfulSend( wrap: Element ){
 		const form = document.querySelector('.contactWrap');
-		form.innerHTML = '<h2>Thanks For Reaching Out!</h2><p>Your message has been sent successfully and I\'ll get back to you as soon as possible.</p>'
-		
+        if ( form )
+		    form.innerHTML = '<h2>Thanks For Reaching Out!</h2><p>Your message has been sent successfully and I\'ll get back to you as soon as possible.</p>'
+
 		wrap.classList.remove('sending');
 	}
 
 	render(){
-		
+
 		if( this.state.loading !== 'true' ) {
 			return (
 				<Main>
@@ -145,7 +148,7 @@ export default class Contact extends React.Component<any, FormSubmit>{
 				</Main>
 			)
 		}
-		
+
 		return (<></>);
 	}
 }

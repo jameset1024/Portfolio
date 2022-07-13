@@ -1,10 +1,8 @@
 import * as React from "react";
-import {Main, Wrap} from "../components/elements/Tags";
+import { Main, Wrap} from "../components/elements/Tags";
 import Skills from "../components/elements/Skills";
 import Experience from "../components/elements/Experience";
 import {hideLoading} from "../controllers/Loading";
-import {Ascender, Cognistx, DLC, Marc, Nearby, Shift} from "../components/experience";
-import Modal from "../components/elements/Modal";
 import {checkScreenSize} from "../components/buttons/AnimationBTNs";
 import ReactTooltip from "react-tooltip";
 
@@ -21,18 +19,14 @@ type PositionTypes = {
 };
 
 type AboutStateType = {
-	modalDisplay: boolean,
-	company: string,
 	loading: boolean
 }
 
 export default class About extends React.Component<any, AboutStateType> {
 
-	main: HTMLElement;
+	main: HTMLElement | null | undefined;
 
 	state = {
-		modalDisplay: false,
-		company: "nearby",
 		loading: true
 	}
 
@@ -47,15 +41,15 @@ export default class About extends React.Component<any, AboutStateType> {
 		skills: "aboutSkills",
 		experience: "aboutExperience"
 	}
-	
+
 	async componentDidMount() {
 		document.body.className = 'about';
-		
+
 		await hideLoading().then( _ => {
 			this.setState({loading: false});
 		});
 	}
-	
+
 	componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<AboutStateType>, snapshot?: any) {
 		if( prevState.loading ) {
 			this.main = document.querySelector('main');
@@ -64,14 +58,15 @@ export default class About extends React.Component<any, AboutStateType> {
 	}
 
 	componentWillUnmount() {
-		this.main.removeEventListener('click', this.mapScroll.bind(this));
+        if ( this.main )
+		    this.main.removeEventListener('click', this.mapScroll.bind(this));
 	}
 
 	watchPosition(){
-		if( document.querySelector('.pageNav') ) {
-			for (var i in this.sections) {
-				let position: HTMLElement = document.querySelector('.' + this.sections[i]);
-				this.positions[this.sections[i]] = position.offsetTop;
+		if ( ! this.state.loading && this.main ) {
+			for (const i in this.sections) {
+				let position: HTMLElement | null= document.querySelector('.' + this.sections[i]);
+				if ( position ) this.positions[this.sections[i]] = position.offsetTop;
 			}
 
 			this.main.addEventListener('scroll', this.mapScroll.bind(this));
@@ -81,10 +76,11 @@ export default class About extends React.Component<any, AboutStateType> {
 	mapScroll( e:any ){
 		let dHeight = window.innerHeight;
 
-		for(let i in this.positions){
-			if(e.target.scrollTop >= (this.positions[i] * .8) && e.target.scrollTop < (this.positions[i] + dHeight)){
+		for (let i in this.positions) {
+			if( e.target.scrollTop >= (this.positions[i] * .8) && e.target.scrollTop < (this.positions[i] + dHeight)) {
 				let el = document.getElementById(i);
-				if(!el.classList.contains('active')){
+
+				if (el && !el.classList.contains('active')) {
 					document.querySelectorAll('.aboutNavItem').forEach( e => {
 						e.classList.remove('active');
 					});
@@ -95,16 +91,18 @@ export default class About extends React.Component<any, AboutStateType> {
 		}
 	}
 
-	scrollToPosition( element: string ){
-		document.querySelector('main').scrollTo({
-			top: this.positions[element],
-			left: 0,
-			behavior: "smooth"
-		});
+	scrollToPosition( element: string ) {
+        let main = document.querySelector('main');
+        if ( main ) {
+            main.scrollTo({
+                top: this.positions[element],
+                left: 0,
+                behavior: "smooth"
+            });
+        }
 	}
 
 	render(){
-		const company: string = this.state.company;
 
 		if( ! this.state.loading ) {
 			return (
@@ -174,44 +172,16 @@ export default class About extends React.Component<any, AboutStateType> {
 								   target={'_blank'}>View My Resume</a>
 							</div>
 							<div className={'col-md-6 offset-md-1'}>
-								<Experience parent={this}/>
+								<Experience parent={this} />
 							</div>
 						</Wrap>
 					</Main>
 
 					<ReactTooltip id={'skills'} backgroundColor={'#49a0d9'}/>
-
-					<Modal display={this.state.modalDisplay} parent={this}>
-						{(() => {
-							switch (company) {
-								case 'nearby':
-									return <Nearby/>
-									break;
-								case 'cognistx':
-									return <Cognistx/>
-									break;
-								case 'ascender':
-									return <Ascender/>
-									break;
-								case 'dlc':
-									return <DLC/>
-									break;
-								case 'marc':
-									return <Marc/>
-									break;
-								case 'shift':
-									return <Shift/>
-									break;
-								default :
-									return <></>
-									break;
-							}
-						})()}
-					</Modal>
 				</>
 			);
 		}
-		
+
 		return (<></>)
 	}
 }

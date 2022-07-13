@@ -4,30 +4,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 type ModalType = {
-	display: boolean,
-	parent: Component
+    display: boolean,
+    parent: Component,
+    children: React.ReactNode
 }
 
-export default class Modal extends React.Component<ModalType, any>{
+export default function Modal ({display, parent, children} : ModalType) {
 
-	closeModal( e: Event ){
-		e.preventDefault();
-		this.props.parent.setState({modalDisplay: false});
-	}
+    const closeModal = ( e: { preventDefault: () => void; } ) => {
+        e.preventDefault();
+        parent.setState({modalDisplay: false});
+    }
 
-	render(){
-		return (
-			<div className={'ejtModalCover' + (this.props.display ? ' active' : '')}>
-				<div className={'modalClose'}>
-					<a href={""} onClick={this.closeModal.bind(this)}><FontAwesomeIcon icon={faTimes}/></a>
-				</div>
+    return (
+        <div className={'ejtModalCover' + (display ? ' active' : '')}>
+            <div className={'modalClose'}>
+                <a href={""} onClick={closeModal}><FontAwesomeIcon icon={faTimes}/></a>
+            </div>
 
-				<div className={'modalContainer'}>
-					<div className={'content'}>
-						{this.props.children}
-					</div>
-				</div>
-			</div>
-		);
-	}
+            <div className={'modalContainer'}>
+                <div className={'content'}>
+                    {children}
+                </div>
+            </div>
+        </div>
+    );
 }

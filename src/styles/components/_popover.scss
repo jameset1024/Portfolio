@@ -1,67 +1,80 @@
 .popoverModal{
-	position:absolute;
-	left:0;
-	top:0;
-	background-color: map-get($colors, grey);
-	height: 100%;
-	
-	.popoverContainer{
-		width: 100%;
-		position:relative;
-		
-		.popoverClose{
-			position:absolute;
-			top:5px;
-			right: 5px;
-			cursor: pointer;
-		}
-		
-		.popoverContents{
-			top: 50px;
-			position: relative;
-			
-			.ratingDescription{
-				font-size:0.8em;
-				margin-bottom:5px;
-				text-transform:uppercase;
-				color: map-get($colors, lightgrey);
-			}
-			.skillRating{
-				width: 75%;
-				position:relative;
-				height:10px;
-				box-shadow: inset 0 0 3px map-get($colors, black);
-				border-radius:10px;
-				margin-bottom:25px;
-				
-				.ratingBar{
-					background-color: map-get($colors, blue);
-					position:absolute;
-					height:10px;
-					left:0;
-					border-radius: 10px;
-					
-					&.active:before{
-						transform:translateY(-50%) scale(1);
-					}
-					
-					&:before{
-						content: attr(data-rating);
-						position:absolute;
-						right:-15px;
-						width:30px;
-						height:30px;
-						border-radius: 50%;
-						top:50%;
-						transform:translateY(-50%) scale(0);
-						background-color:map-get($colors, blue);
-						font-size:0.65em;
-						text-align:center;
-						padding-top:7px;
-						transition: transform 0.3s linear 0.75s;
-					}
-				}
-			}
-		}
-	}
+  position:absolute;
+  left:0;
+  top:0;
+  background-color: map-get($colors, grey);
+  height: 100%;
+
+  &.experiencePopover {
+    .popoverContainer {
+      .popoverClose {
+        top: -15px;
+        z-index:99;
+      }
+
+      .popoverContents {
+        top: 0;
+      }
+    }
+  }
+
+  .popoverContainer{
+    width: 100%;
+    position:relative;
+
+    .popoverClose{
+      position:absolute;
+      top:5px;
+      right: 5px;
+      cursor: pointer;
+    }
+
+    .popoverContents{
+      top: 50px;
+      position: relative;
+
+      .ratingDescription{
+        font-size:0.8em;
+        margin-bottom:5px;
+        text-transform:uppercase;
+        color: map-get($colors, lightgrey);
+      }
+      .skillRating{
+        width: 75%;
+        position:relative;
+        height:10px;
+        box-shadow: inset 0 0 3px map-get($colors, black);
+        border-radius:10px;
+        margin-bottom:25px;
+
+        .ratingBar{
+          background-color: map-get($colors, blue);
+          position:absolute;
+          height:10px;
+          left:0;
+          border-radius: 10px;
+
+          &.active:before{
+            transform:translateY(-50%) scale(1);
+          }
+
+          &:before{
+            content: attr(data-rating);
+            position:absolute;
+            right:-15px;
+            width:30px;
+            height:30px;
+            border-radius: 50%;
+            top:50%;
+            transform:translateY(-50%) scale(0);
+            background-color:map-get($colors, blue);
+            font-size:0.65em;
+            text-align:center;
+            padding-top:7px;
+            transition: transform 0.3s linear 0.75s;
+          }
+        }
+      }
+    }
+  }
 }

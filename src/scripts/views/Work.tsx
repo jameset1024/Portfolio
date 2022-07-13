@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Main, WrapFull} from "../components/elements/Tags";
-import {hideLoading, showLoading} from "../controllers/Loading";
+import {hideLoading} from "../controllers/Loading";
 import { projects } from "../data/projects";
 import Modal from "../components/elements/Modal";
 import Project from "../components/elements/Project";
@@ -39,9 +39,9 @@ export default class Work extends React.Component<any, WorkStateType>{
 
 	async componentDidMount() {
 		document.body.className = 'work';
-		
+
 		this.calcHeight();
-		
+
 		await hideLoading().then( _ => {
 			this.setState({loading: false});
 		});
@@ -51,8 +51,8 @@ export default class Work extends React.Component<any, WorkStateType>{
 		let cols = document.querySelectorAll('.col-md-3'),
 			height = window.innerHeight / 2;
 
-		cols.forEach( (e: HTMLElement) => {
-			e.style.height = height + 'px';
+		cols.forEach( (e) => {
+            (e as HTMLElement).style.height = height + 'px';
 		});
 
 	}
@@ -65,7 +65,7 @@ export default class Work extends React.Component<any, WorkStateType>{
 	}
 
 	render(){
-		
+
 		if( ! this.state.loading ) {
 			return (
 				<>
@@ -91,7 +91,7 @@ export default class Work extends React.Component<any, WorkStateType>{
 				</>
 			)
 		}
-		
+
 		return (<></>)
 	}
 }

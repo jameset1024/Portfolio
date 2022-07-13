@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Main, WrapFull} from "../components/elements/Tags";
 import { Link, withRouter } from "react-router-dom";
-import {handleLoading, hideLoading, showLoading} from "../controllers/Loading";
+import {handleLoading, hideLoading} from "../controllers/Loading";
 import {SyntheticEvent} from "react";
 
 
@@ -10,10 +10,10 @@ class Error404 extends React.Component<any, any>{
 	state = {
 		loading: true
 	}
-	
-	async componentDidMount() {		
+
+	async componentDidMount() {
 		document.body.className = 'error404';
-		
+
 		await hideLoading().then( _ => {
 			this.setState({loading: false});
 		});
@@ -34,7 +34,7 @@ class Error404 extends React.Component<any, any>{
 				</Main>
 			)
 		}
-		
+
 		return (<></>)
 	}
 }

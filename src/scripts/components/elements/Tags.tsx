@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { FunctionComponent } from "react";
 
 type SectionContainer = {
@@ -6,10 +6,10 @@ type SectionContainer = {
 }
 
 //Main page wrapper
-export const Main: FunctionComponent = ({ children }) => <main>{ children }</main>
+export const Main = ({ children } : {children: React.ReactNode}): JSX.Element => <main>{ children }</main>
 
 //Section wrapper with bootstrap pre-defined classes
-export const Wrap: FunctionComponent<SectionContainer> = ({className, children}) => {
+export const Wrap = ({className, children} : {className: string, children : React.ReactNode}): JSX.Element => {
 	return (
 		<section className={className}>
 			<div className={'wrap container-fluid'}>
@@ -21,7 +21,7 @@ export const Wrap: FunctionComponent<SectionContainer> = ({className, children})
 	);
 }
 
-export const WrapFull: FunctionComponent<SectionContainer> = ({className, children}) => {
+export const WrapFull = ({className, children} : {className: string, children: React.ReactNode}): JSX.Element => {
 	return (
 		<section className={className}>
 			<div className={'container-fluid'}>
@@ -33,7 +33,7 @@ export const WrapFull: FunctionComponent<SectionContainer> = ({className, childr
 	);
 }
 
-export const Loading: FunctionComponent = () => {
+export const Loading = () : JSX.Element => {
 	return (
 		<div className={'loadingScreen active'}>
 			<div>

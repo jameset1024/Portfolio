@@ -1,5 +1,5 @@
 import * as React from "react";
-import Popover from "./Popover";
+import PopoverSkills from "./PopoverSkills";
 import { skills } from "../../data/skills";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -49,7 +49,7 @@ export default class Skills extends React.Component<any, SkillsType>{
 				<div className={'row skills-component'}>
 					{ icons }
 				</div>
-				<Popover trigger={this.state.popupDisplay} content={this.state.popupContent} parent={this} />
+				<PopoverSkills trigger={this.state.popupDisplay} content={this.state.popupContent} parent={this} />
 			</>
 		);
 	}
