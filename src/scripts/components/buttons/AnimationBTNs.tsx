@@ -6,14 +6,15 @@ import * as React from "react";
  * @param close
  */
 export const action = async ( close ?: boolean ) => {
-	const header: HTMLElement | null = document.querySelector('.ejt_mainHeader');
-	const main: HTMLElement | null = document.querySelector('main');
+    if ( close ) await Delay(500);
+    const header: HTMLElement | null = document.querySelector('.ejt_mainHeader');
+    let main: HTMLElement | null = document.querySelector('main');
 
-	if (main && header && checkScreenSize() > 991) {
-		await desktopAnimate(main, header, close);
-	} else if ( main && header) {
-		await mobileAnimate(main, header, close);
-	}
+    if ( main && header && checkScreenSize() > 991 ) {
+        await desktopAnimate(main, header, close);
+    } else if ( main && header) {
+        await mobileAnimate(main, header, close);
+    }
 }
 
 /**
@@ -24,20 +25,20 @@ export const action = async ( close ?: boolean ) => {
  * @param close
  */
 const desktopAnimate = async ( main: HTMLElement, header: HTMLElement, close ?: boolean) => {
-	if (header.clientWidth === 65 && !close) {
-		await desktopAnimateIn(main, header);
-		await linkAnimation( close );
-	} else {
-		await linkAnimation( close );
-		await desktopAnimateOut(main, header);
+    if (header.clientWidth === 65 && !close) {
+        await desktopAnimateIn(main, header);
+        await linkAnimation( close );
+    } else {
+        await linkAnimation( close );
+        await desktopAnimateOut(header);
 
-		if( main ) {
-			main.removeAttribute('style');
-			main.classList.remove('setBack');
-		}
+        if ( main ) {
+            main.removeAttribute('style');
+            main.classList.remove('setBack');
+        }
 
-		document.body.removeAttribute('style');
-	}
+        document.body.removeAttribute('style');
+    }
 }
 
 /**
@@ -48,18 +49,18 @@ const desktopAnimate = async ( main: HTMLElement, header: HTMLElement, close ?: 
  * @param close
  */
 const mobileAnimate = async ( main: HTMLElement, header: HTMLElement, close ?: boolean ) => {
-	if( header.clientHeight === 72 && !close) {
-		await mobileAnimateIn( main, header );
-		await linkAnimation( close );
-	} else {
-		await linkAnimation( close );
-		await mobileAnimateOut( main, header );
+    if( header.clientHeight === 72 && !close) {
+        await mobileAnimateIn( main, header );
+        await linkAnimation( close );
+    } else {
+        await linkAnimation( close );
+        await mobileAnimateOut( header );
 
-		if( main ) {
-			main.removeAttribute('style');
-			main.classList.remove('setBack');
-		}
-	}
+        if( main ) {
+            main.removeAttribute('style');
+            main.classList.remove('setBack');
+        }
+    }
 }
 
 /**
@@ -69,63 +70,62 @@ const mobileAnimate = async ( main: HTMLElement, header: HTMLElement, close ?: b
  * @param header
  */
 const mobileAnimateIn = ( main: HTMLElement, header: HTMLElement): Promise<boolean> => {
-	return new Promise ( (resolve ) => {
-		main.style.position = "absolute";
-		main.style.left = '0';
-		main.style.width = '100%';
-		main.style.top = header.clientHeight + 'px';
-		main.classList.add('setBack');
-		document.body.style.overflow = 'hidden';
+    return new Promise ( (resolve ) => {
+        main.style.position = "absolute";
+        main.style.left = '0';
+        main.style.width = '100%';
+        main.style.top = header.clientHeight + 'px';
+        main.classList.add('setBack');
+        document.body.style.overflow = 'hidden';
 
-		const headerInterval = setInterval( () => {
+        const headerInterval = setInterval( () => {
 
-			if( header.clientHeight < 330 ) {
-				header.style.flex = '0 0 ' + (header.clientHeight + 1) + 'px';
-				if( header.clientHeight === 330 ) {
-					clearInterval(headerInterval);
+            if( header.clientHeight < 330 ) {
+                header.style.flex = '0 0 ' + (header.clientHeight + 1) + 'px';
+                if( header.clientHeight === 330 ) {
+                    clearInterval(headerInterval);
                     const nav = header.querySelector('nav');
                     if ( nav )
-					    nav.classList.add('active');
+                        nav.classList.add('active');
 
-					setTimeout(() => {
-						resolve(true);
-					}, 300);
-				}
-			} else {
-				clearInterval(headerInterval);
-				resolve( true );
-			}
-		}, 3)
-	});
+                    setTimeout(() => {
+                        resolve(true);
+                    }, 300);
+                }
+            } else {
+                clearInterval(headerInterval);
+                resolve( true );
+            }
+        }, 3)
+    });
 }
 
 /**
  * Handles animating the navigation out when on mobile
  *
- * @param main
  * @param header
  */
-const mobileAnimateOut = ( main: HTMLElement, header: HTMLElement): Promise<boolean> => {
-	return new Promise( (resolve ) => {
+const mobileAnimateOut = ( header: HTMLElement): Promise<boolean> => {
+    return new Promise( (resolve ) => {
         const nav = header.querySelector('nav');
         if ( nav )
-		    nav.classList.remove('active');
+            nav.classList.remove('active');
 
-		const headerInterval = setInterval(() => {
-			if( header.clientHeight > 72 ) {
-				header.style.flex = '0 0 ' + ( header.clientHeight - 1 ) + 'px';
+        const headerInterval = setInterval(() => {
+            if( header.clientHeight > 72 ) {
+                header.style.flex = '0 0 ' + ( header.clientHeight - 1 ) + 'px';
 
-				if (header.clientHeight === 72) {
-					header.removeAttribute('style');
-					clearInterval(headerInterval);
-					resolve(true);
-				}
-			} else {
-				clearInterval(headerInterval);
-				resolve(true);
-			}
-		}, 2);
-	});
+                if (header.clientHeight === 72) {
+                    header.removeAttribute('style');
+                    clearInterval(headerInterval);
+                    resolve(true);
+                }
+            } else {
+                clearInterval(headerInterval);
+                resolve(true);
+            }
+        }, 2);
+    });
 }
 
 /**
@@ -135,61 +135,60 @@ const mobileAnimateOut = ( main: HTMLElement, header: HTMLElement): Promise<bool
  * @param header
  */
 const desktopAnimateIn = ( main: HTMLElement, header: HTMLElement ): Promise<boolean> => {
-	return new Promise( (resolve ) => {
-		main.style.minWidth = main.clientWidth + 'px';
-		main.style.maxWidth = main.clientWidth + 'px';
-		main.style.position = "absolute";
-		main.style.top = '0';
-		main.style.right = '0';
-		main.classList.add('setBack');
+    return new Promise( (resolve ) => {
+        main.style.minWidth = main.clientWidth + 'px';
+        main.style.maxWidth = main.clientWidth + 'px';
+        main.style.position = "absolute";
+        main.style.top = '0';
+        main.style.right = '0';
+        main.classList.add('setBack');
 
-		const headerInterval = setInterval(() => {
-			if( header.clientWidth < 250 ) {
-				header.style.flex = '0 0 ' + (header.clientWidth + 1) + 'px';
-				if (header && header.clientWidth === 250) {
-					clearInterval(headerInterval);
+        const headerInterval = setInterval(() => {
+            if( header.clientWidth < 250 ) {
+                header.style.flex = '0 0 ' + (header.clientWidth + 1) + 'px';
+                if (header && header.clientWidth === 250) {
+                    clearInterval(headerInterval);
 
                     const nav = header.querySelector('nav');
                     if ( nav )
-					    nav.classList.add('active');
-					resolve(true);
-				}
-			} else {
-				clearInterval(headerInterval);
-				resolve(true);
-			}
-		}, 3);
-	});
+                        nav.classList.add('active');
+                    resolve(true);
+                }
+            } else {
+                clearInterval(headerInterval);
+                resolve(true);
+            }
+        }, 3);
+    });
 }
 
 /**
  * Handles animating out when on desktop
  *
- * @param main
  * @param header
  */
-const desktopAnimateOut = ( main: HTMLElement, header: HTMLElement): Promise<boolean> => {
-	return new Promise( (resolve ) => {
+const desktopAnimateOut = ( header: HTMLElement): Promise<boolean> => {
+    return new Promise( (resolve ) => {
         const nav = header.querySelector('nav');
         if ( nav )
-		    nav.classList.remove('active');
+            nav.classList.remove('active');
 
-		const headerInterval = setInterval(() => {
-			if(header.clientWidth > 65) {
+        const headerInterval = setInterval(() => {
+            if(header.clientWidth > 65) {
 
-				header.style.flex = '0 0 ' + (header.clientWidth - 1) + 'px';
-				if (header.clientWidth === 65) {
-					header.removeAttribute('style');
-					clearInterval(headerInterval);
-					resolve(true);
-				}
-			} else {
+                header.style.flex = '0 0 ' + (header.clientWidth - 1) + 'px';
+                if (header.clientWidth === 65) {
+                    header.removeAttribute('style');
+                    clearInterval(headerInterval);
+                    resolve(true);
+                }
+            } else {
 
-				clearInterval(headerInterval);
-				resolve(true);
-			}
-		}, 2);
-	});
+                clearInterval(headerInterval);
+                resolve(true);
+            }
+        }, 2);
+    });
 }
 
 /**
@@ -198,7 +197,7 @@ const desktopAnimateOut = ( main: HTMLElement, header: HTMLElement): Promise<boo
  * @return number
  */
 export const checkScreenSize = () : number => {
-	return window.innerWidth;
+    return window.innerWidth;
 }
 
 /**
@@ -207,23 +206,23 @@ export const checkScreenSize = () : number => {
  * @param close
  */
 const linkAnimation = ( close: boolean | undefined): Promise<boolean> => {
-	return new Promise( ( resolve ) => {
-		const links = document.querySelectorAll('.ejt_mainNavigation li');
+    return new Promise( ( resolve ) => {
+        const links = document.querySelectorAll('.ejt_mainNavigation li');
 
-		links.forEach((e, i) => {
-			setTimeout(function () {
-				if (!e.classList.contains('animate') && !close) {
-					e.classList.add('animate')
-				} else {
-					e.classList.remove('animate');
-				}
+        links.forEach((e, i) => {
+            setTimeout(function () {
+                if (!e.classList.contains('animate') && !close) {
+                    e.classList.add('animate')
+                } else {
+                    e.classList.remove('animate');
+                }
 
-				if (i === (links.length - 1)) {
-					setTimeout(() => resolve(true), 400);
-				}
-			}, (300 * i));
-		});
-	});
+                if (i === (links.length - 1)) {
+                    setTimeout(() => resolve(true), 400);
+                }
+            }, (300 * i));
+        });
+    });
 }
 
 /**
@@ -232,11 +231,25 @@ const linkAnimation = ( close: boolean | undefined): Promise<boolean> => {
  * @constructor
  */
 export const NavSlide = () => {
-	return (
-		<div className={'nav-action'} onClick={action.bind(this,false)}>
-			<span>NavDot</span>
-			<span>NavDot</span>
-			<span>NavDot</span>
-		</div>
-	);
+    return (
+        <div className={'nav-action'} onClick={action.bind(this,false)}>
+            <span>NavDot</span>
+            <span>NavDot</span>
+            <span>NavDot</span>
+        </div>
+    );
+}
+
+/**
+ * Delay a process for a specified amount of time
+ *
+ * @param time
+ * @constructor
+ */
+const Delay = async ( time: number ): Promise<void> => {
+    return await new Promise<void>( resolve => {
+        setTimeout(() => {
+            resolve();
+        }, time);
+    });
 }

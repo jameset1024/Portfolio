@@ -10,7 +10,7 @@ class Home extends React.Component<any, any>{
 		loading:true
 	}
 
-	async componentDidMount() {
+	componentDidMount() {
 		document.body.className = 'home';
 
 		hideLoading().then( _ => {

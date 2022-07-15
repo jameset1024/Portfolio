@@ -24,7 +24,7 @@ export const hideLoading = async () => {
 }
 
 export const handleLoading = async ( slug :string, instance: any, e: SyntheticEvent ) => {
-	if(e) e.preventDefault();
+	if ( e ) e.preventDefault();
 
 	let tSlug = slug.replace('/', ''),
 		regex = new RegExp("(" + tSlug + ")");
