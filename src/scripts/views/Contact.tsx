@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Main, WrapFull} from "../components/elements/Tags";
-import {FormEvent} from "react";
+import { FormEvent } from "react";
 import axios from "axios";
 import { hideLoading } from "../controllers/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
