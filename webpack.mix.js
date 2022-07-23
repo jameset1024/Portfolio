@@ -1,14 +1,13 @@
 const mix = require("laravel-mix");
 
-if ( mix.inProduction() ) {
-    mix.version();
-}
+mix.setPublicPath('public/dist');
 
 mix.ts('src/scripts/main.tsx', 'scripts/main.js')
 	.sass('src/styles/main.scss', 'styles/main.css')
 	.copy('src/img', 'public/dist/img')
-    .setPublicPath('public/dist')
-    .setResourceRoot('src')
     .extract()
-	.react()
+	.react();
 
+if ( mix.inProduction() ) {
+    mix.version();
+}

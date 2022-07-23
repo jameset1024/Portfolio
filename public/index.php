@@ -1,3 +1,12 @@
+<?php
+function manifest( $file ) {
+    $manifest = file_get_contents('./dist/mix-manifest.json');
+    $manifest = json_decode($manifest, true);
+
+    return './dist' . $manifest[$file];
+}
+?>
+
 <!DOCTYPE html>
 <html class="no-js" dir="ltr" lang="en" itemscope itemtype="http://schema.org/WebSite" prefix="og: http://ogp.me/ns#">
 	<head>
@@ -15,7 +24,7 @@
 		<link rel="apple-touch-icon-precomposed" href="./dist/img/favicon-180x145.png" sizes="180x145">
 		<link rel="canonical" href="//erikjamesthomas.com">
 
-		<link rel="stylesheet" href="./dist/styles/main.css">
+		<link rel="stylesheet" href="<?= manifest('/styles/main.css'); ?>">
 
 		<title>Erik James Thomas - Senior Software Engineer</title>
 	</head>
@@ -23,8 +32,8 @@
 
 		<div id="app"></div>
 
-        <script src="./dist/scripts/manifest.js"></script>
-        <script src="./dist/scripts/vendor.js"></script>
-		<script src="./dist/scripts/main.js"></script>
+        <script src="<?= manifest('/scripts/manifest.js'); ?>"></script>
+        <script src="<?= manifest('/scripts/vendor.js'); ?>"></script>
+		<script src="<?= manifest('/scripts/main.js'); ?>"></script>
 	</body>
 </html>
