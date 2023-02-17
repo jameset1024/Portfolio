@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 class MainNav extends React.Component<any, any>{
-	
+
 	componentDidMount() {
 		window.onpopstate = async ( e:PopStateEvent ) => {
 			e.preventDefault();
@@ -20,11 +20,11 @@ class MainNav extends React.Component<any, any>{
 		return(
 			<header className={'ejt_mainHeader'}>
 				<NavSlide />
-				
+
 				<div className={'ejt_logo'}>
 					<Link to={'/'} onClick={( e: SyntheticEvent ) => handleLoading( '/', this, e)}>E</Link>
 				</div>
-				
+
 				<nav className={'ejt_mainNavigation'}>
 					<ul>
 						<li>
@@ -49,13 +49,13 @@ class MainNav extends React.Component<any, any>{
 						</li>*/}
 					</ul>
 				</nav>
-				
+
 				<div className={'ejt_social'}>
 					<div className={'d-flex'}>
 						<a href={'https://github.com/jameset1024'} target={'_blank'}>
 							<FontAwesomeIcon icon={ faGithub } />
 						</a>
-						<a href={'https://www.linkedin.com/in/erikthomas1024/'} target={'_blank'}>
+						<a href={'https://www.linkedin.com/in/erikjamesthomas/'} target={'_blank'}>
 							<FontAwesomeIcon icon={ faLinkedinIn } />
 						</a>
 					</div>
