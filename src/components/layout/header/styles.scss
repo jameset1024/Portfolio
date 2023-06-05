@@ -1,0 +1,33 @@
+@import 'styles/variables';
+
+.siteHeader {
+  padding: 15px 0;
+  border-bottom: solid thin lighten(black, 95%);
+  background-color: white;
+
+  .innerHeader {
+    display: flex;
+
+    .siteLogo {
+      img {
+        max-width: 9em;
+        height: auto;
+      }
+    }
+
+    .navigation {
+      margin-left: auto;
+
+      a {
+        text-decoration: none;
+        color: black;
+        font-family: "Khand", sans-serif;
+        font-size: 1.15em;
+
+        &:not(:last-child) {
+          margin-right: 2em;
+        }
+      }
+    }
+  }
+}

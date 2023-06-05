@@ -1,0 +1,102 @@
+@import "styles/variables";
+
+.about-page {
+  .banner-wrap {
+    height: 30vh;
+    position: relative;
+
+    .banner-text {
+      font-size: 5em;
+      text-transform: uppercase;
+      font-weight: bold;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      opacity: 0.15;
+      font-family: "Khand", sans-serif;
+    }
+  }
+  .about-header {
+    position: relative;
+
+    .about-inner {
+      position: relative;
+      height: 85vh;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+
+      > div {
+        width: 50%;
+        flex: 0 0 50%;
+        max-height: 100%;
+
+        &:first-child {
+          padding-left: calc((100vw - 1140px) / 2);
+          padding-right: 30px;
+
+          h2 {
+            color: $et_blue;
+            font-size: 1.5em;
+          }
+        }
+
+        &:last-child {
+          .headshot-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+            img {
+              object-fit: cover;
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .about-contact {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $et_dark_blue;
+      color: white;
+      border-radius: 50px;
+      display: flex;
+      flex-wrap: nowrap;
+      padding: 15px 30px;
+      box-shadow: 5px 5px 10px rgba(black, 0.75);
+
+      .text {
+        margin-right: 3em;
+      }
+
+      .socials {
+        a {
+          margin-right: 25px;
+        }
+      }
+    }
+  }
+
+  .about-experience {
+    background-color: $et_dark_blue;
+    padding: 35px 0;
+    position: relative;
+
+    h2 {
+      text-align: center;
+      color: white;
+      font-size: 3.5em;
+      position:relative;
+    }
+
+    .experience-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  }
+}

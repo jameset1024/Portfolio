@@ -1,0 +1,36 @@
+@import "styles/variables";
+
+footer.siteFooter {
+  background-color: black;
+  padding: 20px 10px;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+
+  .iconWrapper {
+    display: flex;
+
+    > div {
+      max-width: 50%;
+      flex: 0 0 50%;
+
+      a {
+        &:not(:last-child) {
+          margin-right: 1.75em;
+        }
+      }
+
+      &:last-child {
+        font-size: 0.775em;
+        text-align: right;
+
+        &, a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
