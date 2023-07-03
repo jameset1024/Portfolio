@@ -1,0 +1,44 @@
+@import "styles/variables";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background-color: $et_grey;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  a {
+    color: $et_blue;
+  }
+
+  > * {
+    display: block;
+    font-size: 1.25em;
+    padding: 8px 0;
+    text-decoration: none;
+    text-align: center;
+    width: 175px;
+    font-weight: 200;
+
+    &.newer {
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      border: solid thin $et_grey;
+      border-right: none;
+    }
+    &.previous {
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+      border: solid thin $et_grey;
+      border-left: none;
+    }
+  }
+}

@@ -1,46 +1,53 @@
 import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
+import { CSSProperties } from "react";
+import image from "@app/images/404.png";
+import Button from "@app/components/elements/button";
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
+const headerStyle: CSSProperties = {
+  textAlign: "center"
 }
 
-const paragraphStyles = {
-  marginBottom: 48,
+const pageWrapper: CSSProperties = {
+  position: "relative",
+  height: '100vh',
+  fontSize: '2em',
+  textAlign: "center"
 }
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
+
+const imageWrapperStyling: CSSProperties = {
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  overflow: 'hidden'
+}
+
+const imageStyling: CSSProperties = {
+  maxWidth: '100%',
+  position: 'relative',
+  bottom: '-100px'
+}
+
+const button: CSSProperties = {
+  position: "relative",
+  zIndex: 999,
+  fontSize: '20px',
+  textAlign: "center"
 }
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <div style={pageWrapper}>
+      <h1 style={headerStyle}>Yikes, I guess that didn't work</h1>
+
+      <div style={button}>
+        <Button src={'/'}>Home</Button>
+      </div>
+
+      <div style={imageWrapperStyling}>
+        <img src={image} style={imageStyling} alt={'404 error image'} />
+      </div>
+    </div>
   )
 }
 

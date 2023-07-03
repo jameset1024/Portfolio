@@ -1,22 +1,21 @@
 import React from "react";
-import Header from "@app/components/layout/header";
+import 'react-toastify/dist/ReactToastify.min.css';
 import './styles.scss';
-import Sidebar from "@app/components/layout/sidebar";
+import Header from "@app/components/layout/header";
 import Footer from "@app/components/layout/footer";
+import { ToastContainer } from "react-toastify";
 
 type LayoutProp = {
   children: React.ReactNode
+  location: string
 }
-export default ({ children }: LayoutProp) => (
+export default ({ children}: LayoutProp) => (
   <>
     <Header />
     <main>
-      <Sidebar />
-
-      <section>
-        {children}
-      </section>
+      {children}
     </main>
     <Footer />
+    <ToastContainer />
   </>
 );

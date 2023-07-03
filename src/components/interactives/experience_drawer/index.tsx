@@ -2,7 +2,7 @@ import React, {BaseSyntheticEvent, useEffect, useState} from 'react';
 import {ExperienceInterface} from "@app/data/experience";
 import {AnimatePresence, motion} from "framer-motion";
 import "./styles.scss";
-import {faLocationDot} from "@fortawesome/free-solid-svg-icons";
+import {faLocationDot, faUserTie} from "@fortawesome/free-solid-svg-icons";
 import {faLink} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -64,6 +64,10 @@ const ExperienceDrawer = ({data}: ExperienceData) => {
                     <div className={'drawer-content-inner'}>
                       <div>
                         <div className={'content-meta'}>
+                          <div className={'position'}>
+                            <FontAwesomeIcon icon={faUserTie} color={'#ffffff'} size={'sm'} />
+                            {e.position}
+                          </div>
                           <div className={'location'}>
                             <FontAwesomeIcon icon={faLocationDot} color={'#ffffff'} size={'sm'} />
                             {e.location}

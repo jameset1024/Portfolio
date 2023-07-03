@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
 import image from '@app/images/erik-james-thomas-logo.png';
-import "./styles.scss";
-import {Link} from "gatsby";
+import { Link } from "gatsby";
+import { ETHeader } from "@app/components/layout/header/styles";
+import useScrollDirection from "@app/hooks/useScrollDirection";
+import './styles.scss';
 
 const Header = () => {
+  const scrollDirection: string = useScrollDirection('up');
+
   return (
-    <header className={'siteHeader'}>
+    <ETHeader $scrollDirection={scrollDirection}>
       <div className={'wrapper innerHeader'}>
         <div className={'siteLogo'}>
           <Link to={'/'}>
@@ -19,7 +23,7 @@ const Header = () => {
           <Link to={'/contact'}>Contact</Link>
         </div>
       </div>
-    </header>
+    </ETHeader>
   )
 }
 

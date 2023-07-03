@@ -1,4 +1,6 @@
 article.articles {
+  padding-bottom: 2em;
+
   header {
     margin-top: 3em;
     max-width: 100%;
@@ -10,9 +12,15 @@ article.articles {
       height: 100%;
       width: 100%;
     }
+
+    @media only screen and (max-width: 767px) {
+      margin-top: 0;
+    }
   }
 
   .post-container {
+    padding: 0 15px;
+
     h1 {
       font-size: 2.25em;
       margin-bottom: 5px;
@@ -27,6 +35,18 @@ article.articles {
 
         &.post-categories {
           margin-left: 10px;
+        }
+      }
+    }
+
+    .content {
+      figure {
+        margin-left: 0;
+        margin-right: 0;
+
+        img {
+          max-width: 100%;
+          height: auto;
         }
       }
     }

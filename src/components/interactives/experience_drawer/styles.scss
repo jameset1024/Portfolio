@@ -5,20 +5,33 @@
     .drawer-control {
       display: flex;
       flex-wrap: nowrap;
-      box-shadow: 3px 3px 5px rgba(black, 0.5);
       padding: 12px 15px;
       border-radius: 8px;
-      background-color: $et_blue;
+      background-color: rgba($et_blue, 0.5);
       color: $light_font;
       cursor: pointer;
       margin-bottom: 10px;
 
       > div {
-        max-width: 45%;
-        flex: 0 0 45%;
+        max-width: 50%;
+        flex: 0 0 50%;
 
         &.date {
           text-align: right;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        flex-wrap: wrap;
+
+        > div {
+          max-width: 100%;
+          flex: 0 0 100%;
+
+          &.date {
+            margin-top: 5px;
+            text-align: left;
+          }
         }
       }
     }
@@ -50,9 +63,11 @@
                 margin-right: 5px;
               }
 
-              .link {
-                margin-left: 25px;
+              > div:not(:last-child) {
+                margin-right: 25px;
+              }
 
+              .link {
                 a {
                   color: $light_font;
                   text-decoration: none;
@@ -76,8 +91,10 @@
           }
 
           &:nth-child(2) {
-            max-width: 35%;
-            flex: 0 0 35%;
+            max-width: 30%;
+            flex: 0 0 30%;
+            margin-left: 5%;
+            padding: 0 15px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -103,6 +120,47 @@
               &:not(:last-child) {
                 margin-right: 8px;
               }
+            }
+          }
+
+          @media only screen and (max-width: 767px) {
+            &:first-child {
+              order: 2;
+              max-width: 100%;
+              flex: 0 0 100%;
+
+              .content-meta {
+                flex-wrap: wrap;
+
+                > div {
+                  max-width: 100%;
+                  flex: 0 0 100%;
+
+                  &:not(:last-child) {
+                    margin-bottom: 8px;
+                  }
+                }
+              }
+            }
+            &:nth-child(2) {
+              order: 1;
+              max-width: 100%;
+              flex: 0 0 100%;
+              text-align: center;
+              margin-left: 0;
+              padding: 25px 0;
+
+              img {
+                max-width: 60%;
+              }
+            }
+            &:last-child {
+              order: 3;
+              flex-wrap: wrap;
+
+               > div {
+                 margin-bottom: 15px;
+               }
             }
           }
         }
