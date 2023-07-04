@@ -13481,7 +13481,7 @@ type PostByIdQueryVariables = Exact<{
 }>;
 
 
-type PostByIdQuery = { readonly wpPortfolio: { readonly id: string, readonly title: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly mediaItemUrl: string | null, readonly altText: string | null } } | null, readonly acfPortfolio: { readonly excerpt: string | null, readonly projectType: string | null, readonly client: string | null, readonly website: string | null, readonly image: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageTwo: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageThree: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageFour: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageFive: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null } | null, readonly portfolioTypes: { readonly nodes: ReadonlyArray<{ readonly name: string | null }> } | null } | null };
+type PostByIdQuery = { readonly wpPost: { readonly id: string, readonly title: string | null, readonly content: string | null, readonly date: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null }> } | null, readonly featuredImage: { readonly node: { readonly mediaItemUrl: string | null, readonly altText: string | null } } | null } | null };
 
 type allNeededDataQueryVariables = Exact<{ [key: string]: never; }>;
 

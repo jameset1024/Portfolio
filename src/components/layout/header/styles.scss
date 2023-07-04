@@ -4,6 +4,13 @@
 .innerHeader {
   display: flex;
 
+  @media only screen and (max-width: 767px) {
+    > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   .siteLogo {
     img {
       max-width: 9em;
@@ -22,6 +29,48 @@
 
       &:not(:last-child) {
         margin-right: 2em;
+      }
+    }
+  }
+
+  .mobileBtn {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  z-index: 99999;
+  background: black;
+
+  .navigation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        &:not(:last-child) {
+          margin-bottom: 25px;
+        }
+
+        a {
+          color: white;
+          font-size: 1.5em;
+          text-decoration: none;
+        }
       }
     }
   }

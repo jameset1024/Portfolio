@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGlobe} from "@fortawesome/free-solid-svg-icons";
 import {AnimatePresence, motion} from "framer-motion";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import { useMediaQuery } from "usehooks-ts";
 
 const images = ['image','imageTwo','imageThree','imageFour','imageFive'];
 const PortfolioPage: React.FC<PageProps> = ({data}) => {

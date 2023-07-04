@@ -11,6 +11,10 @@ export const ETHeader = styled.header<{$scrollDirection: string;}>`
   height: 60px;
   transition: transform linear 0.4s;
   
+  @media only screen and (max-width: 767px) {
+    padding: 15px;
+  }
+  
   ${props => 
           props.$scrollDirection === 'up' &&
           css`
