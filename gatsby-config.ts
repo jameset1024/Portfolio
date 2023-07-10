@@ -29,6 +29,9 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-wordpress',
       options: {
         url: process.env.WP_URL,
+        production: {
+          allow404Images: true
+        },
         schema: {
           perPage: 100,
           requestConcurrency: 10,
