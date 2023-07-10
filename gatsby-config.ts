@@ -72,7 +72,7 @@ const config: GatsbyConfig = {
         pageTransitionDelay: 0
       },
     },
-    ]
+  ]
 };
 
 export default config;

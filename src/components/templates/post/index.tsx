@@ -30,7 +30,7 @@ const PostPage: React.FC<PageProps> = ({data}) => {
 
 export default PostPage;
 
-export const Head: HeadFC = () => <title>Blog Articles | Erik James Thomas - Senior Software Engineer</title>
+export const Head: HeadFC = ({ data }) => <title>{data.wpPost.title} | Erik James Thomas - Senior Software Engineer</title>
 
 export const postQuery = graphql`
   query PostById($id: String!) {

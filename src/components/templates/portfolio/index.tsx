@@ -90,7 +90,7 @@ const PortfolioPage: React.FC<PageProps> = ({data}) => {
 
 export default PortfolioPage;
 
-export const Head: HeadFC = () => <title>Blog Articles | Erik James Thomas - Senior Software Engineer</title>
+export const Head: HeadFC = ({ data }) => <title>{data.wpPortfolio.title} | Erik James Thomas - Senior Software Engineer</title>
 
 export const postQuery = graphql`
   query PostById($id: String!) {
