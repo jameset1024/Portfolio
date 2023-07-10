@@ -1,9 +1,11 @@
 name: portfolio-prod-update
 
 on:
-    push:
-        branch:
-          - updated-portfolio
+  repository_dispatch:
+    types: [update]
+  push:
+    branch:
+      - updated-portfolio
 
 jobs:
     deploy:

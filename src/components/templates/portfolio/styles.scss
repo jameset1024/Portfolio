@@ -103,8 +103,12 @@ article.portfolioWrapper {
         padding-left: 15px;
 
         .content {
-          p:first-child {
-            margin-top: 0;
+          p {
+            line-height: 1.75em;
+            
+            &:first-child {
+              margin-top: 0;
+            }
           }
         }
       }
