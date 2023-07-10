@@ -27,10 +27,10 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                       <h1>{first.title}</h1>
                       <div className={'post-meta'}>
                         {monthDisplay(new Date(first.date).getMonth())} {new Date(first.date).getDay()}, {new Date(first.date).getFullYear()}
-                          | {
+                        {
                         first.categories.length &&
                         first.categories.map( (e,i) => {
-                          return <Link to={`/category/${e.slug}`}><span className={'category'} key={`cat-${i}`}>{e.name}</span></Link>
+                          return <Link to={`/category/${e.slug}`} key={`cat-${i}`}><span className={'category'}>{e.name}</span></Link>
                         })
                       }
                       </div>
@@ -79,7 +79,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                     <h2>{e.title}</h2>
                     <div className={'post-meta'}>
                       {data.date}
-                      | {
+                      {
                       data.categories.length &&
                       data.categories.map( (e,i) => {
                         return <Link to={`/category/${e.slug}`}><span className={'category'} key={`cat-${i}`}>{e.name}</span></Link>

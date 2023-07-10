@@ -13,9 +13,6 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
   return (
     <section className={'categoryPage'}>
       <div className={'banner-wrap'} role={'banner'}>
-        <div className={'category-text'}>
-          <h1>Category: {pageContext.name}</h1>
-        </div>
         <div className={'banner-text'}>
           Articles
         </div>

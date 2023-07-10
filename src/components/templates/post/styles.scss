@@ -1,13 +1,16 @@
+@import "styles/variables";
+
 article.articles {
+  position: relative;
   padding-bottom: 2em;
 
   header {
-    margin-top: 3em;
     max-width: 100%;
-    height: 500px;
+    height: 550px;
 
     img {
       object-fit: cover;
+      object-position: top;
       position: relative;
       height: 100%;
       width: 100%;
@@ -30,11 +33,21 @@ article.articles {
       margin-bottom: 1.75em;
       font-size: 0.85em;
 
-      > span {
+      a {
+        color: $et_blue;
+        text-decoration: none;
+        transition: all linear 0.3s;
         display: inline-block;
+        margin-left: 10px;
 
-        &.post-categories {
-          margin-left: 10px;
+        &:first-of-type:before {
+          content: "|";
+          padding-right: 12px;
+          color: black;
+        }
+
+        &:hover {
+          color: $et_dark_blue;
         }
       }
     }
@@ -47,6 +60,75 @@ article.articles {
         img {
           max-width: 100%;
           height: auto;
+        }
+      }
+    }
+  }
+
+  .sharePost {
+    display: inline-block;
+    position: sticky;
+    bottom: 0;
+    left: 10px;
+    float: left;
+    margin-top: -210px;
+
+    span {
+      text-transform: uppercase;
+      font-size: 0.75em;
+      color: darken($et_grey, 45%);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .icon {
+      position: relative;
+      padding-bottom: 50px;
+
+      &:after {
+        content: "";
+        background-color: black;
+        width: 1px;
+        height: 65px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -30px;
+      }
+
+      a {
+        display: block;
+        text-align: center;
+
+        &:not(:last-child) {
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      display: block;
+      position: relative;
+      float: none;
+      margin-top: 25px;
+      padding-left: 18px;
+      left: 0;
+
+      .icon {
+        padding-bottom: 0;
+
+        &:after {
+          display: none;
+        }
+
+        a {
+          display: inline-block;
+          text-align: left;
+          margin-bottom: 0 !important;
+
+          &:not(:last-child) {
+            margin-right: 25px;
+          }
         }
       }
     }

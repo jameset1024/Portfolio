@@ -1,4 +1,4 @@
-@import '../../../../styles/variables';
+@import 'styles/variables';
 
 .blogPage {
   padding-bottom: 4em;
@@ -45,6 +45,14 @@
               color: $et_blue;
               text-decoration: none;
               transition: all linear 0.3s;
+              display: inline-block;
+              margin-left: 10px;
+
+              &:first-of-type:before {
+                content: "|";
+                padding-right: 12px;
+                color: black;
+              }
 
               &:hover {
                 color: $et_dark_blue;
@@ -149,6 +157,14 @@
             color: $et_blue;
             text-decoration: none;
             transition: all linear 0.3s;
+            display: inline-block;
+            margin-left: 10px;
+
+            &:first-of-type:before {
+              content: "|";
+              padding-right: 12px;
+              color: black;
+            }
 
             &:hover {
               color: $et_dark_blue;
