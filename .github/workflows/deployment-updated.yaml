@@ -37,6 +37,9 @@ jobs:
                 DEBUG: ${{ secrets.DEBUG }}
               run: npm run build --production
 
+            - name: Remove Node Directory
+              run: rm -rf node_modules
+
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v1
               with:
