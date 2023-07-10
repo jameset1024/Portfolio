@@ -1,12 +1,12 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import './styles.scss';
-import {graphql, Link} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
 import { monthDisplay } from "@app/helpers/date";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebookF, faLinkedinIn, faPinterest, faTwitter} from "@fortawesome/free-brands-svg-icons";
 
-const PostPage: React.FC<PageProps> = ({data}) => {
+const PostPage: React.FC<PageProps> = ({data, pageContext}) => {
   const date = new Date(data.wpPost.date);
 
   return (
@@ -33,16 +33,16 @@ const PostPage: React.FC<PageProps> = ({data}) => {
         <span>Share:</span>
 
         <div className={'icon'}>
-          <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://${window.location.hostname}${data.wpPost.uri}`} target={'_blank'}>
+          <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}`} target={'_blank'}>
             <FontAwesomeIcon icon={faLinkedinIn} color={'#000'} size={'lg'} />
           </a>
-          <a href={`https://www.facebook.com/sharer/sharer.php?u=https://${window.location.hostname}${data.wpPost.uri}`} target={'_blank'}>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}`} target={'_blank'}>
             <FontAwesomeIcon icon={faFacebookF} color={'#000'} size={'lg'} />
           </a>
-          <a href={`https://twitter.com/intent/tweet?url=https://${window.location.hostname}${data.wpPost.uri}&text=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
+          <a href={`https://twitter.com/intent/tweet?url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}&text=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
             <FontAwesomeIcon icon={faTwitter} color={'#000'} size={'lg'} />
           </a>
-          <a href={`http://pinterest.com/pin/create/button/?url=https://${window.location.hostname}${data.wpPost.uri}&media=${data.wpPost.featuredImage.node.mediaItemUrl}&description=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
+          <a href={`http://pinterest.com/pin/create/button/?url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}&media=${data.wpPost.featuredImage.node.mediaItemUrl}&description=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
             <FontAwesomeIcon icon={faPinterest} color={'#000'} size={'lg'} />
           </a>
         </div>
@@ -74,6 +74,11 @@ export const postQuery = graphql`
           mediaItemUrl
           altText
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

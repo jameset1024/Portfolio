@@ -5,7 +5,7 @@ dotenv.config();
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Erik Thomas Portfolio`,
-    siteUrl: `https://erikjamesthomas.com`,
+    siteUrl: `https://erikjamesthomas.com/`,
     description:
       'Erik Thomas is a senior full stack engineer currently residing in Charlotte, NC.',
     image: '/og.png', // Path to your image you placed in the 'static' folder
