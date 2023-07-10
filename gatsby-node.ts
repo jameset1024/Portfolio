@@ -1,4 +1,3 @@
-import * as _  from 'lodash';
 import * as path from "path";
 
 export const createPages: ({graphql, actions}: { graphql: any; actions: any }) => Promise<void> = async ({ graphql, actions }) => {

@@ -9,7 +9,7 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import {StaticImage} from "gatsby-plugin-image";
 import {FormEvent, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Sending from "@app/components/interactives/sending";
 
 
