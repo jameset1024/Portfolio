@@ -30,6 +30,7 @@ jobs:
 
             - name: Run build
               env:
+                NODE_ENV: "production"
                 WP_URL: ${{ secrets.WP_URL }}
                 WP_INCONSISTENT_SCHEMA_WARN: ${{ secrets.WP_INCONSISTENT_SCHEMA_WARN }}
                 GATSBY_CONTACT_FORM: ${{ secrets.GATSBY_CONTACT_FORM }}
