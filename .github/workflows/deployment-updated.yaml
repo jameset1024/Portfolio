@@ -12,10 +12,10 @@ jobs:
         strategy:
             matrix:
                 node-version: ['18.x']
-                appname: ['ErikPortfolio']
-                deploy-group: ['production']
+                appname: ['GatsbyDeploy']
+                deploy-group: ['GatsbyDeploymentGroup']
                 s3-bucket: ['bt-codedeploy-deployments']
-                s3-filename: ['production-portfolio-${{ github.sha }}']
+                s3-filename: ['production-new-portfolio-${{ github.sha }}']
 
         steps:
             - uses: actions/checkout@v2
