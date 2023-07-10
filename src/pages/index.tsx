@@ -103,22 +103,25 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
               <Button src={'/work'}>View All Projects</Button>
             </div>
-            <div>
-              <h3>Recent Project</h3>
 
-              <div className={'homeWorkInner'}>
-                <div className={'homeWorkImage'}>
-                  <img src={project.featuredImage.node.mediaItemUrl} alt={project.featuredImage.node.altText} />
+            { project &&
+                <div>
+                    <h3>Recent Project</h3>
+
+                    <div className={'homeWorkInner'}>
+                        <div className={'homeWorkImage'}>
+                            <img src={project.featuredImage.node.mediaItemUrl} alt={project.featuredImage.node.altText} />
+                        </div>
+                        <div className={'homeWorkInfo'}>
+                            <div className={'homeWorkMeta'}>{project.acfPortfolio.projectType}</div>
+
+                            <h2>{project.title}</h2>
+
+                            <Button src={`/work/${project.slug}`}>View Project</Button>
+                        </div>
+                    </div>
                 </div>
-                <div className={'homeWorkInfo'}>
-                  <div className={'homeWorkMeta'}>{project.acfPortfolio.projectType}</div>
-
-                  <h2>{project.title}</h2>
-
-                  <Button src={`/work/${project.slug}`}>View Project</Button>
-                </div>
-              </div>
-            </div>
+            }
           </div>
         </div>
       </section>
