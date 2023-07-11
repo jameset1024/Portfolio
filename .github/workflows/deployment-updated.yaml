@@ -1,8 +1,9 @@
 name: portfolio-prod-update
 
 on:
-  repository_dispatch:
-    types: [update]
+  workflow_dispatch:
+    inputs:
+      type: update
   push:
     branch:
       - updated-portfolio
