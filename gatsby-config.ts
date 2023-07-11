@@ -58,18 +58,16 @@ const config: GatsbyConfig = {
       __key: "images"
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "G-7FYNG6KHDD",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0
+        trackingIds: ["G-7FYNG6KHDD"],
+        pluginConfig: {
+          // Defines where to place the tracking script - `true` in the head and `false` in the body
+          head: true,
+          // Setting this parameter is also optional
+          respectDNT: true,
+        }
       },
     },
   ]
