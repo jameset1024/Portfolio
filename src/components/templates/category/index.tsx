@@ -60,18 +60,20 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
                         <img src={data.thumbnail.url} alt={data.thumbnail.alt} />
                     }
                   </div>
-                  <h2>{e.title}</h2>
-                  <div className={'post-meta'}>
-                    {data.date}
-                    | {
-                    data.categories.length &&
-                    data.categories.map( (e,i) => {
-                      return <span className={'category'} key={`cat-${i}`}>{e.name}</span>
-                    })}
-                  </div>
-                  <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${data.content}...</p>`}} />
+                  <div className={'categoryInfo'}>
+                    <h2>{e.title}</h2>
+                    <div className={'post-meta'}>
+                      {data.date}
+                      | {
+                      data.categories.length &&
+                      data.categories.map( (e,i) => {
+                        return <span className={'category'} key={`cat-${i}`}>{e.name}</span>
+                      })}
+                    </div>
+                    <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${data.content}...</p>`}} />
 
-                  <Button src={`${data.uri}`}>Read</Button>
+                    <Button src={`${data.uri}`}>Read</Button>
+                  </div>
                 </div>
               </div>
             )
@@ -82,11 +84,11 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
   )
 }
 
-export default CategoryPage;
+  export default CategoryPage;
 
-export const Head: HeadFC = () => <title>Blog Articles | Erik James Thomas - Senior Software Engineer</title>
+  export const Head: HeadFC = () => <title>Blog Articles | Erik James Thomas - Senior Software Engineer</title>
 
-export const pageQuery = graphql`
+  export const pageQuery = graphql`
   query MyQuery($slug: String!) {
   allWpPost(
     filter: {categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}}

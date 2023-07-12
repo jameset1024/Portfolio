@@ -137,7 +137,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         </div>
         <div>
           <div className={'currentlyUpTo'}>
-            <h3>What I'm currently up tp</h3>
+            <h3>What I'm currently up to</h3>
 
             <div className={'currentPosition'}>
               <span><strong>Position:</strong> {job.position}</span>

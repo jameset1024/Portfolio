@@ -28,11 +28,11 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                       <div className={'post-meta'}>
                         {monthDisplay(new Date(first.date).getMonth())} {new Date(first.date).getDay()}, {new Date(first.date).getFullYear()}
                         {
-                        first.categories.length &&
-                        first.categories.map( (e,i) => {
-                          return <Link to={`/category/${e.slug}`} key={`cat-${i}`}><span className={'category'}>{e.name}</span></Link>
-                        })
-                      }
+                          first.categories.length &&
+                          first.categories.map( (e,i) => {
+                            return <Link to={`/category/${e.slug}`} key={`cat-${i}`}><span className={'category'}>{e.name}</span></Link>
+                          })
+                        }
                       </div>
                       <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${first.content}...</p>`}} />
 
@@ -76,18 +76,20 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                           <img src={data.thumbnail.url} alt={data.thumbnail.alt} />
                       }
                     </div>
-                    <h2>{e.title}</h2>
-                    <div className={'post-meta'}>
-                      {data.date}
-                      {
-                      data.categories.length &&
-                      data.categories.map( (e,i) => {
-                        return <Link to={`/category/${e.slug}`}><span className={'category'} key={`cat-${i}`}>{e.name}</span></Link>
-                      })}
-                    </div>
-                    <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${data.content}...</p>`}} />
+                    <div className={'blogInfo'}>
+                      <h2>{e.title}</h2>
+                      <div className={'post-meta'}>
+                        {data.date}
+                        {
+                          data.categories.length &&
+                          data.categories.map( (e,i) => {
+                            return <Link to={`/category/${e.slug}`}><span className={'category'} key={`cat-${i}`}>{e.name}</span></Link>
+                          })}
+                      </div>
+                      <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${data.content}...</p>`}} />
 
-                    <Button src={`${data.uri}`}>Read</Button>
+                      <Button src={`${data.uri}`}>Read</Button>
+                    </div>
                   </div>
                 </motion.div>
               )
@@ -95,7 +97,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
           </AnimatePresence>
 
           {pageContext.pageCount > 1 &&
-              <Pagination currentPage={pageContext.currentPage} totalPages={pageContext.pageCount} />
+          <Pagination currentPage={pageContext.currentPage} totalPages={pageContext.pageCount} />
           }
         </div>
       </div>
@@ -103,17 +105,17 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
   )
 }
 
-export default Article;
+  export default Article;
 
-export const Head: HeadFC = () => {
-  return (
-    <SEO>
-      <title>Articles | Erik James Thomas - Senior Software Engineer</title>
-    </SEO>
-  )
-}
+  export const Head: HeadFC = () => {
+    return (
+      <SEO>
+        <title>Articles | Erik James Thomas - Senior Software Engineer</title>
+      </SEO>
+    )
+  }
 
-export const pageQuery = graphql`
+  export const pageQuery = graphql`
   query MyQuery($skip: Int!, $limit: Int!) {
   allWpPost(
       sort: { date: DESC }

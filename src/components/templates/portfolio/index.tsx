@@ -2,14 +2,14 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import './styles.scss';
 import { graphql } from "gatsby";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGlobe} from "@fortawesome/free-solid-svg-icons";
-import {AnimatePresence, motion} from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
 
 const images = ['image','imageTwo','imageThree','imageFour','imageFive'];
 const PortfolioPage: React.FC<PageProps> = ({data}) => {
-  const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 991px)");
 
   const portImages = [];
   for ( const i of images ) {

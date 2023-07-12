@@ -20,6 +20,10 @@
 
 div.homePage {
   header {
+    @media only screen and (max-width: 1150px) {
+      padding: 0 25px;
+    }
+
     > div {
       display: flex;
       height: 90vh;
@@ -102,6 +106,10 @@ div.homePage {
       padding: 3em 0;
     }
 
+    @media only screen and (max-width: 1150px) {
+      padding: 3em 25px;
+    }
+
     &:before {
       content: "";
       height: 100%;
@@ -176,7 +184,7 @@ div.homePage {
                 background-color: $et_blue;
                 color: white;
                 display: inline-block;
-                left: -3em;
+                margin-left: -3em;
                 font-size: 2.5em;
                 position: relative;
                 padding: 8px 15px;
@@ -189,13 +197,13 @@ div.homePage {
           }
         }
 
-        @media only screen and (max-width: 767px) {
+        @media only screen and (max-width: 991px) {
           flex: 0 0 100%;
           max-width: 100%;
+          padding: 0 25px;
 
           &:first-child {
             text-align: center;
-            padding-right: 0;
           }
 
           &:last-child {
@@ -226,7 +234,7 @@ div.homePage {
                 text-align: center;
 
                 h2 {
-                  left: 0;
+                  margin-left: 0;
                   width: 100%;
                   text-align: left;
                 }
@@ -289,7 +297,7 @@ div.homePage {
        }
      }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1150px) {
       flex-wrap: wrap;
 
       > div {
@@ -298,12 +306,12 @@ div.homePage {
 
         &:first-child {
           order: 2;
-          padding: 0 15px;
+          padding: 0 25px;
         }
 
         &:last-child {
           order: 1;
-          padding: 0 15px;
+          padding: 0 25px;
         }
       }
     }

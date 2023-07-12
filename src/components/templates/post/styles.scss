@@ -63,6 +63,10 @@ article.articles {
         }
       }
     }
+
+    @media only screen and (max-width: 991px) {
+      padding: 0 25px;
+    }
   }
 
   .sharePost {
@@ -106,12 +110,13 @@ article.articles {
       }
     }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1230px) {
       display: block;
       position: relative;
       float: none;
-      margin-top: 25px;
-      padding-left: 18px;
+      margin: 25px auto 0;
+      padding: 0 25px;
+      max-width: 1140px;
       left: 0;
 
       .icon {

@@ -6,8 +6,17 @@
   .banner-wrap {
     .banner-text {
       font-size: 16em;
+    }
 
-      @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 991px) {
+      height: auto;
+      padding: 0 25px;
+
+      .banner-text {
+        transform: none;
+        position: relative;
+        top: 0;
+        left: 0;
         font-size: 8em;
       }
     }
@@ -83,9 +92,17 @@
       }
     }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1150px) and (min-width: 992px) {
+      > div:first-child {
+        padding-left: 25px;
+      }
+    }
+
+    @media only screen and (max-width: 991px) {
       height: auto;
-      margin-bottom: 30px;
+      margin: 0 auto 30px;
+      max-width: 900px;
+      padding: 0 15px;
 
       > div {
         width: 100%;
@@ -103,9 +120,10 @@
         &:last-child {
           order: 1;
 
-          .workInfo {
+          .leadImage {
+            border-radius: 2em;
+            height: 350px;
             top: 0;
-            margin-top: 25px;
           }
         }
       }
@@ -117,6 +135,11 @@
     flex-wrap: wrap;
     width: 100%;
     position: relative;
+
+    @media only screen and (max-width: 991px) {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
     > .blogGridItem {
       position: relative;
@@ -142,13 +165,14 @@
         box-shadow: 0 0 5px rgba(black, 0.1);
 
         .blogImage {
-          height: 250px;
+          height: 300px;
+          width: 100%;
           margin: 0 -10px;
 
           img {
-            object-fit: fill;
-            width: 100%;
+            object-fit: cover;
             height: 100%;
+            width: 100%;
           }
         }
 
@@ -196,7 +220,7 @@
         }
       }
 
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 991px) {
         width: 100%;
         flex: 0 0 100%;
 
@@ -212,11 +236,22 @@
         .blogInnerItem {
           background-color: transparent;
           box-shadow: none;
+          padding: 0 15px 1em;
 
-          h2 {
-            color: $et_blue;
-            font-size: 2em;
-            margin-bottom: 0.5em
+          .blogImage {
+            border-radius: 2em;
+            overflow: hidden;
+            margin: 0;
+          }
+
+          .blogInfo {
+            padding: 0 15px;
+
+            h2 {
+              color: $et_blue;
+              font-size: 2em;
+              margin-bottom: 0.5em
+            }
           }
         }
       }

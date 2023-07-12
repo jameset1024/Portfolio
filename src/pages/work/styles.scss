@@ -2,13 +2,27 @@
 
 .work-page {
   padding-bottom: 4em;
+  overflow: hidden;
 
   .banner-wrap {
     .banner-text {
       left: initial;
-      right: -0.58em;
+      right: -0.56em;
       top: 0.5em;
       transform-origin: center;
+    }
+
+    @media only screen and (max-width: 991px) {
+      height: auto;
+
+      .banner-text {
+        transform: none;
+        right: 0;
+        top: 0;
+        position: relative;
+        padding: 0 25px;
+        font-size: 9em;
+      }
     }
   }
 
@@ -79,12 +93,24 @@
       }
     }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 991px) {
       height: auto;
+      max-width: 900px;
+      margin: 0 auto 30px;
+      padding: 0 25px;
 
       > div {
         width: 100%;
         flex: 0 0 100%;
+
+        &:first-child {
+          .workImage {
+            height: 300px;
+            border-radius: 2em;
+            box-shadow: -1px -1px 5px rgba(black, 0.15);
+            top: 0;
+          }
+        }
 
         &:last-child {
           padding: 0 15px;
@@ -92,6 +118,7 @@
           .workInfo {
             top: 0;
             margin-top: 25px;
+            padding: 0 15px;
           }
         }
       }
@@ -101,8 +128,8 @@
   .workWrapper {
     padding: 0 15px;
 
-    @media only screen and (max-width: 767px) {
-      padding: 0;
+    @media only screen and (max-width: 991px) {
+      padding: 0 25px;
     }
 
     .workItem {
@@ -143,7 +170,7 @@
       }
 
       .workInfo {
-        padding: 0 25px;
+        padding: 0 15px;
         flex: 1;
 
         .workMeta {
@@ -151,11 +178,11 @@
         }
 
         .excerpt {
-          margin-bottom: 2.5em;
+          margin-bottom: 25px;
         }
       }
 
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 991px) {
         background: transparent;
         box-shadow: none;
         padding: 0;
@@ -175,7 +202,7 @@
           .workImage {
             flex: 0 0 100%;
             max-width: 100%;
-            border-bottom-right-radius: 2em;
+            border-radius: 2em;
             overflow: hidden;
           }
 

@@ -26,12 +26,12 @@ export type PostDataType = {
  * @constructor
  */
 export function PostData( post, contentLength = 25 ): PostDataType {
-  console.log(post);
   const { excerpt } = post;
 
   // Build the excerpt data
   let intro = excerpt.match(/<[a-z]>(.*?)<\/[a-z]>/);
-      intro = intro[1];
+      intro = intro !== null ? intro[1] : '';
+
   const content = intro.split(' ').filter( (e, i) => i < contentLength ).join(' ');
 
   // Get the date information
