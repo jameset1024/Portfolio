@@ -11,7 +11,7 @@
       top: -0.5em;
       font-size: 15em;
 
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 991px) {
         top:0;
         left: 0;
         font-size: 8em;
@@ -178,7 +178,7 @@
       }
     }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 991px) {
       height: auto;
       flex-wrap: wrap;
       top: 0;
