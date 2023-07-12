@@ -10,12 +10,18 @@
       left: 0.3em;
       top: -0.5em;
       font-size: 15em;
+    }
 
-      @media only screen and (max-width: 991px) {
-        top:0;
+    @media only screen and (max-width: 991px) {
+      height: auto;
+
+      .banner-text {
+        top: 0;
         left: 0;
         font-size: 8em;
         padding: 0 15px;
+        transform: none;
+        position: relative;
       }
     }
   }
@@ -212,6 +218,7 @@
           left: 0;
           height: auto;
           padding: 30px;
+          box-shadow: none;
         }
       }
     }

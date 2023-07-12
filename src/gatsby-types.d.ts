@@ -13474,14 +13474,14 @@ type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: 
 type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type MyQueryQuery = { readonly allWpPortfolio: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly slug: string | null, readonly acfPortfolio: { readonly projectType: string | null } | null, readonly featuredImage: { readonly node: { readonly id: string, readonly mediaItemUrl: string | null, readonly altText: string | null } } | null }> } };
+type MyQueryQuery = { readonly allWpPortfolio: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly slug: string | null, readonly acfPortfolio: { readonly excerpt: string | null, readonly projectType: string | null } | null, readonly featuredImage: { readonly node: { readonly id: string, readonly mediaItemUrl: string | null, readonly altText: string | null } } | null }> } };
 
 type PostByIdQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-type PostByIdQuery = { readonly wpPortfolio: { readonly id: string, readonly title: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly mediaItemUrl: string | null, readonly altText: string | null } } | null, readonly acfPortfolio: { readonly excerpt: string | null, readonly projectType: string | null, readonly client: string | null, readonly website: string | null, readonly image: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageTwo: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageThree: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageFour: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageFive: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null } | null, readonly portfolioTypes: { readonly nodes: ReadonlyArray<{ readonly name: string | null }> } | null } | null };
+type PostByIdQuery = { readonly wpPost: { readonly id: string, readonly title: string | null, readonly content: string | null, readonly date: string | null, readonly uri: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null }> } | null, readonly featuredImage: { readonly node: { readonly mediaItemUrl: string | null, readonly altText: string | null } } | null } | null, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
 type allNeededDataQueryVariables = Exact<{ [key: string]: never; }>;
 
