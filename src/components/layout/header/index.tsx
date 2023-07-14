@@ -18,6 +18,10 @@ const Header = () => {
     setOpen(!open);
   }
 
+  const closeDrawer = () => {
+    setOpen(false);
+  }
+
   return (
     <>
       <ETHeader $scrollDirection={scrollDirection}>
@@ -68,10 +72,10 @@ const Header = () => {
                     className={'navigation'}
                 >
                     <ul>
-                        <li><Link to={'/about'}>About</Link></li>
-                        <li><Link to={'/work'}>Work</Link></li>
-                        <li><Link to={'/articles'}>Articles</Link></li>
-                        <li><Link to={'/contact'}>Contact</Link></li>
+                        <li><Link to={'/about'} onClick={closeDrawer}>About</Link></li>
+                        <li><Link to={'/work'} onClick={closeDrawer}>Work</Link></li>
+                        <li><Link to={'/articles'} onClick={closeDrawer}>Articles</Link></li>
+                        <li><Link to={'/contact'} onClick={closeDrawer}>Contact</Link></li>
                     </ul>
                 </motion.div>
             </motion.div>
