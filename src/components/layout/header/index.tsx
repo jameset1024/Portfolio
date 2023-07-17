@@ -1,4 +1,4 @@
-import React, {ReactEventHandler, useState} from "react";
+import React, {ReactEventHandler, useRef, useState} from "react";
 import image from '@app/images/erik-james-thomas-logo.png';
 import { Link } from "gatsby";
 import { ETHeader } from "@app/components/layout/header/styles";
@@ -10,6 +10,7 @@ import {AnimatePresence, motion} from "framer-motion";
 
 const Header = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const mobileRef = useRef<HTMLDivElement|null>(null);
   const scrollDirection: string = useScrollDirection('up');
   const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
 
@@ -20,6 +21,9 @@ const Header = () => {
 
   const closeDrawer = () => {
     setOpen(false);
+    if ( mobileRef ) {
+      mobileRef.current?.classList.remove('open');
+    }
   }
 
   return (
@@ -43,7 +47,7 @@ const Header = () => {
 
           { isSmallDevice &&
               <div className={'mobileBtn'}>
-                  <MobileButton active={activate} />
+                  <MobileButton active={activate} btnRef={mobileRef} />
               </div>
           }
         </div>
