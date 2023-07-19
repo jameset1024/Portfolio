@@ -5,6 +5,7 @@ import "./styles.scss";
 import {monthDisplay} from "@app/helpers/date";
 import {PostData} from "@app/helpers/post";
 import Button from "@app/components/elements/button";
+import {SEO} from "@app/components/layout/head";
 
 const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
   const posts = data.allWpPost.nodes;
@@ -86,7 +87,14 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
 
   export default CategoryPage;
 
-  export const Head: HeadFC = () => <title>Blog Articles | Erik James Thomas - Senior Software Engineer</title>
+  export const Head: HeadFC = ({data, location, pageContext}) => {
+    return (
+      <SEO>
+        <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
+        <title>Blog Category {pageContext.name} | Erik James Thomas - Senior Software Engineer</title>
+      </SEO>
+    )
+  }
 
   export const pageQuery = graphql`
   query MyQuery($slug: String!) {
@@ -113,6 +121,11 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
           altText
         }
       }
+    }
+  }
+  site {
+    siteMetadata {
+      siteUrl
     }
   }
 }`;

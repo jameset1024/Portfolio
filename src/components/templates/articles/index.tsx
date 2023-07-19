@@ -107,9 +107,10 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
 
   export default Article;
 
-  export const Head: HeadFC = () => {
+  export const Head: HeadFC = ({data, location}) => {
     return (
       <SEO>
+        <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
         <title>Articles | Erik James Thomas - Senior Software Engineer</title>
       </SEO>
     )
@@ -141,6 +142,11 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
           altText
         }
       }
+    }
+  }
+  site {
+    siteMetadata {
+      siteUrl
     }
   }
 }`;

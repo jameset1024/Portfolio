@@ -13474,7 +13474,7 @@ type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: 
 type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type MyQueryQuery = { readonly allWpPortfolio: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly slug: string | null, readonly acfPortfolio: { readonly excerpt: string | null, readonly projectType: string | null } | null, readonly featuredImage: { readonly node: { readonly id: string, readonly mediaItemUrl: string | null, readonly altText: string | null } } | null }> } };
+type MyQueryQuery = { readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
 type PostByIdQueryVariables = Exact<{
   id: Scalars['String'];

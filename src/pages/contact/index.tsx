@@ -11,6 +11,8 @@ import {FormEvent, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import { toast } from "react-toastify";
 import Sending from "@app/components/interactives/sending";
+import {SEO} from "@app/components/layout/head";
+import {graphql} from "gatsby";
 
 
 const ContactPage: React.FC<PageProps> = () => {
@@ -155,4 +157,20 @@ const ContactPage: React.FC<PageProps> = () => {
 
 export default ContactPage
 
-export const Head: HeadFC = () => <title>Contact | Erik James Thomas - Senior Software Engineer</title>
+export const Head: HeadFC = ({data, location}) => {
+  return (
+  <SEO>
+    <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
+    <title>Contact | Erik James Thomas - Senior Software Engineer</title>
+  </SEO>
+  )
+}
+
+export const pageQuery = graphql`
+  query MyQuery {
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+}`;

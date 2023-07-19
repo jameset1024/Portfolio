@@ -1,140 +1,166 @@
 @import "styles/variables";
 
-article.articles {
-  position: relative;
-  padding-bottom: 2em;
+header.post-header {
+  max-width: 100%;
+  height: 550px;
 
-  header {
-    max-width: 100%;
-    height: 550px;
-
-    img {
-      object-fit: cover;
-      object-position: top;
-      position: relative;
-      height: 100%;
-      width: 100%;
-    }
-
-    @media only screen and (max-width: 767px) {
-      margin-top: 0;
-    }
+  img {
+    object-fit: cover;
+    object-position: top;
+    position: relative;
+    height: 100%;
+    width: 100%;
   }
 
-  .post-container {
-    padding: 0 15px;
+  @media only screen and (max-width: 899px) {
+    margin-top: 0;
+    height: 350px;
+  }
+}
 
-    h1 {
-      font-size: 2.25em;
-      margin-bottom: 5px;
-    }
+div.article-container {
+  display: flex;
+  flex-wrap: wrap;
 
-    .post-meta {
-      margin-bottom: 1.75em;
-      font-size: 0.85em;
-
-      a {
-        color: $et_blue;
-        text-decoration: none;
-        transition: all linear 0.3s;
-        display: inline-block;
-        margin-left: 10px;
-
-        &:first-of-type:before {
-          content: "|";
-          padding-right: 12px;
-          color: black;
-        }
-
-        &:hover {
-          color: $et_dark_blue;
-        }
-      }
-    }
-
-    .content {
-      figure {
-        margin-left: 0;
-        margin-right: 0;
-
-        img {
-          max-width: 100%;
-          height: auto;
-        }
-      }
-    }
-
-    @media only screen and (max-width: 991px) {
-      padding: 0 25px;
-    }
+  @media only screen and (min-width: 900px) {
+    align-items: stretch;
   }
 
-  .sharePost {
-    display: inline-block;
-    position: sticky;
-    bottom: 0;
-    left: 10px;
-    float: left;
-    margin-top: -210px;
+  aside {
+    position: relative;
+    padding: 2.5em 15px 0;
 
-    span {
-      text-transform: uppercase;
-      font-size: 0.75em;
-      color: darken($et_grey, 45%);
-      display: block;
-      margin-bottom: 10px;
+    @media only screen and (max-width: 899px) {
+      flex: 0 0 100%;
+      order: 2;
+      padding: 0 25px 4em;
     }
 
-    .icon {
-      position: relative;
-      padding-bottom: 50px;
+    .postInteractions {
+      display: inline-block;
+      position: sticky;
+      top: 50%;
+      left: 10px;
 
-      &:after {
-        content: "";
-        background-color: black;
-        width: 1px;
-        height: 65px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -30px;
-      }
-
-      a {
-        display: block;
-        text-align: center;
-
-        &:not(:last-child) {
-          margin-bottom: 15px;
-        }
-      }
-    }
-
-    @media only screen and (max-width: 1230px) {
-      display: block;
-      position: relative;
-      float: none;
-      margin: 25px auto 0;
-      padding: 0 25px;
-      max-width: 1140px;
-      left: 0;
-
-      .icon {
-        padding-bottom: 0;
-
-        &:after {
-          display: none;
+      .sharePost {
+        span {
+          text-transform: uppercase;
+          font-size: 0.75em;
+          color: darken($et_grey, 45%);
+          display: block;
+          margin-bottom: 10px;
         }
 
-        a {
-          display: inline-block;
-          text-align: left;
-          margin-bottom: 0 !important;
+        .icon {
+          position: relative;
+          padding-bottom: 50px;
 
-          &:not(:last-child) {
-            margin-right: 25px;
+          &:after {
+            content: "";
+            background-color: black;
+            width: 1px;
+            height: 65px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -30px;
+          }
+
+          a {
+            display: block;
+            text-align: center;
+
+            &:not(:last-child) {
+              margin-bottom: 15px;
+            }
           }
         }
+
+        @media only screen and (max-width: 899px) {
+          display: block;
+          position: relative;
+          float: none;
+          margin: 0 auto;
+          max-width: 1140px;
+          left: 0;
+
+          .icon {
+            padding-bottom: 0;
+
+            &:after {
+              display: none;
+            }
+
+            a {
+              display: inline-block;
+              text-align: left;
+              margin-bottom: 0 !important;
+
+              &:not(:last-child) {
+                margin-right: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  article.article {
+    flex: 1;
+    padding-bottom: 2em;
+
+    @media only screen and (max-width: 899px) {
+      flex: 0 0 100%;
+      order: 1;
+      padding-bottom: 0;
+    }
+
+    .post-container {
+      padding: 0 15px;
+
+      h1 {
+        font-size: 2.25em;
+        margin-bottom: 5px;
+      }
+
+      .post-meta {
+        margin-bottom: 1.75em;
+        font-size: 0.85em;
+
+        a {
+          color: $et_blue;
+          text-decoration: none;
+          transition: all linear 0.3s;
+          display: inline-block;
+          margin-left: 10px;
+
+          &:first-of-type:before {
+            content: "|";
+            padding-right: 12px;
+            color: black;
+          }
+
+          &:hover {
+            color: $et_dark_blue;
+          }
+        }
+      }
+
+      .content {
+        figure {
+          margin-left: 0;
+          margin-right: 0;
+
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      @media only screen and (max-width: 991px) {
+        padding: 0 25px;
       }
     }
   }

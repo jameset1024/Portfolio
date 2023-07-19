@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
+import {SEO} from "@app/components/layout/head";
 
 const images = ['image','imageTwo','imageThree','imageFour','imageFive'];
 const PortfolioPage: React.FC<PageProps> = ({data}) => {
@@ -90,7 +91,14 @@ const PortfolioPage: React.FC<PageProps> = ({data}) => {
 
 export default PortfolioPage;
 
-export const Head: HeadFC = ({ data }) => <title>{data.wpPortfolio.title} | Erik James Thomas - Senior Software Engineer</title>
+export const Head: HeadFC = ({ data, location }) => {
+  return (
+    <SEO>
+      <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
+      <title>{data.wpPortfolio.title} | Erik James Thomas - Senior Software Engineer</title>
+    </SEO>
+  );
+}
 
 export const postQuery = graphql`
   query PostById($id: String!) {
@@ -134,6 +142,11 @@ export const postQuery = graphql`
         nodes {
           name
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

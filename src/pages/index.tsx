@@ -154,9 +154,11 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => {
+export const Head: HeadFC = ({location, data}) => {
+  console.log(data);
   return (
     <SEO>
+      <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
       <title>Erik James Thomas - Senior Software Engineer</title>
     </SEO>
   )
@@ -180,6 +182,11 @@ export const pageQuery = graphql`
           altText
         }
       }
+    }
+  }
+  site {
+    siteMetadata {
+      siteUrl
     }
   }
 }`;

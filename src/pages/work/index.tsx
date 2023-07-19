@@ -84,9 +84,10 @@ const WorkPage = ({data}) => {
 
 export default WorkPage;
 
-export const Head: HeadFC = () => {
+export const Head: HeadFC = ({data, location}) => {
   return (
     <SEO>
+      <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
       <title>Work | Erik James Thomas - Senior Software Engineer</title>
     </SEO>
   )
@@ -110,6 +111,11 @@ export const pageQuery = graphql`
           altText
         }
       }
+    }
+  }
+  site {
+    siteMetadata {
+      siteUrl
     }
   }
 }`;

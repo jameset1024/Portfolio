@@ -10,6 +10,7 @@ import { StaticImage}  from "gatsby-plugin-image";
 import Button from "@app/components/elements/button";
 import Expertise from "@app/components/interactives/expertise";
 import {SEO} from "@app/components/layout/head";
+import {graphql} from "gatsby";
 
 const AboutPage: React.FC<PageProps> = () => {
   return (
@@ -97,10 +98,21 @@ const AboutPage: React.FC<PageProps> = () => {
 
 export default AboutPage
 
-export const Head: HeadFC = () => {
+export const Head: HeadFC = ({data, location}) => {
   return (
     <SEO>
+      <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
       <title>About | Erik James Thomas - Senior Software Engineer</title>
     </SEO>
   )
 }
+
+
+export const pageQuery = graphql`
+  query MyQuery {
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+}`;
