@@ -42,7 +42,8 @@ const PostPage: React.FC<PageProps> = ({data}) => {
         method: 'POST',
         body: JSON.stringify({action}),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${process.env.GATSBY_REST_USERNAME}:${process.env.GATSBY_REST_PASSWORD}`)}`
         }
       });
 
