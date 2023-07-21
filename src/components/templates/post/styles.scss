@@ -170,6 +170,7 @@ div.article-container {
   article.article {
     flex: 1;
     padding-bottom: 2em;
+    min-width: 0;
 
     @media only screen and (max-width: 899px) {
       flex: 0 0 100%;

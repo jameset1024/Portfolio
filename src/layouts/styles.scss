@@ -23,10 +23,10 @@ h6 {
   max-width: 1140px;
   width: 100%;
   margin: 0 auto;
+}
 
-  @media only screen and (max-width: 1450px) {
-    max-width: 1140px;
-  }
+pre {
+  overflow: auto;
 }
 
 main {
