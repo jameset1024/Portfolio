@@ -35,6 +35,9 @@ jobs:
           WP_URL: ${{ secrets.WP_URL }}
           WP_INCONSISTENT_SCHEMA_WARN: ${{ secrets.WP_INCONSISTENT_SCHEMA_WARN }}
           GATSBY_CONTACT_FORM: ${{ secrets.GATSBY_CONTACT_FORM }}
+          GATSBY_REST_USERNAME: ${{ secrets.GATSBY_REST_USERNAME }}
+          GATSBY_REST_PASSWORD: ${{ secrets.GATSBY_REST_PASSWORD }}
+          GATSBY_REST_API: ${{ secrets.GATSBY_REST_API }}
           DEBUG: ${{ secrets.DEBUG }}
         run: npm run build --production
 
