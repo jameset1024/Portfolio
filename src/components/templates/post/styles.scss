@@ -53,17 +53,17 @@ div.article-container {
 
         .icon {
           position: relative;
-          padding-bottom: 50px;
+          padding-top: 50px;
 
           &:after {
             content: "";
             background-color: black;
             width: 1px;
-            height: 65px;
+            height: 35px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -30px;
+            top: 0;
           }
 
           a {
@@ -85,7 +85,7 @@ div.article-container {
           left: 0;
 
           .icon {
-            padding-bottom: 0;
+            padding-top: 0;
 
             &:after {
               display: none;
@@ -148,9 +148,18 @@ div.article-container {
       }
 
       .content {
+        h2 {
+          font-size: 2em;
+          margin: 1.5em 0 0;
+        }
+
+        p {
+          line-height: 1.75em;
+        }
+
         figure {
-          margin-left: 0;
-          margin-right: 0;
+          margin: 3em 0;
+          box-shadow: -1px 5px 10px rgba(black, 0.35);
 
           img {
             max-width: 100%;

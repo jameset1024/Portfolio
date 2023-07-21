@@ -10074,7 +10074,6 @@ type WpPortfolio_Acfportfolio = WpAcfFieldGroup & {
   readonly imageFour: Maybe<WpMediaItem>;
   readonly imageThree: Maybe<WpMediaItem>;
   readonly imageTwo: Maybe<WpMediaItem>;
-  readonly mockup: Maybe<WpMediaItem>;
   readonly projectType: Maybe<Scalars['String']>;
   readonly website: Maybe<Scalars['String']>;
 };
@@ -10088,7 +10087,6 @@ type WpPortfolio_AcfportfolioFieldSelector = {
   readonly imageFour: InputMaybe<WpMediaItemFieldSelector>;
   readonly imageThree: InputMaybe<WpMediaItemFieldSelector>;
   readonly imageTwo: InputMaybe<WpMediaItemFieldSelector>;
-  readonly mockup: InputMaybe<WpMediaItemFieldSelector>;
   readonly projectType: InputMaybe<FieldSelectorEnum>;
   readonly website: InputMaybe<FieldSelectorEnum>;
 };
@@ -10102,7 +10100,6 @@ type WpPortfolio_AcfportfolioFilterInput = {
   readonly imageFour: InputMaybe<WpMediaItemFilterInput>;
   readonly imageThree: InputMaybe<WpMediaItemFilterInput>;
   readonly imageTwo: InputMaybe<WpMediaItemFilterInput>;
-  readonly mockup: InputMaybe<WpMediaItemFilterInput>;
   readonly projectType: InputMaybe<StringQueryOperatorInput>;
   readonly website: InputMaybe<StringQueryOperatorInput>;
 };
@@ -10116,7 +10113,6 @@ type WpPortfolio_AcfportfolioSortInput = {
   readonly imageFour: InputMaybe<WpMediaItemSortInput>;
   readonly imageThree: InputMaybe<WpMediaItemSortInput>;
   readonly imageTwo: InputMaybe<WpMediaItemSortInput>;
-  readonly mockup: InputMaybe<WpMediaItemSortInput>;
   readonly projectType: InputMaybe<SortOrderEnum>;
   readonly website: InputMaybe<SortOrderEnum>;
 };

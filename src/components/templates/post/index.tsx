@@ -6,9 +6,16 @@ import { monthDisplay } from "@app/helpers/date";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebookF, faLinkedinIn, faPinterest, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {SEO} from "@app/components/layout/head";
+import Prism from 'prismjs';
+import "prismjs/themes/prism.css";
+import {useEffect} from "react";
 
 const PostPage: React.FC<PageProps> = ({data, pageContext}) => {
   const date = new Date(data.wpPost.date);
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
 
   return (
     <>
