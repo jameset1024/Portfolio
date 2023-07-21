@@ -2511,6 +2511,7 @@ type Query_wpPostArgs = {
   pingStatus: InputMaybe<StringQueryOperatorInput>;
   pinged: InputMaybe<StringQueryOperatorInput>;
   postFormats: InputMaybe<WpPostToPostFormatConnectionTypeFilterInput>;
+  reactions: InputMaybe<WpReactionsFilterInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
   status: InputMaybe<StringQueryOperatorInput>;
   tags: InputMaybe<WpPostToTagConnectionTypeFilterInput>;
@@ -10529,6 +10530,8 @@ type WpPost = Node & WpContentNode & WpDatabaseIdentifier & WpMenuItemLinkable &
   readonly pinged: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   /** Connection between the Post type and the postFormat type */
   readonly postFormats: Maybe<WpPostToPostFormatConnectionType>;
+  /** The reactions for a post */
+  readonly reactions: Maybe<WpReactions>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
   readonly slug: Maybe<Scalars['String']>;
   /** The current status of the object */
@@ -10688,6 +10691,7 @@ type WpPostFieldSelector = {
   readonly pingStatus: InputMaybe<FieldSelectorEnum>;
   readonly pinged: InputMaybe<FieldSelectorEnum>;
   readonly postFormats: InputMaybe<WpPostToPostFormatConnectionTypeFieldSelector>;
+  readonly reactions: InputMaybe<WpReactionsFieldSelector>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
   readonly status: InputMaybe<FieldSelectorEnum>;
   readonly tags: InputMaybe<WpPostToTagConnectionTypeFieldSelector>;
@@ -10735,6 +10739,7 @@ type WpPostFilterInput = {
   readonly pingStatus: InputMaybe<StringQueryOperatorInput>;
   readonly pinged: InputMaybe<StringQueryOperatorInput>;
   readonly postFormats: InputMaybe<WpPostToPostFormatConnectionTypeFilterInput>;
+  readonly reactions: InputMaybe<WpReactionsFilterInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly status: InputMaybe<StringQueryOperatorInput>;
   readonly tags: InputMaybe<WpPostToTagConnectionTypeFilterInput>;
@@ -11178,6 +11183,7 @@ type WpPostSortInput = {
   readonly pingStatus: InputMaybe<SortOrderEnum>;
   readonly pinged: InputMaybe<SortOrderEnum>;
   readonly postFormats: InputMaybe<WpPostToPostFormatConnectionTypeSortInput>;
+  readonly reactions: InputMaybe<WpReactionsSortInput>;
   readonly slug: InputMaybe<SortOrderEnum>;
   readonly status: InputMaybe<SortOrderEnum>;
   readonly tags: InputMaybe<WpPostToTagConnectionTypeSortInput>;
@@ -11604,6 +11610,29 @@ type WpPostTypeLabelDetailsSortInput = {
   readonly useFeaturedImage: InputMaybe<SortOrderEnum>;
   readonly viewItem: InputMaybe<SortOrderEnum>;
   readonly viewItems: InputMaybe<SortOrderEnum>;
+};
+
+/** Post reactions */
+type WpReactions = {
+  /** Number of dislikes */
+  readonly dislikes: Maybe<Scalars['Float']>;
+  /** Number of likes */
+  readonly likes: Maybe<Scalars['Float']>;
+};
+
+type WpReactionsFieldSelector = {
+  readonly dislikes: InputMaybe<FieldSelectorEnum>;
+  readonly likes: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpReactionsFilterInput = {
+  readonly dislikes: InputMaybe<FloatQueryOperatorInput>;
+  readonly likes: InputMaybe<FloatQueryOperatorInput>;
+};
+
+type WpReactionsSortInput = {
+  readonly dislikes: InputMaybe<SortOrderEnum>;
+  readonly likes: InputMaybe<SortOrderEnum>;
 };
 
 /** The reading setting type */
@@ -13481,7 +13510,7 @@ type PostByIdQueryVariables = Exact<{
 }>;
 
 
-type PostByIdQuery = { readonly wpPost: { readonly id: string, readonly title: string | null, readonly content: string | null, readonly date: string | null, readonly uri: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null }> } | null, readonly featuredImage: { readonly node: { readonly mediaItemUrl: string | null, readonly altText: string | null } } | null } | null, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
+type PostByIdQuery = { readonly wpPortfolio: { readonly id: string, readonly title: string | null, readonly content: string | null, readonly featuredImage: { readonly node: { readonly mediaItemUrl: string | null, readonly altText: string | null } } | null, readonly acfPortfolio: { readonly excerpt: string | null, readonly projectType: string | null, readonly client: string | null, readonly website: string | null, readonly image: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageTwo: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageThree: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageFour: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null, readonly imageFive: { readonly mediaItemUrl: string | null, readonly altText: string | null } | null } | null, readonly portfolioTypes: { readonly nodes: ReadonlyArray<{ readonly name: string | null }> } | null } | null, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
 type allNeededDataQueryVariables = Exact<{ [key: string]: never; }>;
 

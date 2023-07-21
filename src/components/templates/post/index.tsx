@@ -1,21 +1,73 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import './styles.scss';
-import {graphql, Link, useStaticQuery} from "gatsby";
+import {graphql, Link} from "gatsby";
 import { monthDisplay } from "@app/helpers/date";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebookF, faLinkedinIn, faPinterest, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faThumbsUp, faThumbsDown} from "@fortawesome/free-regular-svg-icons";
 import {SEO} from "@app/components/layout/head";
 import Prism from 'prismjs';
 import "prismjs/themes/prism.css";
-import {useEffect} from "react";
+import {MouseEvent, useEffect, useState} from "react";
 
-const PostPage: React.FC<PageProps> = ({data, pageContext}) => {
+const reactLocalStorageKey = 'etreact_ids';
+
+const PostPage: React.FC<PageProps> = ({data}) => {
+  const [allow, setAllow] = useState<boolean>(true);
+  const [action, setAction] = useState<boolean>(false);
   const date = new Date(data.wpPost.date);
 
   useEffect(() => {
     Prism.highlightAll();
+
+    let ids = window.localStorage.getItem(reactLocalStorageKey);
+    if ( ids ) {
+      ids = JSON.parse(ids);
+
+      if ( Object.keys(ids).indexOf(data.wpPost.id) !== -1 ) {
+        setAllow(false);
+        setAction(ids[data.wpPost.id]);
+      }
+    }
+
   }, []);
+
+  const reactToPost = async (e: MouseEvent<HTMLDivElement>, action: boolean) => {
+    if ( !allow ) return;
+    e.currentTarget.classList.add('active');
+
+    try {
+      const response = await fetch(`http://portfolio.test/wp-json/portfolio/v1/reacts/${data.wpPost.databaseId}`, {
+        method: 'POST',
+        body: JSON.stringify({action}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      await response.json();
+
+      // Gets the locally stored data
+      const currentIds = window.localStorage.getItem(reactLocalStorageKey);
+      let current: {[id: string]: boolean} = {};
+      if ( currentIds ) {
+        current = JSON.stringify(currentIds) as {[id: string]: boolean};
+      } else {
+        current[data.wpPost.id] = action;
+      }
+
+      // Sets data if needed
+      if ( currentIds && current ) current[data.wpPost.id] = action;
+
+      // Overwrites the old data
+      window.localStorage.setItem(reactLocalStorageKey, JSON.stringify(current));
+      setAllow(false);
+      setAction(action);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
 
   return (
     <>
@@ -26,6 +78,18 @@ const PostPage: React.FC<PageProps> = ({data, pageContext}) => {
       <div className={'article-container'}>
         <aside>
           <div className={'postInteractions'}>
+            <div className={'postReact'}>
+              <div className={'reactHold'}>
+                <div className={'reactWrap thumbs-up ' + (!allow ? 'disable' : '') + (!allow && action ? ' active' : '')} onClick={async (e) => await reactToPost(e, true)}>
+                  <FontAwesomeIcon icon={faThumbsUp} size={'lg'} />
+                </div>
+              </div>
+              <div className={'reactHold'}>
+                <div className={'reactWrap thumbs-down '  + (!allow ? 'disable' : '') + (!allow && !action ? ' active' : '')} onClick={async (e) => await reactToPost(e, false)}>
+                  <FontAwesomeIcon icon={faThumbsDown} size={'lg'} fixedWidth={true}/>
+                </div>
+              </div>
+            </div>
             <div className={'sharePost'}>
               <span>Share:</span>
 
@@ -80,6 +144,7 @@ export const postQuery = graphql`
   query PostById($id: String!) {
     wpPost(id: {eq: $id}) {
       id
+      databaseId
       title
       content
       date

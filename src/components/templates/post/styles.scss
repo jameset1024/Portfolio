@@ -42,6 +42,46 @@ div.article-container {
       top: 50%;
       left: 10px;
 
+      .postReact {
+        margin-bottom: 25px;
+
+        .reactHold {
+          display: flex;
+          justify-content: center;
+
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+
+          .reactWrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            background-color: $et_grey;
+            cursor: pointer;
+
+            &.disable {
+              cursor: default;
+            }
+
+            &.thumbs-up.active {
+              svg {
+                color: green;
+              }
+            }
+            &.thumbs-down.active {
+              svg {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+
       .sharePost {
         span {
           text-transform: uppercase;
