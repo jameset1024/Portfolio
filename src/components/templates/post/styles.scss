@@ -42,6 +42,11 @@ div.article-container {
       top: 50%;
       left: 10px;
 
+      @media only screen and (max-width: 899px) {
+        display: flex;
+        position: relative;
+      }
+
       .postReact {
         margin-bottom: 25px;
 
@@ -77,6 +82,22 @@ div.article-container {
               svg {
                 color: red;
               }
+            }
+          }
+        }
+
+        @media only screen and (max-width: 899px) {
+          margin-bottom: 0;
+          display: flex;
+          align-items: flex-end;
+          order: 12;
+          margin-left: auto;
+
+          .reactHold {
+            margin-bottom: 0 !important;
+
+            &:not(:last-child) {
+              margin-right: 15px;
             }
           }
         }
@@ -120,9 +141,9 @@ div.article-container {
           display: block;
           position: relative;
           float: none;
-          margin: 0 auto;
           max-width: 1140px;
           left: 0;
+          order: 1;
 
           .icon {
             padding-top: 0;
@@ -154,6 +175,7 @@ div.article-container {
       flex: 0 0 100%;
       order: 1;
       padding-bottom: 0;
+      max-width: 100%;
     }
 
     .post-container {
