@@ -38,7 +38,7 @@ const PostPage: React.FC<PageProps> = ({data}) => {
     e.currentTarget.classList.add('active');
 
     try {
-      const response = await fetch(`http://portfolio.test/wp-json/portfolio/v1/reacts/${data.wpPost.databaseId}`, {
+      const response = await fetch(`${data.site.siteMetadata.siteUrl}/wp-json/portfolio/v1/reacts/${data.wpPost.databaseId}`, {
         method: 'POST',
         body: JSON.stringify({action}),
         headers: {
