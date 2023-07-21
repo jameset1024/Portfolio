@@ -27,7 +27,7 @@ const Footer = () => {
               </a>
             </div>
             <div>
-              <span>@ {date.getFullYear()} Erik James Thomas | <a href={'mailto:erik@nearbycreative.com'}>erik@nearbycreative.com</a></span>
+              <span>@ {date.getFullYear()} Erik James Thomas | <a href={'mailto:erik@brightthought.co'}>erik@brightthought.co</a></span>
             </div>
           </div>
         </div>
