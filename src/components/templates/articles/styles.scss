@@ -166,7 +166,7 @@
 
         .blogImage {
           height: 300px;
-          width: 100%;
+          width: calc(100% + 20px);
           margin: 0 -10px;
 
           img {
