@@ -10075,7 +10075,6 @@ type WpPortfolio_Acfportfolio = WpAcfFieldGroup & {
   readonly imageFour: Maybe<WpMediaItem>;
   readonly imageThree: Maybe<WpMediaItem>;
   readonly imageTwo: Maybe<WpMediaItem>;
-  readonly mockup: Maybe<WpMediaItem>;
   readonly projectType: Maybe<Scalars['String']>;
   readonly website: Maybe<Scalars['String']>;
 };
@@ -10089,7 +10088,6 @@ type WpPortfolio_AcfportfolioFieldSelector = {
   readonly imageFour: InputMaybe<WpMediaItemFieldSelector>;
   readonly imageThree: InputMaybe<WpMediaItemFieldSelector>;
   readonly imageTwo: InputMaybe<WpMediaItemFieldSelector>;
-  readonly mockup: InputMaybe<WpMediaItemFieldSelector>;
   readonly projectType: InputMaybe<FieldSelectorEnum>;
   readonly website: InputMaybe<FieldSelectorEnum>;
 };
@@ -10103,7 +10101,6 @@ type WpPortfolio_AcfportfolioFilterInput = {
   readonly imageFour: InputMaybe<WpMediaItemFilterInput>;
   readonly imageThree: InputMaybe<WpMediaItemFilterInput>;
   readonly imageTwo: InputMaybe<WpMediaItemFilterInput>;
-  readonly mockup: InputMaybe<WpMediaItemFilterInput>;
   readonly projectType: InputMaybe<StringQueryOperatorInput>;
   readonly website: InputMaybe<StringQueryOperatorInput>;
 };
@@ -10117,7 +10114,6 @@ type WpPortfolio_AcfportfolioSortInput = {
   readonly imageFour: InputMaybe<WpMediaItemSortInput>;
   readonly imageThree: InputMaybe<WpMediaItemSortInput>;
   readonly imageTwo: InputMaybe<WpMediaItemSortInput>;
-  readonly mockup: InputMaybe<WpMediaItemSortInput>;
   readonly projectType: InputMaybe<SortOrderEnum>;
   readonly website: InputMaybe<SortOrderEnum>;
 };
@@ -13503,7 +13499,7 @@ type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: 
 type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type MyQueryQuery = { readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
+type MyQueryQuery = { readonly allWpPortfolio: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly slug: string | null, readonly acfPortfolio: { readonly excerpt: string | null, readonly projectType: string | null } | null, readonly featuredImage: { readonly node: { readonly id: string, readonly mediaItemUrl: string | null, readonly altText: string | null } } | null }> }, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
 type PostByIdQueryVariables = Exact<{
   id: Scalars['String'];

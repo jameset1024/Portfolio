@@ -24,7 +24,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
           <div className={'blogLead'}>
               <div>
                   <div className={'leadInfo'}>
-                      <h1>{first.title}</h1>
+                      <h1><Link to={`${first.uri}`}>{first.title}</Link></h1>
                       <div className={'post-meta'}>
                         {monthDisplay(new Date(first.date).getMonth())} {new Date(first.date).getDay()}, {new Date(first.date).getFullYear()}
                         {
@@ -77,7 +77,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                       }
                     </div>
                     <div className={'blogInfo'}>
-                      <h2>{e.title}</h2>
+                      <h2><Link to={`${data.uri}`}>{e.title}</Link></h2>
                       <div className={'post-meta'}>
                         {data.date}
                         {
