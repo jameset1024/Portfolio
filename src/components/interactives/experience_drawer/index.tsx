@@ -1,4 +1,4 @@
-import React, {BaseSyntheticEvent, useEffect, useState} from 'react';
+import React, {SyntheticEvent,  useState} from 'react';
 import {ExperienceInterface} from "@app/data/experience";
 import {AnimatePresence, motion} from "framer-motion";
 import "./styles.scss";
@@ -18,9 +18,9 @@ const ExperienceDrawer = ({data}: ExperienceData) => {
    *
    * @param e
    */
-  const imageMeasure = ( e: BaseSyntheticEvent<HTMLImageElement> ) => {
-    if ( e.target.clientHeight > 100 ) {
-      e.target.style.height = '100px';
+  const imageMeasure = ( e: SyntheticEvent<HTMLImageElement> ) => {
+    if ( (e.target as HTMLImageElement).clientHeight > 100 ) {
+      (e.target as HTMLImageElement).style.height = '100px';
     }
   }
 
@@ -102,7 +102,7 @@ const ExperienceDrawer = ({data}: ExperienceData) => {
         )
       })}
     </div>
-);
+  );
 }
 
 export default ExperienceDrawer;

@@ -1,15 +1,15 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import './styles.scss';
-import {graphql, Link} from "gatsby";
+import { graphql, Link } from "gatsby";
 import { monthDisplay } from "@app/helpers/date";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFacebookF, faLinkedinIn, faPinterest, faTwitter} from "@fortawesome/free-brands-svg-icons";
-import {faThumbsUp, faThumbsDown} from "@fortawesome/free-regular-svg-icons";
-import {SEO} from "@app/components/layout/head";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF, faLinkedinIn, faPinterest, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import { SEO } from "@app/components/layout/head";
 import Prism from 'prismjs';
 import "prismjs/themes/prism.css";
-import {MouseEvent, useEffect, useState} from "react";
+import { MouseEvent, useEffect, useState } from "react";
 
 const reactLocalStorageKey = 'etreact_ids';
 
@@ -66,7 +66,7 @@ const PostPage: React.FC<PageProps> = ({data}) => {
       setAllow(false);
       setAction(action);
     } catch (e) {
-      console.error(e.message);
+      console.error((e as Error).message);
     }
   }
 

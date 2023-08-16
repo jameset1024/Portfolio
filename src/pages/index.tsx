@@ -9,11 +9,13 @@ import {Experience} from "@app/data/experience";
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   const [active, setActive] = useState<boolean>(true);
-  const labelRef = useRef(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
   const labels = ['Nerd', 'Basketball\u00A0Fan', 'Movie\u00A0Lover', 'Anime\u00A0Fan', 'Video\u00A0Gamer', 'Foodie', 'Software\u00A0Engineer'];
   const project = data.allWpPortfolio.nodes[0];
   const job = Experience[0];
-  let dropInterval, dropTimeout;
+
+  let dropInterval: ReturnType<typeof setInterval>;
+  let dropTimeout: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
     headerLabelType();
@@ -32,17 +34,22 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
     async function run() {
       let key = 0;
 
-      await new Promise((resolve) => setTimeout(() => resolve(), 3000));
+      await new Promise<void>((resolve) => setTimeout(() => resolve(), 3000));
 
       do {
         await remove();
         const word = labels[key].split('');
 
-        labelRef.current.innerText = '';
+        if ( labelRef.current ) {
+          labelRef.current.innerText = '';
+        }
+
         for( let o = 0; o < word.length; o++ ) {
-          await new Promise((resolve) => {
+          await new Promise<void>((resolve) => {
             dropTimeout = setTimeout(() => {
-              labelRef.current.innerText += word[o];
+              if ( labelRef.current ) {
+                labelRef.current.innerText += word[o];
+              }
               resolve();
             },125);
           });
@@ -61,17 +68,20 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
    * Handles removing the current visible text
    */
   const remove = async () => {
-    const word = labelRef.current.innerText;
-    await new Promise(async (resolve) => {
-      const drop = word.split('');
+    const word = labelRef.current?.innerText;
+    await new Promise<void>(async (resolve): Promise<void> => {
+      const drop = word?.split('');
 
       dropInterval = setInterval(() => {
-        drop.pop();
-        labelRef.current.innerText = drop.join('');
+        drop?.pop();
 
-        if ( ! drop.length ) {
-          resolve();
+        if ( labelRef.current && typeof drop !== "undefined" ) {
+          labelRef.current.innerText = drop.join('');
+        }
+
+        if ( ! drop?.length ) {
           clearInterval(dropInterval);
+          resolve();
         }
       }, 125);
     });
@@ -128,23 +138,32 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
       {/* My position section */}
       <section className={'homeCurrentPosition'}>
-        <div>
+        <div className={'wrapper'}>
+          <h2>What I'm currently up to</h2>
+
+          <div className={'currentlyUpTo'}>
+            <div className={'currentPosition'}>
+              <h3>Current Position</h3>
+              <div className={'positionData'}>
+                <div><strong>Position:</strong> {job.position}</div>
+                <div><strong>Company:</strong> {job.title}</div>
+                <div><strong>Dates:</strong> {job.date}</div>
+              </div>
+              <p>{job.currentDescription}</p>
+            </div>
+            <div>
+              <img src={job.logo} alt={job.title} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={'homeWorkWithMe'}>
+        <div className={'wrapper'}>
           <div className={'chatWithMe'}>
             <h3>Want to work with me?</h3>
             <p>I'm always open to new and interesting projects. If you have something that you and your company need help with reach out and let's talk.</p>
             <Button src={'/contact'}>Let's Chat</Button>
-          </div>
-        </div>
-        <div>
-          <div className={'currentlyUpTo'}>
-            <h3>What I'm currently up to</h3>
-
-            <div className={'currentPosition'}>
-              <span><strong>Position:</strong> {job.position}</span>
-              <span><strong>Company:</strong> {job.title}</span>
-              <span><strong>Dates:</strong> {job.date}</span>
-              <p>{job.currentDescription}</p>
-            </div>
           </div>
         </div>
       </section>

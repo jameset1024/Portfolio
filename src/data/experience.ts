@@ -19,7 +19,7 @@ export const Experience: ExperienceInterface[] = [
     logo: 'https://erik-portfolio.s3.amazonaws.com/experience/Nearby.png',
     location: 'Pittsburgh, PA',
     description: 'Manage engineering client relationships, applications, infrastructure, and deployments. Ensure that all engineering best practices are being implemented on both internal and external projects.',
-    currentDescription: 'My current position at this small consulting company has been were I\'ve exponentially grown my skills over the past number of years. The projects I\'ve worked on have been both challenging and very fulfilling to be a part of.',
+    currentDescription: 'In my current position, I\'ve worked with a variety of unique clientele using a number of technologies, frameworks, and cloud platforms. The diversity in projects has allowed me to exponentially improve as an engineer and work people from all over the world.',
     skills: ['PHP', 'Javascript', 'Node', 'React', 'React Native', 'Iac', 'AWS', 'Python', 'Nest', 'SASS']
   },
   {

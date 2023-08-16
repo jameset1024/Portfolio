@@ -257,72 +257,115 @@ div.homePage {
   }
 
   .homeCurrentPosition {
-    display: flex;
+    padding: 6em 0;
 
-     > div {
-       flex: 0 0 50%;
-       max-width: 50%;
+    h2 {
+      margin: 0;
+      font-size: 3.5em;
+    }
 
-       &:first-child {
-         background-color: $et_blue;
-         color: white;
-         padding-left: calc((100vw - 1140px) / 2);
-         padding-right: 6em;
-
-         .chatWithMe {
-           padding: 3em 0;
-
-           h3 {
-             font-size: 2em;
-             margin-top: 0;
-           }
-           @include buttonAdjust;
-         }
-       }
-
-       &:last-child {
-         padding-right: calc((100vw - 1140px) / 2);
-         padding-left: 2em;
-
-         .currentlyUpTo {
-           padding: 3em 0;
-
-           h3 {
-             margin-top: 0;
-             font-size: 1.75em;
-           }
-
-           .currentPosition {
-             span {
-               display: block;
-               margin-bottom: 10px;
-
-               strong {
-                 display: inline-block;
-                 width: 100px;
-               }
-             }
-           }
-         }
-       }
-     }
-
-    @media only screen and (max-width: 1150px) {
-      flex-wrap: wrap;
+    .currentlyUpTo {
+      display: flex;
 
       > div {
-        flex: 0 0 100%;
-        max-width: 100%;
+        max-width: 50%;
+        flex: 0 0 50%;
 
-        &:first-child {
-          order: 2;
-          padding: 0 25px;
+        &.currentPosition {
+          h3 {
+            font-size: 1.25em;
+            color: $et_blue;
+          }
+
+          .positionData {
+            display: flex;
+            flex-wrap: wrap;
+
+            > div {
+              width: 50%;
+              flex: 0 0 50%;
+              margin-bottom: 15px;
+            }
+          }
         }
 
         &:last-child {
-          order: 1;
-          padding: 0 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            max-width: 65%;
+            height: auto;
+            filter: grayscale(1) invert(100%);
+          }
         }
+      }
+    }
+
+    @media only screen and (max-width: 1150px) {
+      h2 {
+        font-size: 2.5em;
+        text-align: center;
+      }
+
+      .currentlyUpTo {
+        flex-wrap: wrap;
+        padding: 0 25px;
+
+        > div {
+          flex: 0 0 100%;
+          max-width: 100%;
+
+          &.currentPosition {
+            .positionData {
+              flex-wrap: wrap;
+
+              > div {
+                width: 100%;
+                flex: 0 0 100%;
+                margin-bottom: 15px;
+              }
+            }
+          }
+
+          &:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .homeWorkWithMe {
+    background-color: $et_blue;
+    color: white;
+    padding: 6em 0;
+    text-align: center;
+
+    h3 {
+      font-size: 2.25em;
+      margin: 0 0 10px;
+    }
+
+    p {
+      max-width: 65%;
+      margin: 0 auto 25px;
+
+      @media only screen and (max-width: 767px) {
+        max-width: 90%;
+      }
+    }
+
+    .button {
+      color: white;
+
+      &:before, &:after, .button__text:after, .button__text:before{
+        background-color: white;
+      }
+
+      .button__line:before {
+        border-color: white;
       }
     }
   }
