@@ -37,6 +37,7 @@ const ContactPage: React.FC<PageProps> = () => {
     const response = await fetch(process.env.GATSBY_CONTACT_FORM, {
       method: 'POST',
       body: JSON.stringify({
+        sendTo: "me@erikjamesthomas.com",
         replyTo: formData.get('email'),
         content: message,
       }),
