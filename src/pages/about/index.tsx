@@ -24,8 +24,8 @@ const AboutPage: React.FC<PageProps> = () => {
         <div className={'about-inner'}>
           <div>
             <h2>Charlotte Resident, Pittsburgh Made</h2>
-            <p>Hello and thank you for visiting my website. My name is Erik and I'm a full-stack software engineer currently residing in Charlotte, NC. I've worked as an engineer since 2013, starting off as a freelancer until I made it to may current position with Nearby Creative.</p>
-            <p>When I'm not working on a project, you'll find me cooking from recipes from Pinterest, working out at the YMCA, or playing video games.</p>
+            <p>Hello and thank you for visiting my website. My name is Erik and I'm a full-stack software engineer currently residing in Charlotte, NC. I've worked as an engineer since 2013, starting off as a freelancer until I made it to my current position with Nearby Creative.</p>
+            <p>When I'm not working on projects, you'll find me cooking recipes from Pinterest, working out at the YMCA, or playing video games.</p>
 
             <Button src={'https://erik-portfolio.s3.amazonaws.com/ET_Resume.pdf'} width={'250px'} target={'_black'}>Download My Resume</Button>
           </div>
