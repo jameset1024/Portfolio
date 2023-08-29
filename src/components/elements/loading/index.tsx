@@ -21,7 +21,7 @@ export default function Loading() {
   return (
     <div className={'loadingScreen'} ref={ref}>
       <div>
-        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 76">
+        <svg xmlns="http://www.w3.org/2000/svg" width={"488"} height={"76"} viewBox="0 0 488 76">
           <path className="cls-1" d="m4,11.47h21.35v4.62H9.21v17.54h14.09v4.62h-14.09v17.9h16.14v4.62H4V11.47Z"/>
           <path className="cls-1" d="m45.6,40.96h-7.26v19.81h-5.21V11.47h11.96c3.91,0,6.87.99,8.88,2.97,2,1.98,3.01,4.68,3.01,8.11v7.26c0,5.28-2.1,8.71-6.31,10.27l7.85,20.69h-5.72l-7.19-19.81Zm-7.26-4.55h6.53c4.6,0,6.9-2.23,6.9-6.68v-6.97c0-4.45-2.3-6.68-6.9-6.68h-6.53v20.32Z"/>
           <path className="cls-1" d="m66.66,11.47h5.21v49.3h-5.21V11.47Z"/>
