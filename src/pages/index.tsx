@@ -174,7 +174,6 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 export default IndexPage
 
 export const Head: HeadFC = ({location, data}) => {
-  console.log(data);
   return (
     <SEO>
       <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />

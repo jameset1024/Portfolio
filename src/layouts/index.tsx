@@ -4,6 +4,7 @@ import './styles.scss';
 import Header from "@app/components/layout/header";
 import Footer from "@app/components/layout/footer";
 import { ToastContainer } from "react-toastify";
+import Loading from "@app/components/elements/loading";
 
 type LayoutProp = {
   children: React.ReactNode
@@ -11,6 +12,7 @@ type LayoutProp = {
 }
 export default ({ children}: LayoutProp) => (
   <>
+    <Loading />
     <Header />
     <main>
       {children}
