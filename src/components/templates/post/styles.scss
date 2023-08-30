@@ -228,11 +228,19 @@ div.article-container {
 
         figure {
           margin: 3em 0;
-          box-shadow: -1px 5px 10px rgba(black, 0.35);
 
-          img {
-            max-width: 100%;
-            height: auto;
+          .gatsby-image-wrapper {
+            box-shadow: -1px 5px 10px rgba(black, 0.35);
+
+            img {
+              max-width: 100%;
+              height: auto;
+            }
+          }
+
+          figcaption {
+            margin-top: 10px;
+            font-size: 0.9em;
           }
         }
       }
