@@ -31,13 +31,13 @@ export default ({ children}: LayoutProp) => {
     <ThemeContext.Provider value={theme}>
       <SiteWrapper $theme={theme}>
         <Loading setLoading={setLoading}/>
-        <HideForLoading $loading={loading}>
+        <div style={{display: loading ? 'none' : 'block'}}>
           <Header setTheme={setTheme} />
           <main>
             {children}
           </main>
           <Footer />
-        </HideForLoading>
+        </div>
         <ToastContainer />
       </SiteWrapper>
     </ThemeContext.Provider>
