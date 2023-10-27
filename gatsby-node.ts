@@ -5,7 +5,6 @@ export const createPages: ({graphql, actions}: { graphql: any; actions: any }) =
 
   const postTemplate = path.resolve('./src/components/templates/post/index.tsx');
   const categoryTemplate = path.resolve("./src/components/templates/category/index.tsx");
-  const portfolioTemplate = path.resolve("./src/components/templates/portfolio/index.tsx");
   const articlesTemplate = path.resolve("./src/components/templates/articles/index.tsx");
 
   const allData: {errors, data } = await graphql(`

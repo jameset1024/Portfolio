@@ -15,14 +15,12 @@ header.post-header
     padding: 0 25px
 
 
-
 div.article-container
   display: grid
   grid-template-columns: repeat(2, 1fr)
 
   @media only screen and (min-width: 900px)
     align-items: stretch
-
 
   aside
     position: relative
@@ -38,9 +36,13 @@ div.article-container
 
     .postInteractions
       display: inline-block
-      position: sticky
-      top: 100px
       left: 10px
+
+      @media only screen and (min-width: 1236px)
+        &.locked
+          position: fixed
+          left: 15px
+          top: 100px
 
       @media only screen and (max-width: 1235px)
         display: flex
@@ -90,10 +92,6 @@ div.article-container
               svg
                 color: red
 
-
-
-
-
         @media only screen and (max-width: 1235px)
           margin-bottom: 0
           display: flex
@@ -131,16 +129,12 @@ div.article-container
             transform: translateX(-50%)
             top: 0
 
-
           a
             display: block
             text-align: center
 
             &:not(:last-child)
               margin-bottom: 15px
-
-
-
 
         @media only screen and (max-width: 1235px)
           display: block
@@ -155,7 +149,6 @@ div.article-container
 
             &:after
               display: none
-
 
             a
               display: inline-block
@@ -228,18 +221,10 @@ div.article-container
               max-width: 100%
               height: auto
 
-
-
           figcaption
             margin-top: 10px
             font-size: 0.9em
 
 
-
-
       @media only screen and (max-width: 991px)
         padding: 0 25px
-
-
-
-

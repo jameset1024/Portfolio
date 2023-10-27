@@ -9,7 +9,7 @@ import { faThumbsUp, faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 import { SEO } from "@app/components/layout/head";
 import Prism from 'prismjs';
 import "prismjs/themes/prism.css";
-import { MouseEvent, useEffect, useState } from "react";
+import {MouseEvent, useEffect, useRef, useState} from "react";
 
 const reactLocalStorageKey = 'etreact_ids';
 
@@ -18,6 +18,7 @@ const PostPage: React.FC<PageProps> = ({data}) => {
   const [action, setAction] = useState<boolean>(false);
   // @ts-ignore
   const date = new Date(data.wpPost.date);
+  const interactions = useRef<HTMLDivElement|null>(null);
 
   useEffect(() => {
     Prism.highlightAll();
@@ -34,6 +35,15 @@ const PostPage: React.FC<PageProps> = ({data}) => {
       }
     }
 
+    window.addEventListener('scroll', e => {
+      if (interactions.current) {
+        if ( ! interactions.current.classList.contains('locked') && (window.scrollY + 68) >= interactions.current.parentElement.offsetTop) {
+          interactions.current.classList.add('locked');
+        } else if (interactions.current.classList.contains('locked') && (window.scrollY + 68) < interactions.current.parentElement.offsetTop) {
+          interactions.current.classList.remove('locked');
+        }
+      }
+    });
   }, []);
 
   const reactToPost = async (e: MouseEvent<HTMLDivElement>, action: boolean) => {
@@ -85,7 +95,7 @@ const PostPage: React.FC<PageProps> = ({data}) => {
       </header>
       <div className={'article-container'}>
         <aside>
-          <div className={'postInteractions'}>
+          <div className={'postInteractions'} ref={interactions}>
             <div className={'postReact'}>
               <div className={'reactHold'}>
                 <div className={'reactWrap thumbs-up ' + (!allow ? 'disable' : '') + (!allow && action ? ' active' : '')} onClick={async (e) => await reactToPost(e, true)}>
