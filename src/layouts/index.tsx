@@ -5,7 +5,7 @@ import Header from "@app/components/layout/header";
 import Footer from "@app/components/layout/footer";
 import { ToastContainer } from "react-toastify";
 import Loading from "@app/components/elements/loading";
-import { SiteWrapper } from "@app/layouts/styles";
+import {HideForLoading, SiteWrapper} from "@app/layouts/styles";
 
 type LayoutProp = {
   children: React.ReactNode
@@ -15,6 +15,7 @@ type LayoutProp = {
 export const ThemeContext = createContext('light');
 export default ({ children}: LayoutProp) => {
   const [theme, setTheme] = useState('light');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -29,12 +30,14 @@ export default ({ children}: LayoutProp) => {
   return (
     <ThemeContext.Provider value={theme}>
       <SiteWrapper $theme={theme}>
-        <Loading />
-        <Header setTheme={setTheme} />
-        <main>
-          {children}
-        </main>
-        <Footer />
+        <Loading setLoading={setLoading}/>
+        <HideForLoading $loading={loading}>
+          <Header setTheme={setTheme} />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </HideForLoading>
         <ToastContainer />
       </SiteWrapper>
     </ThemeContext.Provider>

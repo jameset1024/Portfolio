@@ -13500,10 +13500,13 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
-type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type MyQueryQueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
 
 
-type MyQueryQuery = { readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
+type MyQueryQuery = { readonly allWpPost: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly content: string | null, readonly excerpt: string | null, readonly uri: string | null, readonly date: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null }> } | null, readonly featuredImage: { readonly node: { readonly id: string, readonly mediaItemUrl: string | null, readonly altText: string | null } } | null }> }, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
 type PostByIdQueryVariables = Exact<{
   id: Scalars['String'];

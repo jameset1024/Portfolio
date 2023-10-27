@@ -48,3 +48,12 @@ export const SiteWrapper = styled.div<{$theme: string;}>`
             --et-site-bg: #0f3147;
           `}
 `;
+
+export const HideForLoading = styled.div<{$loading: boolean;}>`
+  display: none
+  
+  ${props => !props.$loading &&
+    css`
+      display: block;
+    `}
+`;

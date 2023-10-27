@@ -1,7 +1,10 @@
 import React, {useEffect, useRef} from "react";
 import "./styles.sass"
 
-export default function Loading() {
+type LoadingType = {
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+export default function Loading({setLoading}: LoadingType) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -9,6 +12,7 @@ export default function Loading() {
       if ( ref.current ) {
         ref.current.classList.add('remove');
 
+        setLoading(false);
         setTimeout(() => {
           if ( ref.current ) {
             ref.current.remove()
