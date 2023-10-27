@@ -1,0 +1,117 @@
+
+\:root
+  --toastify-z-index: 1000001
+
+
+section.contact
+  position: relative
+  margin-top: 4em
+
+  .contactContainer
+    width: 90%
+    margin: 0 auto
+    padding: 6em 0 7em
+    border-top: solid thin var(--et-grey)
+
+    h2
+      margin: 0
+      text-align: center
+      font-size: 3em
+
+    .contact-wrapper
+      max-width: 1000px
+      margin: 0 auto
+
+      .message-text
+        margin: 0 auto
+        text-align: center
+
+        @media only screen and (min-width: 768px)
+          max-width: 65%
+
+        p
+          line-height: 1.75em
+
+      .form-wrap
+        margin-top: 3em
+
+        form
+          position: relative
+          padding: 25px 15px
+          border-radius: 5px
+          background-color: rgba(var(--et-form-background), 0.35)
+          border: solid thin var(--et-navigation-border)
+          box-shadow: 0 5px 10px rgba(black, 0.15)
+          display: flex
+          flex-wrap: wrap
+
+          .hide-form, .success-send
+            background-color: var(--et-site-bg)
+            position: absolute
+            height: 100%
+            width: 100%
+            top: 0
+            left: 0
+            border-radius: inherit
+            z-index: 99
+
+
+          .success-send
+            display: flex
+            align-items: center
+
+            div
+              text-align: center
+              padding: 0 3em
+              flex: 0 0 100%
+              max-width: 100%
+
+              p
+                font-size: 1.15em
+                color: var(--et-navigation-links)
+
+              svg
+                color: var(--et-blue)
+
+          input, textarea
+            border: solid thin rgba(black, 0.2)
+            border-radius: 0.5em
+            width: 100%
+            padding: 15px
+            font-size: 1em
+            background-color: var(--et-site-bg)
+            color: var(--et-navigation-links)
+            box-shadow: inset 0 0 6px rgba(black, 0.2)
+
+            &::placeholder
+              color: var(--et-navigation-links)
+
+          textarea
+            font-family: "Open Sans", sans-serif
+            font-size: 1em
+
+          .form-button, .form-message
+            flex: 0 0 100%
+            max-width: 100%
+
+          .form-item
+            flex: 0 0 50%
+            max-width: 50%
+
+            @media only screen and (max-width: 767px)
+              flex: 0 0 100%
+              max-width: 100%
+
+            *:first-child
+              margin-bottom: 1em
+
+          .form-button, .form-item, .form-message
+            padding: 0 15px
+
+          .form-message, .form-item
+            margin-bottom: 1em
+
+          @media only screen and (max-width: 767px)
+              .form-message
+                textarea
+                  min-height: 150px

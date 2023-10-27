@@ -5,17 +5,18 @@ import {graphql, HeadFC, Link, PageProps} from "gatsby";
 import Button from "@app/components/elements/button";
 import {AnimatePresence, motion} from "framer-motion";
 import Pagination from "@app/components/elements/pagination";
-import "./styles.scss";
+import "./styles.sass";
 import {SEO} from "@app/components/layout/head";
 
 const Article: React.FC<PageProps> = ({ data, pageContext }) => {
+  // @ts-ignore
   const posts = [...data.allWpPost.nodes];
   const first = posts.length ? PostData(posts.splice(0,1)[0]) : false;
 
   return (
     <section className={'blogPage'}>
-      <div className={'banner-wrap'} role={'banner'}>
-        <div className={'banner-text'}>
+      <div className={'section-header-wrap'} role={'banner'}>
+        <div className={'section-header-text'}>
           Articles
         </div>
       </div>
@@ -30,13 +31,14 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                         {
                           first.categories.length &&
                           first.categories.map( (e,i) => {
+                            // @ts-ignore
                             return <Link to={`/category/${e.slug}`} key={`cat-${i}`}><span className={'category'}>{e.name}</span></Link>
                           })
                         }
                       </div>
                       <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${first.content}...</p>`}} />
 
-                      <Button src={`${first.uri}`}>Read</Button>
+                      <Button to={`${first.uri}`}>Read</Button>
                   </div>
               </div>
               <div>
@@ -65,7 +67,6 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                     opacity: 1,
                     translateY: 0,
                   }}
-                  amount={'all'}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                   className={'blogGridItem'}
@@ -83,12 +84,13 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                         {
                           data.categories.length &&
                           data.categories.map( (e,i) => {
+                            // @ts-ignore
                             return <Link to={`/category/${e.slug}`}><span className={'category'} key={`cat-${i}`}>{e.name}</span></Link>
                           })}
                       </div>
                       <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${data.content}...</p>`}} />
 
-                      <Button src={`${data.uri}`}>Read</Button>
+                      <Button to={`${data.uri}`}>Read</Button>
                     </div>
                   </div>
                 </motion.div>
@@ -96,6 +98,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
             })}
           </AnimatePresence>
 
+          {/* @ts-ignore */}
           {pageContext.pageCount > 1 &&
           <Pagination currentPage={pageContext.currentPage} totalPages={pageContext.pageCount} />
           }

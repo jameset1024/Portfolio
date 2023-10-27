@@ -1,0 +1,105 @@
+
+@mixin btn($left, $top)
+  background-color: transparent
+  border: none
+  position: relative
+  width: 60px
+  height: 45px
+  top: $top
+  left: $left
+  transition-duration: 0.5s
+
+
+@mixin icon($height, $width)
+  transition-duration: 0.5s
+  position: absolute
+  height: $height
+  width: $width
+  top: 15px
+  background-color: var(--et-navigation-links)
+
+
+@mixin icon-before($height, $width, $top)
+  transition-duration: 0.5s
+  position: absolute
+  width: $width
+  height: $height
+  background-color: var(--et-navigation-links)
+  content: ""
+  top: $top
+
+
+@mixin icon-after($height, $width, $top)
+  transition-duration: 0.5s
+  position: absolute
+  width: $width
+  height: $height
+  background-color: var(--et-navigation-links)
+  content: ""
+  top: $top
+
+
+.btn1
+  @include btn(0, 0)
+
+  .icon-left
+    @include icon(3px, 20px)
+    left: 0
+
+    &:before
+      @include icon-before(3px, 20px, -10px)
+
+
+    &:after
+      @include icon-after(3px, 20px, 10px)
+
+
+    &:hover
+      cursor: pointer
+
+
+
+  .icon-right
+    @include icon(3px, 20px)
+    left: 20px
+
+    &:before
+      @include icon-before(3px, 20px, -10px)
+
+
+    &:after
+      @include icon-after(3px, 20px, 10px)
+
+
+
+  &.open
+    .icon-left
+      transition-duration: 0.5s
+      background: transparent
+
+      &:before
+        transform: rotateZ(45deg) scaleX(1) translate(4px, -1px)
+
+
+      &:after
+        transform: rotateZ(-45deg) scaleX(1) translate(4px, -1px)
+
+
+
+    .icon-right
+      transition-duration: 0.5s
+      background: transparent
+
+      &:before
+        transform: rotateZ(-45deg) scaleX(1) translate(-4px, -1px)
+
+
+      &:after
+        transform: rotateZ(45deg) scaleX(1) translate(-4px, -1px)
+
+
+
+  &:hover
+    cursor: pointer
+
+

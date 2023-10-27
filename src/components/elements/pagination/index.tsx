@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "gatsby";
-import './styles.scss';
+import './styles.sass';
 
 type Page = {
   currentPage: number;

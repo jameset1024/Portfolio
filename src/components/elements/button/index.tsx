@@ -1,20 +1,51 @@
 import React from 'react';
 import { Link } from "gatsby";
-import './styles.scss';
+import './styles.sass';
 
 type ButtonType = {
-  src: string,
+  to: string,
   width?: string,
   target?: string,
   children: React.ReactNode,
+  onClick?: ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void) | undefined
 }
-export default function Button({src, children, width = '150px', target = '_self'}: ButtonType) {
-  const style = { "--btn-width": width } as React.CSSProperties;
+
+type ButtonSubmitType = {
+  width?: string,
+  children: React.ReactNode,
+  onClick?: ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void) | undefined
+}
+
+export default function Button(props: ButtonType) {
+  const style = { "--btn-width": props?.width || '150px' } as React.CSSProperties;
   return (
-    <Link to={src} className="button" style={style} target={target}>
+    <Link {...props} style={style} className={'button'}>
+      <div className="button__line"></div>
+      <div className="button__line"></div>
+      <span className="button__text">{props.children}</span>
+    </Link>
+  )
+}
+
+
+export function ButtonExternal(props: ButtonType) {
+  const style = { "--btn-width": props?.width || '150px' } as React.CSSProperties;
+  return (
+    <a {...props} href={props.to} style={style} className={'button'}>
+      <div className="button__line"></div>
+      <div className="button__line"></div>
+      <span className="button__text">{props.children}</span>
+    </a>
+  )
+}
+
+export function ButtonSubmit({children, width}: ButtonSubmitType) {
+  const style = { "--btn-width": width || '150px' } as React.CSSProperties;
+  return (
+    <button type={'submit'} style={style} className={'button'}>
       <div className="button__line"></div>
       <div className="button__line"></div>
       <span className="button__text">{children}</span>
-    </Link>
+    </button>
   )
 }

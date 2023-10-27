@@ -1,106 +1,43 @@
 import React, {SyntheticEvent,  useState} from 'react';
 import {ExperienceInterface} from "@app/data/experience";
-import {AnimatePresence, motion} from "framer-motion";
-import "./styles.scss";
-import {faLocationDot, faUserTie} from "@fortawesome/free-solid-svg-icons";
-import {faLink} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import "./styles.sass";
 
 type ExperienceData = {
   data: ExperienceInterface[]
 }
 const ExperienceDrawer = ({data}: ExperienceData) => {
-  const [open, setOpen] = useState<Array<boolean>>(data.map( _ => false));
-
-  /**
-   * Handles adjusting the image sizes if they are over
-   * a certain height.
-   *
-   * @param e
-   */
-  const imageMeasure = ( e: SyntheticEvent<HTMLImageElement> ) => {
-    if ( (e.target as HTMLImageElement).clientHeight > 100 ) {
-      (e.target as HTMLImageElement).style.height = '100px';
-    }
-  }
-
-  const toggleClick = ( i: number ) => {
-    const copy = [...open];
-    copy[i] = !copy[i];
-
-    setOpen(copy);
-  }
+  const [active, setActive] = useState(0);
 
   return (
     <div className={'experience-drawer'}>
-      {data.map((e, i) => {
-        return (
-          <div className={'drawer-item'} key={`${i}-drawer-item`}>
-            <div className={'drawer-control'} onClick={() => toggleClick(i)}>
-              <div className={'title'}><strong>{e.title}</strong> - {e.position}</div>
-              <div className={'date'}>{e.date}</div>
+      <div className={'experience-navigation'} role={'tablist'}>
+        {data.map((e, i) => {
+          return (
+            <div
+              className={'nav-item' + (active === i ? ' active' : '' )}
+              key={`nav-item-${i}`}
+              role={'tab'}
+              onClick={() => setActive(i)}>
+              <div className={'title'}>{e.title}</div>
             </div>
-            <AnimatePresence initial={false}>
-              {open[i] && (
-                <motion.div
-                  style={{overflow: 'hidden'}}
-                  initial="collapsed"
-                  animate="open"
-                  exit="collapsed"
-                  variants={{
-                    open: { opacity: 1, height: 'auto' },
-                    collapsed: { opacity: 0, height: 0 },
-                  }}
-                  transition={{ duration: 0.3, ease: 'linear' }}
-                >
-                  <motion.div
-                    variants={{
-                      collapsed: {scale: 0.8},
-                      open: { scale: 1}
-                    }}
-                    transition={{duration: 0.8}}
-                    className={'drawer-content'}
-                  >
-                    <div className={'drawer-content-inner'}>
-                      <div>
-                        <div className={'content-meta'}>
-                          <div className={'position'}>
-                            <FontAwesomeIcon icon={faUserTie} color={'#ffffff'} size={'sm'} />
-                            {e.position}
-                          </div>
-                          <div className={'location'}>
-                            <FontAwesomeIcon icon={faLocationDot} color={'#ffffff'} size={'sm'} />
-                            {e.location}
-                          </div>
-                          <div className={'link'}>
-                            <FontAwesomeIcon icon={faLink} color={'#ffffff'} size={'sm'} />
-                            {e.link && <a href={e.link} target={'_blank'}>{e.link.replace(/(https|http):\/\//g, '')}</a> }
-                          </div>
-                        </div>
-                        <div className={'description'}>
-                          {e.description}
-                        </div>
-                      </div>
-                      <div>
-                        <img src={e.logo} alt={e.title} onLoad={ (e) => imageMeasure(e)}/>
-                      </div>
-                      <div className={'languages'}>
-                        {e.skills &&
-                            <>
-                              {e.skills.map(i => {
-                                return <div>{i}</div>
-                              })}
-                            </>
-                        }
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
+      <div className={'experience-content'}>
+        {data.map((e, i) => {
+          return (
+            <div className={'content-item' + (active === i ? ' active' : '' )} key={`${i}-drawer-item`} role={'tabpanel'}>
+              <h4>{e.position}  - <a href={e.link} target={'_blank'}>{e.title}</a></h4>
+              <div className={'timeframe'}>{e.date}</div>
+              <ul>
+                {e.description.map((o, k) => {
+                  return <li key={`description-item-${k}`}>{o}</li>
+                })}
+              </ul>
+            </div>
+          )
+        })}
+      </div>
     </div>
   );
 }

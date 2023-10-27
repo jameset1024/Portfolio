@@ -1,0 +1,73 @@
+header.homePage
+  text-align: center
+  height: 100vh
+
+  @media only screen and (max-width: 1150px)
+    padding: 0 25px
+
+
+  > div
+    display: flex
+    height: 90vh
+    align-items: center
+    justify-content: center
+
+    .headerWrapper
+      max-width: 1140px
+
+      .home-intro
+        font-size: 1.5em
+        text-transform: uppercase
+        font-family: "Khand", sans-serif
+        margin-bottom: 1em
+
+
+      h1
+        font-size: 5em
+        margin: 0
+        line-height: 1em
+
+        span
+          color: var(--et-blue)
+
+      h3
+        margin-top: 0
+        font-size: 2.75em
+        margin-bottom: 0.5em
+
+        span
+          color: var(--et-blue)
+
+      p
+        max-width: 65%
+        font-size: 1.15em
+        line-height: 1.75
+        letter-spacing: 0.08em
+        margin: 0 auto 1.85em auto
+
+        a
+          color: var(--et-blue)
+          text-decoration: none
+
+
+    @media only screen and (max-width: 991px)
+      .headerWrapper
+        p
+          max-width: 100%
+
+    @media only screen and (max-width: 767px)
+      .headerWrapper
+        text-align: center
+
+        h1
+          font-size: 4em
+
+          span
+            display: block
+
+        h3
+          font-size: 2em
+
+        p
+          padding: 0 15px
+

@@ -1,0 +1,86 @@
+
+
+.about-section
+  .section-header-wrap
+    position: relative
+    height: auto
+
+    @media only screen and (max-width: 1050px)
+      height: auto
+
+      .section-header-text
+        font-size: 8em
+        transform: none
+        position: relative
+        left: 0
+        top: 0
+        padding-left: 25px
+
+
+  .about-info
+    position: relative
+
+    .about-inner
+      position: relative
+      display: flex
+      flex-wrap: wrap
+      align-items: stretch
+
+      @media only screen and (max-width: 991px)
+        height: auto
+        padding-bottom: 5em
+
+
+      > div
+        width: 50%
+        flex: 0 0 50%
+        max-height: 100%
+
+        @media only screen and (max-width: 1050px)
+          width: 100%
+          flex: 0 0 100%
+
+          &:first-child
+            padding-right: 0
+
+
+
+        &:first-child
+          padding-left: calc((100vw - 1140px) / 2)
+          padding-right: 15px
+
+          h2
+            color: var(--et-blue)
+            font-size: 1.5em
+
+
+          .button
+            margin-top: 35px
+
+
+          @media only screen and (max-width: 1150px)
+            padding-left: 25px
+
+
+
+        &:last-child
+          position: relative
+          padding-right: calc((100vw - 1440px) / 2)
+          padding-left: 15px
+
+          .headshot-wrapper
+            max-width: 85%
+
+            .gatsby-image-wrapper > div
+              max-width: 100% !important
+
+          @media only screen and (max-width: 1050px)
+            display: none
+
+          img
+            max-width: 100%
+            height: auto
+            display: block
+            position: relative
+            border-top-right-radius: 10px
+            border-top-left-radius: 10px

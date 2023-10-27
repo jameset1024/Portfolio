@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faGithub, faInstagram, faLinkedinIn, faPinterest, faTwitter} from "@fortawesome/free-brands-svg-icons";
-import "./styles.scss";
+import "./styles.sass";
 
 const Footer = () => {
   const [date] = useState<Date>(new Date());
@@ -27,7 +27,7 @@ const Footer = () => {
               </a>
             </div>
             <div>
-              <span>@ {date.getFullYear()} Erik James Thomas | <a href={'mailto:erik@brightthought.co'}>erik@brightthought.co</a></span>
+              <span>@{date.getFullYear()} Erik James Thomas | <a href={'mailto:me@erikjamesthomas.com'}>me@erikjamesthomas.com</a></span>
             </div>
           </div>
         </div>

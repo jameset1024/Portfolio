@@ -1,0 +1,130 @@
+.workSection
+  margin-top: 12em
+  padding-top: 0.25em
+
+  @media only screen and (max-width: 767px)
+    margin-top: 6em
+    margin-left: auto
+    margin-right: auto
+    width: 90%
+
+  .section-header-wrap
+    .section-header-text
+      font-size: 16em
+      left: calc(100% - 75px)
+      top: -65px
+      line-height: 0.5
+
+      @media only screen and (max-width: 767px)
+        font-size: 10em
+        left: 0
+        top: 0
+
+  .workContainer
+    padding-left: calc((100vw - 1440px) / 2)
+    padding-right: calc((100vw - 1140px) / 2)
+
+    .sectionDescription
+      margin-bottom: 5em
+
+      p
+        max-width: 40%
+        font-size: 1.05em
+        opacity: 0.75
+
+        @media only screen and (max-width: 767px)
+          max-width: 100%
+
+    .workWrapper
+      display: flex
+      flex-wrap: wrap
+
+      .workItem
+        flex: 0 0 75%
+        max-width: 75%
+        margin-bottom: 6em
+
+        @media only screen and (max-width: 767px)
+          flex: 0 0 100%
+          max-width: 100%
+
+        .workItemInner
+          display: flex
+
+          .workImage
+            flex: 0 0 60%
+
+            img
+              border-radius: 5px
+              max-width: 100%
+              height: auto
+              box-shadow: -3px 3px 10px rgba(black, 0.3)
+
+          .workInfo
+            flex: 0 0 40%
+            display: flex
+            align-items: center
+
+            .workInfoWrapper
+              position: relative
+
+              h6
+                color: var(--et-blue)
+                font-size: 1em
+                line-height: 1
+                margin: 0
+
+                @media only screen and (max-width: 767px)
+                  margin-top: 1em
+
+              h2
+                margin: 5px 0 10px
+                font-size: 2em
+
+              .description
+                position: relative
+                border-radius: 5px
+                padding: 15px 25px
+                background-color: var(--et-work-description)
+                color: var(--et-light-grey)
+                line-height: 1.45
+                font-weight: 200
+                letter-spacing: 0.05em
+
+                @media only screen and (min-width: 768px)
+                  width: calc(100% + 20%)
+
+              ul
+                list-style: none
+                padding: 0
+                margin: 25px 0 10px
+
+                li
+                  display: inline-block
+
+                  &:not(:last-child)
+                    margin-right: 15px
+
+          @media only screen and (max-width: 767px)
+            flex-wrap: wrap
+
+            .workImage, .workInfo
+              flex: 0 0 100%
+
+        @media only screen and (min-width: 768px)
+          &.right
+            margin-left: 25%
+
+            .workItemInner
+              text-align: right
+
+              .workInfo
+                .description
+                  right: 20%
+
+          &.left
+            .workItemInner
+              .workImage
+                order: 12
+              .workInfo
+                order: 1

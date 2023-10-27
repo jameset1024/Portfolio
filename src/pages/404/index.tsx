@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, HeadFC, PageProps } from "gatsby"
+import { HeadFC, PageProps } from "gatsby"
 import { CSSProperties } from "react";
 import image from "@app/images/404.png";
 import Button from "@app/components/elements/button";
@@ -41,7 +41,7 @@ const NotFoundPage: React.FC<PageProps> = () => {
       <h1 style={headerStyle}>Yikes, I guess that didn't work</h1>
 
       <div style={button}>
-        <Button src={'/'}>Home</Button>
+        <Button to={'/'}>Home</Button>
       </div>
 
       <div style={imageWrapperStyling}>

@@ -1,0 +1,199 @@
+
+.categoryPage
+  padding: 4em 0
+
+  .section-header-wrap
+    .section-header-text
+      transform: rotate(90deg)
+      transform-origin: left
+      left: 0.3em
+      top: -0.5em
+      font-size: 16em
+
+    @media only screen and (max-width: 991px)
+      height: auto
+      padding: 0 25px
+
+      .section-header-text
+        transform: none
+        position: relative
+        top: 0
+        left: 0
+        font-size: 7em
+
+  .categoryLead
+    position: relative
+    height: 50vh
+    display: flex
+    flex-wrap: wrap
+    align-items: stretch
+
+    > div
+      width: 50%
+      flex: 0 0 50%
+      max-height: 100%
+
+      &:first-child
+        padding-left: calc((100vw - 1140px) / 2)
+        padding-right: 30px
+        position: relative
+
+        .leadInfo
+          position: relative
+
+          h2
+            color: var(--et-blue)
+            font-size: 2em
+            margin-bottom: 0.5em
+
+
+          .post-meta
+            a
+              color: var(--et-blue)
+              text-decoration: none
+
+
+      &:last-child
+        position: relative
+
+        .leadImage
+          position: relative
+          width: 100%
+          height: 100%
+          border-bottom-left-radius: 2em
+          border-top-left-radius: 2em
+          box-shadow: -1px -1px 5px rgba(black, 0.15)
+          overflow: hidden
+
+          img
+            object-fit: cover
+            height: 100%
+            width: 100%
+
+
+    @media only screen and (max-width: 1150px) and (min-width: 992px)
+      > div:first-child
+        padding-left: 25px
+
+
+
+    @media only screen and (max-width: 991px)
+      height: auto
+      margin: 0 auto 30px
+      max-width: 90%
+      padding: 0 15px
+
+      > div
+        width: 100%
+        flex: 0 0 100%
+
+        &:first-child
+          order: 2
+          padding: 0 15px
+
+          .leadInfo
+            top: 0
+
+
+
+        &:last-child
+          order: 1
+
+          .leadImage
+            border-radius: 2em
+            height: 350px
+            top: 0
+
+
+  .wrapper
+    width: 90%
+
+  .categoryGrid
+    display: flex
+    flex-wrap: wrap
+    width: 100%
+    position: relative
+
+    @media only screen and (max-width: 991px)
+      max-width: 900px
+      margin: 0 auto
+
+
+    > .categoryGridItem
+      position: relative
+      width: 45.5%
+      flex: 0 0 45.5%
+
+      &:nth-child(2n + 1)
+        top: -3em
+        margin-right: 3%
+
+
+      &:nth-child(2n + 2)
+        top: 2em
+
+
+      .categoryInnerItem
+        padding: 0 0 1em
+        overflow: hidden
+        border-radius: 2em
+        background-color: var(--et-site-bg)
+        box-shadow: 0 0 8px rgba(black, 0.2)
+
+        .categoryImage
+          height: 300px
+          margin: 0 -10px
+
+          img
+            object-fit: fill
+            width: 100%
+            height: 100%
+
+
+
+        h2
+          margin-bottom: 5px
+
+
+        .excerpt
+          line-height: 1.5em
+
+        .post-meta
+          a
+            color: var(--et-blue)
+            text-decoration: none
+
+
+
+
+      @media only screen and (max-width: 991px)
+        width: 100%
+        flex: 0 0 100%
+
+        &:nth-child(2n + 1)
+          top: 0
+          margin-right: 0
+
+
+        &:nth-child(2n + 2)
+          top: 0
+
+
+        .categoryInnerItem
+          background-color: transparent
+          box-shadow: none
+          padding: 0 15px 1em
+
+          .categoryImage
+            border-radius: 2em
+            overflow: hidden
+            margin: 0
+
+
+          .categoryInfo
+            padding: 0 15px
+
+            h2
+              color: var(--et-blue)
+              font-size: 2em
+              margin-bottom: 0.5em

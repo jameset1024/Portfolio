@@ -74,19 +74,6 @@ export const createPages: ({graphql, actions}: { graphql: any; actions: any }) =
             currentPage: i + 1,
           },
         })
-      })
-
-      const portfolio = allWpPortfolio.edges.map(edge => edge.node);
-      portfolio.forEach( pf => {
-        const { slug } = pf;
-        const portPath = `/work/${slug}`;
-        createPage({
-          path: portPath,
-          component: portfolioTemplate,
-          context: {
-            id: pf.id
-          }
-        });
       });
 
       allWpCategory.nodes.forEach(node => {

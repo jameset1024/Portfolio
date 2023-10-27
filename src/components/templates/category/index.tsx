@@ -1,20 +1,22 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { graphql } from "gatsby";
-import "./styles.scss";
+import "./styles.sass";
 import {monthDisplay} from "@app/helpers/date";
 import {PostData} from "@app/helpers/post";
 import Button from "@app/components/elements/button";
 import {SEO} from "@app/components/layout/head";
 
+
 const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
+  //@ts-ignore
   const posts = data.allWpPost.nodes;
   const first = posts.length ? PostData(posts.splice(0,1)[0]) : false;
 
   return (
     <section className={'categoryPage'}>
-      <div className={'banner-wrap'} role={'banner'}>
-        <div className={'banner-text'}>
+      <div className={'section-header-wrap'} role={'banner'}>
+        <div className={'section-header-text'}>
           Articles
         </div>
       </div>
@@ -35,7 +37,7 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
                       </div>
                       <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${first.content}...</p>`}} />
 
-                      <Button src={`${first.uri}`}>Read</Button>
+                      <Button to={`${first.uri}`}>Read</Button>
                   </div>
               </div>
               <div>
@@ -50,7 +52,8 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
 
       <div className={'wrapper'}>
         <div className={'categoryGrid'}>
-          { posts.map( (e, i) => {
+          {/* @ts-ignore */}
+          { posts.map( (e, i: number) => {
             const data = PostData(e);
 
             return (
@@ -73,7 +76,7 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
                     </div>
                     <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${data.content}...</p>`}} />
 
-                    <Button src={`${data.uri}`}>Read</Button>
+                    <Button to={`${data.uri}`}>Read</Button>
                   </div>
                 </div>
               </div>
@@ -90,7 +93,9 @@ const CategoryPage: React.FC<PageProps> = ({data, pageContext}) => {
   export const Head: HeadFC = ({data, location, pageContext}) => {
     return (
       <SEO>
+        {/* @ts-ignore */}
         <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
+        {/* @ts-ignore */}
         <title>Blog Category {pageContext.name} | Erik James Thomas - Senior Software Engineer</title>
       </SEO>
     )

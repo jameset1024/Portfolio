@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import {graphql, useStaticQuery} from "gatsby";
 import { useLocation } from "@reach/router"
+import {ThemeContext} from "@app/layouts";
 
 type SEO = {
   children: React.ReactNode
 }
 
-export const SEO: HeadFC = ({children}: SEO) => {
+export const SEO = ({children}: SEO) => {
   const location = useLocation();
+  const theme = useContext(ThemeContext);
 
   const { site } = useStaticQuery(
     graphql`
@@ -60,6 +62,7 @@ export const SEO: HeadFC = ({children}: SEO) => {
       <meta name="twitter:image" content={seo.image} />
 
       <meta name="description" content="A software engineer residing in Charlotte, NC sharing my experiences and knowledge with the world." />
+
       {children}
     </>
   );

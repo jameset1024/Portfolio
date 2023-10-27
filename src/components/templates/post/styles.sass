@@ -1,0 +1,245 @@
+header.post-header
+  max-width: 1140px
+  margin: 2em auto 0
+  padding: 0 15px
+
+  > div
+    height: 75vh
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    border-radius: 2em
+
+
+  @media only screen and (max-width: 991px)
+    padding: 0 25px
+
+
+
+div.article-container
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+
+  @media only screen and (min-width: 900px)
+    align-items: stretch
+
+
+  aside
+    position: relative
+    padding: 2.5em 15px 0
+    grid-row-start: 1
+    grid-column: 1 / span 1
+
+    @media only screen and (max-width: 1235px)
+      grid-row-start: 2
+      grid-column: 1 / span 2
+      padding: 0 0 4em
+
+
+    .postInteractions
+      display: inline-block
+      position: sticky
+      top: 100px
+      left: 10px
+
+      @media only screen and (max-width: 1235px)
+        display: flex
+        position: relative
+        max-width: 1140px
+        margin: 0 auto
+        padding: 0 15px
+        left: 0
+
+
+      @media only screen and (max-width: 991px)
+        padding: 0 25px
+
+
+      .postReact
+        margin-bottom: 25px
+
+        .reactHold
+          display: flex
+          justify-content: center
+
+          &:not(:last-child)
+            margin-bottom: 10px
+
+
+          .reactWrap
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 35px
+            height: 35px
+            border-radius: 50%
+            text-align: center
+            background-color: var(--et-grey)
+            cursor: pointer
+
+            &.disable
+              cursor: default
+
+
+            &.thumbs-up.active
+              svg
+                color: green
+
+
+            &.thumbs-down.active
+              svg
+                color: red
+
+
+
+
+
+        @media only screen and (max-width: 1235px)
+          margin-bottom: 0
+          display: flex
+          align-items: flex-end
+          order: 12
+          margin-left: auto
+
+          .reactHold
+            margin-bottom: 0 !important
+
+            &:not(:last-child)
+              margin-right: 15px
+
+
+      .sharePost
+        span
+          text-transform: uppercase
+          font-size: 0.75em
+          color: var(--et-dark-grey)
+          display: block
+          margin-bottom: 10px
+
+
+        .icon
+          position: relative
+          padding-top: 50px
+
+          &:after
+            content: ""
+            background-color: black
+            width: 1px
+            height: 35px
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            top: 0
+
+
+          a
+            display: block
+            text-align: center
+
+            &:not(:last-child)
+              margin-bottom: 15px
+
+
+
+
+        @media only screen and (max-width: 1235px)
+          display: block
+          position: relative
+          float: none
+          max-width: 1140px
+          left: 0
+          order: 1
+
+          .icon
+            padding-top: 0
+
+            &:after
+              display: none
+
+
+            a
+              display: inline-block
+              text-align: left
+              margin-bottom: 0 !important
+
+              &:not(:last-child)
+                margin-right: 25px
+
+
+  article.article
+    grid-column: 1/ span 2
+    grid-row-start: 1
+    padding-bottom: 2em
+    min-width: 0
+
+    .wrapper
+      max-width: 1140px
+      width: 90%
+
+    @media only screen and (max-width: 1235px)
+      padding-bottom: 0
+
+
+    .post-container
+      padding: 0 15px
+
+      h1
+        font-size: 2.25em
+        margin-bottom: 5px
+
+
+      .post-meta
+        margin-bottom: 1.75em
+        font-size: 0.85em
+
+        a
+          color: var(--et-blue)
+          text-decoration: none
+          transition: all linear 0.3s
+          display: inline-block
+          margin-left: 10px
+
+          &:first-of-type:before
+            content: "|"
+            padding-right: 12px
+            color: black
+
+
+          &:hover
+            color: var(--et-darker-blue)
+
+      .content
+        h2
+          font-size: 2em
+          margin: 1.5em 0 0
+
+
+        p
+          line-height: 1.75em
+
+
+        figure
+          margin: 3em 0
+
+          .gatsby-image-wrapper
+            box-shadow: -1px 5px 10px rgba(black, 0.35)
+
+            img
+              max-width: 100%
+              height: auto
+
+
+
+          figcaption
+            margin-top: 10px
+            font-size: 0.9em
+
+
+
+
+      @media only screen and (max-width: 991px)
+        padding: 0 25px
+
+
+
+

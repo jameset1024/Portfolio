@@ -1,5 +1,5 @@
 import React from "react";
-import './styles.scss';
+import './styles.sass';
 
 export default function Sending () {
   return (

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import { upperFirst } from "lodash";
-import './styles.scss'
+import './styles.sass'
 
 const Sidebar = () => {
   const [firstPageName, setFirstPageName] = useState<string>('');

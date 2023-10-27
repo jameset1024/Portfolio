@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import './styles.scss';
+import './styles.sass';
 import { graphql, Link } from "gatsby";
 import { monthDisplay } from "@app/helpers/date";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,6 +16,7 @@ const reactLocalStorageKey = 'etreact_ids';
 const PostPage: React.FC<PageProps> = ({data}) => {
   const [allow, setAllow] = useState<boolean>(true);
   const [action, setAction] = useState<boolean>(false);
+  // @ts-ignore
   const date = new Date(data.wpPost.date);
 
   useEffect(() => {
@@ -25,8 +26,10 @@ const PostPage: React.FC<PageProps> = ({data}) => {
     if ( ids ) {
       ids = JSON.parse(ids);
 
+      // @ts-ignore
       if ( Object.keys(ids).indexOf(data.wpPost.id) !== -1 ) {
         setAllow(false);
+        // @ts-ignore
         setAction(ids[data.wpPost.id]);
       }
     }
@@ -38,6 +41,7 @@ const PostPage: React.FC<PageProps> = ({data}) => {
     e.currentTarget.classList.add('active');
 
     try {
+      // @ts-ignore
       const response = await fetch(`${process.env.GATSBY_REST_API}/wp-json/portfolio/v1/reacts/${data.wpPost.databaseId}`, {
         method: 'POST',
         body: JSON.stringify({action}),
@@ -53,12 +57,15 @@ const PostPage: React.FC<PageProps> = ({data}) => {
       const currentIds = window.localStorage.getItem(reactLocalStorageKey);
       let current: {[id: string]: boolean} = {};
       if ( currentIds ) {
+        // @ts-ignore
         current = JSON.stringify(currentIds) as {[id: string]: boolean};
       } else {
+        // @ts-ignore
         current[data.wpPost.id] = action;
       }
 
       // Sets data if needed
+      // @ts-ignore
       if ( currentIds && current ) current[data.wpPost.id] = action;
 
       // Overwrites the old data
@@ -72,9 +79,9 @@ const PostPage: React.FC<PageProps> = ({data}) => {
 
   return (
     <>
+      {/* @ts-ignore */}
       <header className={'post-header'}>
-        {data.wpPost.featuredImage.node &&
-            <img src={data.wpPost.featuredImage.node.mediaItemUrl} alt={data.wpPost.featuredImage.node.altText}/> }
+        <div style={{backgroundImage: `url(${data.wpPost.featuredImage.node.mediaItemUrl})`}} />
       </header>
       <div className={'article-container'}>
         <aside>
@@ -95,15 +102,19 @@ const PostPage: React.FC<PageProps> = ({data}) => {
               <span>Share:</span>
 
               <div className={'icon'}>
+                {/* @ts-ignore */}
                 <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}`} target={'_blank'}>
                   <FontAwesomeIcon icon={faLinkedinIn} color={'#000'} size={'lg'} />
                 </a>
+                {/* @ts-ignore */}
                 <a href={`https://www.facebook.com/sharer/sharer.php?u=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}`} target={'_blank'}>
                   <FontAwesomeIcon icon={faFacebookF} color={'#000'} size={'lg'} />
                 </a>
+                {/* @ts-ignore */}
                 <a href={`https://twitter.com/intent/tweet?url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}&text=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
                   <FontAwesomeIcon icon={faTwitter} color={'#000'} size={'lg'} />
                 </a>
+                {/* @ts-ignore */}
                 <a href={`http://pinterest.com/pin/create/button/?url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}&media=${data.wpPost.featuredImage.node.mediaItemUrl}&description=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
                   <FontAwesomeIcon icon={faPinterest} color={'#000'} size={'lg'} />
                 </a>
@@ -114,13 +125,16 @@ const PostPage: React.FC<PageProps> = ({data}) => {
         <article className={'article'}>
           <div className={'wrapper'}>
             <div className={'post-container'}>
+              {/* @ts-ignore */}
               <h1>{data.wpPost.title}</h1>
               <div className={'post-meta'}>
                 <span className={'post-date'}>{monthDisplay(date.getMonth())} {date.getDay()}, {date.getFullYear()}</span>
+                {/* @ts-ignore */}
                 <span className={'post-categories'}>{data.wpPost.categories.nodes.map((e,i) => {
                   return <Link to={`/category/${e.slug}`} key={`category-${i}`}><span className={'individual-categories'}>{e.name}</span></Link>;
                 })}</span>
               </div>
+              {/* @ts-ignore */}
               <div className={'content'} dangerouslySetInnerHTML={{__html: data.wpPost.content}} />
             </div>
           </div>
@@ -135,7 +149,9 @@ export default PostPage;
 export const Head: HeadFC = ({ data, location }) => {
   return (
     <SEO>
+      {/* @ts-ignore */}
       <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
+      {/* @ts-ignore */}
       <title>{data.wpPost.title} | Erik James Thomas - Senior Software Engineer</title>
     </SEO>
   )

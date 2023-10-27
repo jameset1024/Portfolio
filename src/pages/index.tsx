@@ -1,18 +1,22 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import './styles.scss';
-import {useEffect, useRef, useState} from "react";
-import {graphql, Link} from "gatsby";
+import './styles.sass';
+import { useEffect, useRef, useState } from "react";
+import { graphql } from "gatsby";
+import Work from "@app/components/sections/work";
+import About from "@app/components/sections/about";
+import Experience from "@app/components/sections/experience";
 import Button from "@app/components/elements/button";
-import {SEO} from "@app/components/layout/head";
-import {Experience} from "@app/data/experience";
+import { SEO } from "@app/components/layout/head";
+import Expertise from "@app/components/sections/expertise";
+import Contact from "@app/components/sections/contact";
+
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
-  const [active, setActive] = useState<boolean>(true);
+  const [active, setActive] = useState(true);
   const labelRef = useRef<HTMLSpanElement>(null);
   const labels = ['Nerd', 'Basketball\u00A0Fan', 'Movie\u00A0Lover', 'Anime\u00A0Fan', 'Video\u00A0Gamer', 'Foodie', 'Software\u00A0Engineer'];
-  const project = data.allWpPortfolio.nodes[0];
-  const job = Experience[0];
+
 
   let dropInterval: ReturnType<typeof setInterval>;
   let dropTimeout: ReturnType<typeof setTimeout>;
@@ -44,7 +48,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
           labelRef.current.innerText = '';
         }
 
-        for( let o = 0; o < word.length; o++ ) {
+        for ( let o = 0; o < word.length; o++ ) {
           await new Promise<void>((resolve) => {
             dropTimeout = setTimeout(() => {
               if ( labelRef.current ) {
@@ -56,8 +60,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
         }
 
         key = key === (labels.length - 1) ? 0 : (key + 1);
-
-        await new Promise((resolve) => setTimeout(() => resolve(), 3000));
+        await new Promise<void>((resolve) => setTimeout(() => resolve(), 3000));
       } while (active);
     }
 
@@ -87,87 +90,52 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
     });
   }
 
+  const contactScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    const header = document.querySelector('.mainHeader');
+    const contact = document.getElementById('contact');
+
+    if ( header && contact ) {
+      window.scrollTo({
+        top: contact.offsetTop - header.clientHeight,
+        left: 0,
+        behavior: "smooth"
+      });
+    }
+  }
+
   return (
-    <div className={'homePage'}>
-      <header>
+    <>
+      <header className={'homePage'}>
         <div className={'wrapper'}>
           <div className={'headerWrapper'}>
-            <div className={'home-intro'}>Hello There,</div>
+            <div className={'home-intro'}>Hello There</div>
             <h1>My Name Is <span>Erik Thomas</span></h1>
             <h3>I am a <span ref={labelRef}>Software Engineer</span></h3>
 
-            <p>I'm a full-stack engineer currently managing full cycle development and AWS infrastructure for clients at <Link to={'https://nearbycreative.com'} target={'_blank'}>Nearby Creative</Link>. If you have a project or just something interesting please reach out.</p>
+            <p>I'm a full-stack engineer currently managing full cycle development and AWS infrastructure for clients at <a href={'https://nearbycreative.com'} target={'_blank'}>Nearby Creative</a>. If you have a project or just something interesting please reach out.</p>
 
-            <Button src={'/contact'}>Contact Me</Button>
+            <Button to={'#'} data-target={'#contact'} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => contactScroll(e)}>Contact Me</Button>
           </div>
         </div>
       </header>
 
+      {/* About me section */}
+      <About />
+
+      {/* Expertise Section */}
+      <Expertise />
+
+      {/* Experience section */}
+      <Experience />
+
       {/* My work section */}
-      <section className={'myWork'}>
-        <div className={'wrapper'}>
-          <div className={'workGrid'}>
-            <div>
-              <h2>My Work</h2>
-              <p>Over the years I've worked on many different projects across many different platforms using many different languages. Projects have ranged from simple WP sites to large MedTech and FinTech applications as well some infrastructure work.</p>
+      <Work />
 
-              <Button src={'/work'}>View All Projects</Button>
-            </div>
-
-            { project &&
-                <div>
-                    <h3>Recent Project</h3>
-
-                    <div className={'homeWorkInner'}>
-                        <div className={'homeWorkImage'}>
-                            <img src={project.featuredImage.node.mediaItemUrl} alt={project.featuredImage.node.altText} />
-                        </div>
-                        <div className={'homeWorkInfo'}>
-                            <div className={'homeWorkMeta'}>{project.acfPortfolio.projectType}</div>
-
-                            <h2>{project.title}</h2>
-
-                            <Button src={`/work/${project.slug}`}>View Project</Button>
-                        </div>
-                    </div>
-                </div>
-            }
-          </div>
-        </div>
-      </section>
-
-      {/* My position section */}
-      <section className={'homeCurrentPosition'}>
-        <div className={'wrapper'}>
-          <h2>What I'm currently up to</h2>
-
-          <div className={'currentlyUpTo'}>
-            <div className={'currentPosition'}>
-              <h3>Current Position</h3>
-              <div className={'positionData'}>
-                <div><strong>Position:</strong> {job.position}</div>
-                <div><strong>Company:</strong> {job.title}</div>
-                <div><strong>Dates:</strong> {job.date}</div>
-              </div>
-              <p>{job.currentDescription}</p>
-            </div>
-            <div>
-              <img src={job.logo} alt={job.title} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={'homeWorkWithMe'}>
-        <div className={'wrapper'}>
-          <div className={'chatWithMe'}>
-            <h3>Want to work with me?</h3>
-            <p>I'm always open to new and interesting projects. If you have something that you and your company need help with reach out and let's talk.</p>
-            <Button src={'/contact'}>Let's Chat</Button>
-          </div>
-        </div>
-      </section>
-    </div>
+      {/* Contact section */}
+      <Contact />
+    </>
   )
 }
 
@@ -176,6 +144,7 @@ export default IndexPage
 export const Head: HeadFC = ({location, data}) => {
   return (
     <SEO>
+      {/* @ts-ignore */}
       <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
       <title>Erik James Thomas - Senior Software Engineer</title>
     </SEO>
@@ -185,23 +154,6 @@ export const Head: HeadFC = ({location, data}) => {
 
 export const pageQuery = graphql`
   query MyQuery {
-  allWpPortfolio(limit: 1, sort: {date: DESC}) {
-    nodes {
-      id
-      title
-      slug
-      acfPortfolio {
-        projectType
-      }
-      featuredImage {
-        node {
-          id
-          mediaItemUrl
-          altText
-        }
-      }
-    }
-  }
   site {
     siteMetadata {
       siteUrl
