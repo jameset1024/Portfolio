@@ -5,7 +5,7 @@ import Header from "@app/components/layout/header";
 import Footer from "@app/components/layout/footer";
 import { ToastContainer } from "react-toastify";
 import Loading from "@app/components/elements/loading";
-import {HideForLoading, SiteWrapper} from "@app/layouts/styles";
+import {SiteWrapper} from "@app/layouts/styles";
 
 type LayoutProp = {
   children: React.ReactNode
