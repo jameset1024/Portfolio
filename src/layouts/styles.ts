@@ -22,6 +22,7 @@ export const SiteWrapper = styled.div<{$theme: string;}>`
             --et-form-background: var(--et-navigation);
             --et-dark-grey: #797979;
             --et-site-bg: #fafafa;
+            --et-share-links: var(--et-navigation-links)
           `}
 
   ${props =>
@@ -46,5 +47,6 @@ export const SiteWrapper = styled.div<{$theme: string;}>`
             --et-form-background: 3, 40, 58;
             --et-dark-grey: #797979;
             --et-site-bg: #0f3147;
+            --et-share-links: var(--et-site-bg)
           `}
 `;

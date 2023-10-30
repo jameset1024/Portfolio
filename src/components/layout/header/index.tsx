@@ -77,7 +77,7 @@ const Header = ({setTheme}: HeaderType) => {
                           type={'checkbox'}
                           id={'mode'}
                           className={'hidden'}
-                          defaultChecked={theme === 'dark'}
+                          checked={theme === 'dark'}
                           onChange={(e) => setTheme(e.currentTarget.checked ? 'dark' : 'light')}
                       />
                       <label htmlFor={'mode'}>

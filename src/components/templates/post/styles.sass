@@ -79,6 +79,9 @@ div.article-container
             background-color: var(--et-grey)
             cursor: pointer
 
+            svg
+              color: var(--et-share-links)
+
             &.disable
               cursor: default
 
@@ -110,7 +113,7 @@ div.article-container
         span
           text-transform: uppercase
           font-size: 0.75em
-          color: var(--et-dark-grey)
+          color: var(--et-navigation-links)
           display: block
           margin-bottom: 10px
 
@@ -121,7 +124,7 @@ div.article-container
 
           &:after
             content: ""
-            background-color: black
+            background-color: var(--et-navigation-links)
             width: 1px
             height: 35px
             position: absolute
@@ -132,6 +135,9 @@ div.article-container
           a
             display: block
             text-align: center
+
+            svg
+              color: var(--et-navigation-links)
 
             &:not(:last-child)
               margin-bottom: 15px
