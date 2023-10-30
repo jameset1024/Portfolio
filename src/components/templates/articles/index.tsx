@@ -85,7 +85,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
                           data.categories.length &&
                           data.categories.map( (e,i) => {
                             // @ts-ignore
-                            return <Link to={`/category/${e.slug}`}><span className={'category'} key={`cat-${i}`}>{e.name}</span></Link>
+                            return <Link to={`/category/${e.slug}`} key={`posts-cat-${i}`}><span className={'category'}}>{e.name}</span></Link>
                           })}
                       </div>
                       <div className={'excerpt'} dangerouslySetInnerHTML={{__html: `<p>${data.content}...</p>`}} />
