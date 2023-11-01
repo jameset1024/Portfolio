@@ -59,7 +59,7 @@ const Header = ({setTheme}: HeaderType) => {
         <div className={'wrapper innerHeader'}>
           <div className={'siteLogo'}>
             <Link to={'/'}>
-              <Logo width={150} height={"auto"} />
+              <Logo width={150} height={25} />
             </Link>
           </div>
 

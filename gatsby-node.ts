@@ -29,14 +29,6 @@ export const createPages: ({graphql, actions}: { graphql: any; actions: any }) =
             name
             slug
           }
-        },
-        allWpPortfolio {
-          edges {
-            node {
-              id
-              slug
-            }
-          }
         }
       }
     `);

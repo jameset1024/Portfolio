@@ -13918,7 +13918,7 @@ type PostByIdQuery = { readonly wpPost: { readonly id: string, readonly database
 type allNeededDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type allNeededDataQuery = { readonly allWpPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly title: string | null, readonly uri: string | null, readonly date: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null }> } | null } }> }, readonly allWpCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null }> }, readonly allWpPortfolio: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly slug: string | null } }> } };
+type allNeededDataQuery = { readonly allWpPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly title: string | null, readonly uri: string | null, readonly date: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null }> } | null } }> }, readonly allWpCategory: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null }> } };
 
 
 }
