@@ -21,7 +21,9 @@ const WorkPage = () => {
               <div className={'workItem ' + ((i % 2) === 0 ? 'right' : 'left')} key={`workitem-${i}`}>
                 <div className={'workItemInner'}>
                   <div className={'workImage'}>
-                    <img src={e.image} alt={e.title} />
+                    <a href={e.link} target={'_blank'}>
+                      <img src={e.image} alt={e.title} />
+                    </a>
                   </div>
                   <div className={'workInfo'}>
                     <div className={'workInfoWrapper'}>

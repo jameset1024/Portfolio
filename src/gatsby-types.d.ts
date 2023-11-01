@@ -2416,46 +2416,47 @@ type Query_wpPageArgs = {
 
 
 type Query_wpPortfolioArgs = {
-  acfPortfolio: InputMaybe<WpPortfolio_AcfportfolioFilterInput>;
+  _xtypename: InputMaybe<StringQueryOperatorInput>;
+  acfPortfolio: InputMaybe<WpPortfolioAcfPortfolioFilterInput>;
   children: InputMaybe<NodeFilterListInput>;
   content: InputMaybe<StringQueryOperatorInput>;
-  contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFilterInput>;
+  contentType: InputMaybe<WpPortfolioContentTypeFilterInput>;
   contentTypeName: InputMaybe<StringQueryOperatorInput>;
   databaseId: InputMaybe<IntQueryOperatorInput>;
   date: InputMaybe<DateQueryOperatorInput>;
   dateGmt: InputMaybe<DateQueryOperatorInput>;
-  desiredSlug: InputMaybe<StringQueryOperatorInput>;
-  enclosure: InputMaybe<StringQueryOperatorInput>;
-  featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFilterInput>;
+  featuredImage: InputMaybe<WpPortfolioFeaturedImageFilterInput>;
   featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
-  featuredImageId: InputMaybe<IDQueryOperatorInput>;
+  featuredImageId: InputMaybe<StringQueryOperatorInput>;
   guid: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
-  lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
+  lastEditedBy: InputMaybe<WpPortfolioLastEditedByFilterInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   modified: InputMaybe<DateQueryOperatorInput>;
   modifiedGmt: InputMaybe<DateQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
-  portfolioTypes: InputMaybe<WpPortfolioToPortfolio_typeConnectionTypeFilterInput>;
+  path: InputMaybe<StringQueryOperatorInput>;
+  portfolioTypes: InputMaybe<WpPortfolioPortfolioTypesFilterInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
   status: InputMaybe<StringQueryOperatorInput>;
-  template: InputMaybe<WpContentTemplateFilterInput>;
-  terms: InputMaybe<WpPortfolioToTermNodeConnectionTypeFilterInput>;
+  template: InputMaybe<WpPortfolioTemplateFilterInput>;
+  terms: InputMaybe<WpPortfolioTermsFilterInput>;
   title: InputMaybe<StringQueryOperatorInput>;
+  type: InputMaybe<StringQueryOperatorInput>;
   uri: InputMaybe<StringQueryOperatorInput>;
 };
 
 
 type Query_wpPortfolioTypeArgs = {
+  _xtypename: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
-  contentNodes: InputMaybe<WpPortfolio_typeToContentNodeConnectionTypeFilterInput>;
+  contentNodes: InputMaybe<WpPortfolio_typeContentNodesFilterInput>;
   count: InputMaybe<IntQueryOperatorInput>;
   databaseId: InputMaybe<IntQueryOperatorInput>;
-  description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
@@ -2464,12 +2465,13 @@ type Query_wpPortfolioTypeArgs = {
   name: InputMaybe<StringQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
-  portfolios: InputMaybe<WpPortfolio_typeToPortfolioConnectionTypeFilterInput>;
+  path: InputMaybe<StringQueryOperatorInput>;
+  portfolios: InputMaybe<WpPortfolio_typePortfoliosFilterInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
-  taxonomy: InputMaybe<WpPortfolio_typeToTaxonomyConnectionEdgeTypeFilterInput>;
+  taxonomy: InputMaybe<WpPortfolio_typeTaxonomyFilterInput>;
   taxonomyName: InputMaybe<StringQueryOperatorInput>;
-  termGroupId: InputMaybe<IntQueryOperatorInput>;
   termTaxonomyId: InputMaybe<IntQueryOperatorInput>;
+  type: InputMaybe<StringQueryOperatorInput>;
   uri: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -3598,11 +3600,6 @@ type Wp = Node & {
   readonly wpGatsby: Maybe<WpWPGatsby>;
   /** Fields of the &#039;WritingSettings&#039; settings group */
   readonly writingSettings: Maybe<WpWritingSettings>;
-};
-
-type WpAcfFieldGroup = {
-  /** The name of the ACF Field Group */
-  readonly fieldGroupName: Maybe<Scalars['String']>;
 };
 
 /** Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from. */
@@ -9635,69 +9632,42 @@ type WpPageToCommentConnectionTypeSortInput = {
   readonly pageInfo: InputMaybe<WpPageToCommentConnectionPageInfoTypeSortInput>;
 };
 
-/** The portfolio type */
-type WpPortfolio = Node & WpContentNode & WpDatabaseIdentifier & WpMenuItemLinkable & WpNode & WpNodeWithContentEditor & WpNodeWithFeaturedImage & WpNodeWithTemplate & WpNodeWithTitle & WpUniformResourceIdentifiable & {
-  /** Added to the GraphQL Schema because the ACF Field Group &quot;Portfolio&quot; was set to Show in GraphQL. */
-  readonly acfPortfolio: Maybe<WpPortfolio_Acfportfolio>;
+type WpPortfolio = Node & {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly acfPortfolio: Maybe<WpPortfolioAcfPortfolio>;
   readonly children: ReadonlyArray<Node>;
-  /** The content of the post. */
   readonly content: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the ContentType type */
-  readonly contentType: Maybe<WpContentNodeToContentTypeConnectionEdgeType>;
-  /** The name of the Content Type the node belongs to */
-  readonly contentTypeName: Scalars['String'];
-  /** The unique identifier stored in the database */
-  readonly databaseId: Scalars['Int'];
-  /** Post publishing date. */
+  readonly contentType: Maybe<WpPortfolioContentType>;
+  readonly contentTypeName: Maybe<Scalars['String']>;
+  readonly databaseId: Maybe<Scalars['Int']>;
   readonly date: Maybe<Scalars['Date']>;
-  /** The publishing date set in GMT. */
   readonly dateGmt: Maybe<Scalars['Date']>;
-  /** The desired slug of the post */
-  readonly desiredSlug: Maybe<Scalars['String']>;
-  /** The RSS enclosure for the object */
-  readonly enclosure: Maybe<Scalars['String']>;
-  /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
-  readonly featuredImage: Maybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeType>;
-  /** The database identifier for the featured image node assigned to the content node */
+  readonly featuredImage: Maybe<WpPortfolioFeaturedImage>;
   readonly featuredImageDatabaseId: Maybe<Scalars['Int']>;
-  /** Globally unique ID of the featured image assigned to the node */
-  readonly featuredImageId: Maybe<Scalars['ID']>;
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+  readonly featuredImageId: Maybe<Scalars['String']>;
   readonly guid: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
-  /** Whether the node is a Content Node */
-  readonly isContentNode: Scalars['Boolean'];
-  /** Whether the node is a Term */
-  readonly isTermNode: Scalars['Boolean'];
-  /** The user that most recently edited the node */
-  readonly lastEditedBy: Maybe<WpContentNodeToEditLastConnectionEdgeType>;
-  /** The permalink of the post */
+  readonly isContentNode: Maybe<Scalars['Boolean']>;
+  readonly isTermNode: Maybe<Scalars['Boolean']>;
+  readonly lastEditedBy: Maybe<WpPortfolioLastEditedBy>;
   readonly link: Maybe<Scalars['String']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
   readonly modified: Maybe<Scalars['Date']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
   readonly modifiedGmt: Maybe<Scalars['Date']>;
   readonly nodeType: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
-  /** Connection between the Portfolio type and the portfolio_type type */
-  readonly portfolioTypes: Maybe<WpPortfolioToPortfolio_typeConnectionType>;
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+  readonly path: Maybe<Scalars['String']>;
+  readonly portfolioTypes: Maybe<WpPortfolioPortfolioTypes>;
   readonly slug: Maybe<Scalars['String']>;
-  /** The current status of the object */
   readonly status: Maybe<Scalars['String']>;
-  /** The template assigned to the node */
-  readonly template: Maybe<WpContentTemplate>;
-  /** Connection between the Portfolio type and the TermNode type */
-  readonly terms: Maybe<WpPortfolioToTermNodeConnectionType>;
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+  readonly template: Maybe<WpPortfolioTemplate>;
+  readonly terms: Maybe<WpPortfolioTerms>;
   readonly title: Maybe<Scalars['String']>;
-  /** The unique resource identifier path */
+  readonly type: Maybe<Scalars['String']>;
   readonly uri: Maybe<Scalars['String']>;
 };
 
 
-/** The portfolio type */
 type WpPortfolio_dateArgs = {
   difference: InputMaybe<Scalars['String']>;
   formatString: InputMaybe<Scalars['String']>;
@@ -9706,7 +9676,6 @@ type WpPortfolio_dateArgs = {
 };
 
 
-/** The portfolio type */
 type WpPortfolio_dateGmtArgs = {
   difference: InputMaybe<Scalars['String']>;
   formatString: InputMaybe<Scalars['String']>;
@@ -9715,7 +9684,6 @@ type WpPortfolio_dateGmtArgs = {
 };
 
 
-/** The portfolio type */
 type WpPortfolio_modifiedArgs = {
   difference: InputMaybe<Scalars['String']>;
   formatString: InputMaybe<Scalars['String']>;
@@ -9724,12 +9692,163 @@ type WpPortfolio_modifiedArgs = {
 };
 
 
-/** The portfolio type */
 type WpPortfolio_modifiedGmtArgs = {
   difference: InputMaybe<Scalars['String']>;
   formatString: InputMaybe<Scalars['String']>;
   fromNow: InputMaybe<Scalars['Boolean']>;
   locale: InputMaybe<Scalars['String']>;
+};
+
+type WpPortfolioAcfPortfolio = {
+  readonly client: Maybe<Scalars['String']>;
+  readonly excerpt: Maybe<Scalars['String']>;
+  readonly fieldGroupName: Maybe<Scalars['String']>;
+  readonly image: Maybe<WpPortfolioAcfPortfolioImage>;
+  readonly imageFour: Maybe<WpPortfolioAcfPortfolioImageFour>;
+  readonly imageThree: Maybe<WpPortfolioAcfPortfolioImageThree>;
+  readonly imageTwo: Maybe<WpPortfolioAcfPortfolioImageTwo>;
+  readonly mockup: Maybe<WpPortfolioAcfPortfolioMockup>;
+  readonly projectType: Maybe<Scalars['String']>;
+  readonly website: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioAcfPortfolioFieldSelector = {
+  readonly client: InputMaybe<FieldSelectorEnum>;
+  readonly excerpt: InputMaybe<FieldSelectorEnum>;
+  readonly fieldGroupName: InputMaybe<FieldSelectorEnum>;
+  readonly image: InputMaybe<WpPortfolioAcfPortfolioImageFieldSelector>;
+  readonly imageFour: InputMaybe<WpPortfolioAcfPortfolioImageFourFieldSelector>;
+  readonly imageThree: InputMaybe<WpPortfolioAcfPortfolioImageThreeFieldSelector>;
+  readonly imageTwo: InputMaybe<WpPortfolioAcfPortfolioImageTwoFieldSelector>;
+  readonly mockup: InputMaybe<WpPortfolioAcfPortfolioMockupFieldSelector>;
+  readonly projectType: InputMaybe<FieldSelectorEnum>;
+  readonly website: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioAcfPortfolioFilterInput = {
+  readonly client: InputMaybe<StringQueryOperatorInput>;
+  readonly excerpt: InputMaybe<StringQueryOperatorInput>;
+  readonly fieldGroupName: InputMaybe<StringQueryOperatorInput>;
+  readonly image: InputMaybe<WpPortfolioAcfPortfolioImageFilterInput>;
+  readonly imageFour: InputMaybe<WpPortfolioAcfPortfolioImageFourFilterInput>;
+  readonly imageThree: InputMaybe<WpPortfolioAcfPortfolioImageThreeFilterInput>;
+  readonly imageTwo: InputMaybe<WpPortfolioAcfPortfolioImageTwoFilterInput>;
+  readonly mockup: InputMaybe<WpPortfolioAcfPortfolioMockupFilterInput>;
+  readonly projectType: InputMaybe<StringQueryOperatorInput>;
+  readonly website: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioAcfPortfolioImage = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioAcfPortfolioImageFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioAcfPortfolioImageFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioAcfPortfolioImageFour = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioAcfPortfolioImageFourFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioAcfPortfolioImageFourFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioAcfPortfolioImageFourSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioAcfPortfolioImageSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioAcfPortfolioImageThree = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioAcfPortfolioImageThreeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioAcfPortfolioImageThreeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioAcfPortfolioImageThreeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioAcfPortfolioImageTwo = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioAcfPortfolioImageTwoFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioAcfPortfolioImageTwoFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioAcfPortfolioImageTwoSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioAcfPortfolioMockup = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioAcfPortfolioMockupFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioAcfPortfolioMockupFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioAcfPortfolioMockupSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioAcfPortfolioSortInput = {
+  readonly client: InputMaybe<SortOrderEnum>;
+  readonly excerpt: InputMaybe<SortOrderEnum>;
+  readonly fieldGroupName: InputMaybe<SortOrderEnum>;
+  readonly image: InputMaybe<WpPortfolioAcfPortfolioImageSortInput>;
+  readonly imageFour: InputMaybe<WpPortfolioAcfPortfolioImageFourSortInput>;
+  readonly imageThree: InputMaybe<WpPortfolioAcfPortfolioImageThreeSortInput>;
+  readonly imageTwo: InputMaybe<WpPortfolioAcfPortfolioImageTwoSortInput>;
+  readonly mockup: InputMaybe<WpPortfolioAcfPortfolioMockupSortInput>;
+  readonly projectType: InputMaybe<SortOrderEnum>;
+  readonly website: InputMaybe<SortOrderEnum>;
 };
 
 type WpPortfolioConnection = {
@@ -9771,27 +9890,40 @@ type WpPortfolioConnection_sumArgs = {
   field: WpPortfolioFieldSelector;
 };
 
-type WpPortfolioConnectionEdgeType = {
-  /** The connected portfolio Node */
-  readonly node: WpPortfolio;
+type WpPortfolioContentType = {
+  readonly node: Maybe<WpPortfolioContentTypeNode>;
 };
 
-type WpPortfolioConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+type WpPortfolioContentTypeFieldSelector = {
+  readonly node: InputMaybe<WpPortfolioContentTypeNodeFieldSelector>;
 };
 
-type WpPortfolioConnectionType = {
-  /** A list of connected portfolio Nodes */
-  readonly nodes: ReadonlyArray<WpPortfolio>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPortfolioConnectionPageInfoType;
+type WpPortfolioContentTypeFilterInput = {
+  readonly node: InputMaybe<WpPortfolioContentTypeNodeFilterInput>;
+};
+
+type WpPortfolioContentTypeNode = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioContentTypeNodeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioContentTypeNodeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioContentTypeNodeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioContentTypeSortInput = {
+  readonly node: InputMaybe<WpPortfolioContentTypeNodeSortInput>;
 };
 
 type WpPortfolioEdge = {
@@ -9800,18 +9932,53 @@ type WpPortfolioEdge = {
   readonly previous: Maybe<WpPortfolio>;
 };
 
+type WpPortfolioFeaturedImage = {
+  readonly node: Maybe<WpPortfolioFeaturedImageNode>;
+};
+
+type WpPortfolioFeaturedImageFieldSelector = {
+  readonly node: InputMaybe<WpPortfolioFeaturedImageNodeFieldSelector>;
+};
+
+type WpPortfolioFeaturedImageFilterInput = {
+  readonly node: InputMaybe<WpPortfolioFeaturedImageNodeFilterInput>;
+};
+
+type WpPortfolioFeaturedImageNode = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioFeaturedImageNodeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioFeaturedImageNodeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioFeaturedImageNodeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioFeaturedImageSortInput = {
+  readonly node: InputMaybe<WpPortfolioFeaturedImageNodeSortInput>;
+};
+
 type WpPortfolioFieldSelector = {
-  readonly acfPortfolio: InputMaybe<WpPortfolio_AcfportfolioFieldSelector>;
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly acfPortfolio: InputMaybe<WpPortfolioAcfPortfolioFieldSelector>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly content: InputMaybe<FieldSelectorEnum>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFieldSelector>;
+  readonly contentType: InputMaybe<WpPortfolioContentTypeFieldSelector>;
   readonly contentTypeName: InputMaybe<FieldSelectorEnum>;
   readonly databaseId: InputMaybe<FieldSelectorEnum>;
   readonly date: InputMaybe<FieldSelectorEnum>;
   readonly dateGmt: InputMaybe<FieldSelectorEnum>;
-  readonly desiredSlug: InputMaybe<FieldSelectorEnum>;
-  readonly enclosure: InputMaybe<FieldSelectorEnum>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFieldSelector>;
+  readonly featuredImage: InputMaybe<WpPortfolioFeaturedImageFieldSelector>;
   readonly featuredImageDatabaseId: InputMaybe<FieldSelectorEnum>;
   readonly featuredImageId: InputMaybe<FieldSelectorEnum>;
   readonly guid: InputMaybe<FieldSelectorEnum>;
@@ -9819,57 +9986,56 @@ type WpPortfolioFieldSelector = {
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
+  readonly lastEditedBy: InputMaybe<WpPortfolioLastEditedByFieldSelector>;
   readonly link: InputMaybe<FieldSelectorEnum>;
   readonly modified: InputMaybe<FieldSelectorEnum>;
   readonly modifiedGmt: InputMaybe<FieldSelectorEnum>;
   readonly nodeType: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly portfolioTypes: InputMaybe<WpPortfolioToPortfolio_typeConnectionTypeFieldSelector>;
+  readonly path: InputMaybe<FieldSelectorEnum>;
+  readonly portfolioTypes: InputMaybe<WpPortfolioPortfolioTypesFieldSelector>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
   readonly status: InputMaybe<FieldSelectorEnum>;
-  readonly template: InputMaybe<WpContentTemplateFieldSelector>;
-  readonly terms: InputMaybe<WpPortfolioToTermNodeConnectionTypeFieldSelector>;
+  readonly template: InputMaybe<WpPortfolioTemplateFieldSelector>;
+  readonly terms: InputMaybe<WpPortfolioTermsFieldSelector>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
   readonly uri: InputMaybe<FieldSelectorEnum>;
 };
 
 type WpPortfolioFilterInput = {
-  readonly acfPortfolio: InputMaybe<WpPortfolio_AcfportfolioFilterInput>;
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly acfPortfolio: InputMaybe<WpPortfolioAcfPortfolioFilterInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly content: InputMaybe<StringQueryOperatorInput>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFilterInput>;
+  readonly contentType: InputMaybe<WpPortfolioContentTypeFilterInput>;
   readonly contentTypeName: InputMaybe<StringQueryOperatorInput>;
   readonly databaseId: InputMaybe<IntQueryOperatorInput>;
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly dateGmt: InputMaybe<DateQueryOperatorInput>;
-  readonly desiredSlug: InputMaybe<StringQueryOperatorInput>;
-  readonly enclosure: InputMaybe<StringQueryOperatorInput>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFilterInput>;
+  readonly featuredImage: InputMaybe<WpPortfolioFeaturedImageFilterInput>;
   readonly featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
-  readonly featuredImageId: InputMaybe<IDQueryOperatorInput>;
+  readonly featuredImageId: InputMaybe<StringQueryOperatorInput>;
   readonly guid: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
+  readonly lastEditedBy: InputMaybe<WpPortfolioLastEditedByFilterInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly modified: InputMaybe<DateQueryOperatorInput>;
   readonly modifiedGmt: InputMaybe<DateQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
-  readonly portfolioTypes: InputMaybe<WpPortfolioToPortfolio_typeConnectionTypeFilterInput>;
+  readonly path: InputMaybe<StringQueryOperatorInput>;
+  readonly portfolioTypes: InputMaybe<WpPortfolioPortfolioTypesFilterInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly status: InputMaybe<StringQueryOperatorInput>;
-  readonly template: InputMaybe<WpContentTemplateFilterInput>;
-  readonly terms: InputMaybe<WpPortfolioToTermNodeConnectionTypeFilterInput>;
+  readonly template: InputMaybe<WpPortfolioTemplateFilterInput>;
+  readonly terms: InputMaybe<WpPortfolioTermsFilterInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
   readonly uri: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPortfolioFilterListInput = {
-  readonly elemMatch: InputMaybe<WpPortfolioFilterInput>;
 };
 
 type WpPortfolioGroupConnection = {
@@ -9913,18 +10079,125 @@ type WpPortfolioGroupConnection_sumArgs = {
   field: WpPortfolioFieldSelector;
 };
 
+type WpPortfolioLastEditedBy = {
+  readonly node: Maybe<WpPortfolioLastEditedByNode>;
+};
+
+type WpPortfolioLastEditedByFieldSelector = {
+  readonly node: InputMaybe<WpPortfolioLastEditedByNodeFieldSelector>;
+};
+
+type WpPortfolioLastEditedByFilterInput = {
+  readonly node: InputMaybe<WpPortfolioLastEditedByNodeFilterInput>;
+};
+
+type WpPortfolioLastEditedByNode = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioLastEditedByNodeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioLastEditedByNodeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioLastEditedByNodeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioLastEditedBySortInput = {
+  readonly node: InputMaybe<WpPortfolioLastEditedByNodeSortInput>;
+};
+
+type WpPortfolioPortfolioTypes = {
+  readonly nodes: Maybe<ReadonlyArray<Maybe<WpPortfolioPortfolioTypesNodes>>>;
+  readonly pageInfo: Maybe<WpPortfolioPortfolioTypesPageInfo>;
+};
+
+type WpPortfolioPortfolioTypesFieldSelector = {
+  readonly nodes: InputMaybe<WpPortfolioPortfolioTypesNodesFieldSelector>;
+  readonly pageInfo: InputMaybe<WpPortfolioPortfolioTypesPageInfoFieldSelector>;
+};
+
+type WpPortfolioPortfolioTypesFilterInput = {
+  readonly nodes: InputMaybe<WpPortfolioPortfolioTypesNodesFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPortfolioPortfolioTypesPageInfoFilterInput>;
+};
+
+type WpPortfolioPortfolioTypesNodes = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioPortfolioTypesNodesFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioPortfolioTypesNodesFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioPortfolioTypesNodesFilterListInput = {
+  readonly elemMatch: InputMaybe<WpPortfolioPortfolioTypesNodesFilterInput>;
+};
+
+type WpPortfolioPortfolioTypesNodesSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioPortfolioTypesPageInfo = {
+  readonly endCursor: Maybe<Scalars['String']>;
+  readonly hasNextPage: Maybe<Scalars['Boolean']>;
+  readonly hasPreviousPage: Maybe<Scalars['Boolean']>;
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioPortfolioTypesPageInfoFieldSelector = {
+  readonly endCursor: InputMaybe<FieldSelectorEnum>;
+  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
+  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
+  readonly startCursor: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioPortfolioTypesPageInfoFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioPortfolioTypesPageInfoSortInput = {
+  readonly endCursor: InputMaybe<SortOrderEnum>;
+  readonly hasNextPage: InputMaybe<SortOrderEnum>;
+  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
+  readonly startCursor: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioPortfolioTypesSortInput = {
+  readonly nodes: InputMaybe<WpPortfolioPortfolioTypesNodesSortInput>;
+  readonly pageInfo: InputMaybe<WpPortfolioPortfolioTypesPageInfoSortInput>;
+};
+
 type WpPortfolioSortInput = {
-  readonly acfPortfolio: InputMaybe<WpPortfolio_AcfportfolioSortInput>;
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly acfPortfolio: InputMaybe<WpPortfolioAcfPortfolioSortInput>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly content: InputMaybe<SortOrderEnum>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeSortInput>;
+  readonly contentType: InputMaybe<WpPortfolioContentTypeSortInput>;
   readonly contentTypeName: InputMaybe<SortOrderEnum>;
   readonly databaseId: InputMaybe<SortOrderEnum>;
   readonly date: InputMaybe<SortOrderEnum>;
   readonly dateGmt: InputMaybe<SortOrderEnum>;
-  readonly desiredSlug: InputMaybe<SortOrderEnum>;
-  readonly enclosure: InputMaybe<SortOrderEnum>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeSortInput>;
+  readonly featuredImage: InputMaybe<WpPortfolioFeaturedImageSortInput>;
   readonly featuredImageDatabaseId: InputMaybe<SortOrderEnum>;
   readonly featuredImageId: InputMaybe<SortOrderEnum>;
   readonly guid: InputMaybe<SortOrderEnum>;
@@ -9932,232 +10205,136 @@ type WpPortfolioSortInput = {
   readonly internal: InputMaybe<InternalSortInput>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
+  readonly lastEditedBy: InputMaybe<WpPortfolioLastEditedBySortInput>;
   readonly link: InputMaybe<SortOrderEnum>;
   readonly modified: InputMaybe<SortOrderEnum>;
   readonly modifiedGmt: InputMaybe<SortOrderEnum>;
   readonly nodeType: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
-  readonly portfolioTypes: InputMaybe<WpPortfolioToPortfolio_typeConnectionTypeSortInput>;
+  readonly path: InputMaybe<SortOrderEnum>;
+  readonly portfolioTypes: InputMaybe<WpPortfolioPortfolioTypesSortInput>;
   readonly slug: InputMaybe<SortOrderEnum>;
   readonly status: InputMaybe<SortOrderEnum>;
-  readonly template: InputMaybe<WpContentTemplateSortInput>;
-  readonly terms: InputMaybe<WpPortfolioToTermNodeConnectionTypeSortInput>;
+  readonly template: InputMaybe<WpPortfolioTemplateSortInput>;
+  readonly terms: InputMaybe<WpPortfolioTermsSortInput>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
   readonly uri: InputMaybe<SortOrderEnum>;
 };
 
-/** Page Info on the &quot;PortfolioToPortfolio_typeConnection&quot; */
-type WpPortfolioToPortfolio_typeConnectionPageInfoType = WpPageInfoType & WpPortfolio_typeConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
+type WpPortfolioTemplate = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly templateName: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioTemplateFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly templateName: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioTemplateFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly templateName: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioTemplateSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly templateName: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioTerms = {
+  readonly nodes: Maybe<ReadonlyArray<Maybe<WpPortfolioTermsNodes>>>;
+  readonly pageInfo: Maybe<WpPortfolioTermsPageInfo>;
+};
+
+type WpPortfolioTermsFieldSelector = {
+  readonly nodes: InputMaybe<WpPortfolioTermsNodesFieldSelector>;
+  readonly pageInfo: InputMaybe<WpPortfolioTermsPageInfoFieldSelector>;
+};
+
+type WpPortfolioTermsFilterInput = {
+  readonly nodes: InputMaybe<WpPortfolioTermsNodesFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPortfolioTermsPageInfoFilterInput>;
+};
+
+type WpPortfolioTermsNodes = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolioTermsNodesFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolioTermsNodesFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolioTermsNodesFilterListInput = {
+  readonly elemMatch: InputMaybe<WpPortfolioTermsNodesFilterInput>;
+};
+
+type WpPortfolioTermsNodesSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolioTermsPageInfo = {
   readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
+  readonly hasNextPage: Maybe<Scalars['Boolean']>;
+  readonly hasPreviousPage: Maybe<Scalars['Boolean']>;
   readonly startCursor: Maybe<Scalars['String']>;
 };
 
-type WpPortfolioToPortfolio_typeConnectionPageInfoTypeFieldSelector = {
+type WpPortfolioTermsPageInfoFieldSelector = {
   readonly endCursor: InputMaybe<FieldSelectorEnum>;
   readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
   readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
   readonly startCursor: InputMaybe<FieldSelectorEnum>;
 };
 
-type WpPortfolioToPortfolio_typeConnectionPageInfoTypeFilterInput = {
+type WpPortfolioTermsPageInfoFilterInput = {
   readonly endCursor: InputMaybe<StringQueryOperatorInput>;
   readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpPortfolioToPortfolio_typeConnectionPageInfoTypeSortInput = {
+type WpPortfolioTermsPageInfoSortInput = {
   readonly endCursor: InputMaybe<SortOrderEnum>;
   readonly hasNextPage: InputMaybe<SortOrderEnum>;
   readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
   readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
-/** Connection between the Portfolio type and the portfolio_type type */
-type WpPortfolioToPortfolio_typeConnectionType = WpConnectionType & {
-  /** The nodes of the connection, without the edges */
-  readonly nodes: ReadonlyArray<WpPortfolio_type>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPortfolioToPortfolio_typeConnectionPageInfoType;
+type WpPortfolioTermsSortInput = {
+  readonly nodes: InputMaybe<WpPortfolioTermsNodesSortInput>;
+  readonly pageInfo: InputMaybe<WpPortfolioTermsPageInfoSortInput>;
 };
 
-type WpPortfolioToPortfolio_typeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPortfolio_typeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPortfolioToPortfolio_typeConnectionPageInfoTypeFieldSelector>;
-};
-
-type WpPortfolioToPortfolio_typeConnectionTypeFilterInput = {
-  readonly nodes: InputMaybe<WpPortfolio_typeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPortfolioToPortfolio_typeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPortfolioToPortfolio_typeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPortfolio_typeSortInput>;
-  readonly pageInfo: InputMaybe<WpPortfolioToPortfolio_typeConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;PortfolioToTermNodeConnection&quot; */
-type WpPortfolioToTermNodeConnectionPageInfoType = WpPageInfoType & WpTermNodeConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPortfolioToTermNodeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPortfolioToTermNodeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPortfolioToTermNodeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
-};
-
-/** Connection between the Portfolio type and the TermNode type */
-type WpPortfolioToTermNodeConnectionType = WpConnectionType & WpTermNodeConnectionType & {
-  /** The nodes of the connection, without the edges */
-  readonly nodes: ReadonlyArray<WpTermNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPortfolioToTermNodeConnectionPageInfoType;
-};
-
-type WpPortfolioToTermNodeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpTermNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPortfolioToTermNodeConnectionPageInfoTypeFieldSelector>;
-};
-
-type WpPortfolioToTermNodeConnectionTypeFilterInput = {
-  readonly nodes: InputMaybe<WpTermNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPortfolioToTermNodeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPortfolioToTermNodeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpTermNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpPortfolioToTermNodeConnectionPageInfoTypeSortInput>;
-};
-
-type WpPortfolioTypeConnectionEdgeType = {
-  /** The connected portfolio_type Node */
-  readonly node: WpPortfolio_type;
-};
-
-/** Field Group */
-type WpPortfolio_Acfportfolio = WpAcfFieldGroup & {
-  readonly client: Maybe<Scalars['String']>;
-  readonly excerpt: Maybe<Scalars['String']>;
-  /** The name of the ACF Field Group */
-  readonly fieldGroupName: Maybe<Scalars['String']>;
-  readonly image: Maybe<WpMediaItem>;
-  readonly imageFive: Maybe<WpMediaItem>;
-  readonly imageFour: Maybe<WpMediaItem>;
-  readonly imageThree: Maybe<WpMediaItem>;
-  readonly imageTwo: Maybe<WpMediaItem>;
-  readonly mockup: Maybe<WpMediaItem>;
-  readonly projectType: Maybe<Scalars['String']>;
-  readonly website: Maybe<Scalars['String']>;
-};
-
-type WpPortfolio_AcfportfolioFieldSelector = {
-  readonly client: InputMaybe<FieldSelectorEnum>;
-  readonly excerpt: InputMaybe<FieldSelectorEnum>;
-  readonly fieldGroupName: InputMaybe<FieldSelectorEnum>;
-  readonly image: InputMaybe<WpMediaItemFieldSelector>;
-  readonly imageFive: InputMaybe<WpMediaItemFieldSelector>;
-  readonly imageFour: InputMaybe<WpMediaItemFieldSelector>;
-  readonly imageThree: InputMaybe<WpMediaItemFieldSelector>;
-  readonly imageTwo: InputMaybe<WpMediaItemFieldSelector>;
-  readonly mockup: InputMaybe<WpMediaItemFieldSelector>;
-  readonly projectType: InputMaybe<FieldSelectorEnum>;
-  readonly website: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPortfolio_AcfportfolioFilterInput = {
-  readonly client: InputMaybe<StringQueryOperatorInput>;
-  readonly excerpt: InputMaybe<StringQueryOperatorInput>;
-  readonly fieldGroupName: InputMaybe<StringQueryOperatorInput>;
-  readonly image: InputMaybe<WpMediaItemFilterInput>;
-  readonly imageFive: InputMaybe<WpMediaItemFilterInput>;
-  readonly imageFour: InputMaybe<WpMediaItemFilterInput>;
-  readonly imageThree: InputMaybe<WpMediaItemFilterInput>;
-  readonly imageTwo: InputMaybe<WpMediaItemFilterInput>;
-  readonly mockup: InputMaybe<WpMediaItemFilterInput>;
-  readonly projectType: InputMaybe<StringQueryOperatorInput>;
-  readonly website: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPortfolio_AcfportfolioSortInput = {
-  readonly client: InputMaybe<SortOrderEnum>;
-  readonly excerpt: InputMaybe<SortOrderEnum>;
-  readonly fieldGroupName: InputMaybe<SortOrderEnum>;
-  readonly image: InputMaybe<WpMediaItemSortInput>;
-  readonly imageFive: InputMaybe<WpMediaItemSortInput>;
-  readonly imageFour: InputMaybe<WpMediaItemSortInput>;
-  readonly imageThree: InputMaybe<WpMediaItemSortInput>;
-  readonly imageTwo: InputMaybe<WpMediaItemSortInput>;
-  readonly mockup: InputMaybe<WpMediaItemSortInput>;
-  readonly projectType: InputMaybe<SortOrderEnum>;
-  readonly website: InputMaybe<SortOrderEnum>;
-};
-
-/** The portfolio_type type */
-type WpPortfolio_type = Node & WpDatabaseIdentifier & WpMenuItemLinkable & WpNode & WpTermNode & WpUniformResourceIdentifiable & {
+type WpPortfolio_type = Node & {
+  readonly _xtypename: Maybe<Scalars['String']>;
   readonly children: ReadonlyArray<Node>;
-  /** Connection between the Portfolio_type type and the ContentNode type */
-  readonly contentNodes: Maybe<WpPortfolio_typeToContentNodeConnectionType>;
-  /** The number of objects connected to the object */
+  readonly contentNodes: Maybe<WpPortfolio_typeContentNodes>;
   readonly count: Maybe<Scalars['Int']>;
-  /** The unique identifier stored in the database */
-  readonly databaseId: Scalars['Int'];
-  /** The description of the object */
-  readonly description: Maybe<Scalars['String']>;
+  readonly databaseId: Maybe<Scalars['Int']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
-  /** Whether the node is a Content Node */
-  readonly isContentNode: Scalars['Boolean'];
-  /** Whether the node is a Term */
-  readonly isTermNode: Scalars['Boolean'];
-  /** The link to the term */
+  readonly isContentNode: Maybe<Scalars['Boolean']>;
+  readonly isTermNode: Maybe<Scalars['Boolean']>;
   readonly link: Maybe<Scalars['String']>;
-  /** The human friendly name of the object. */
   readonly name: Maybe<Scalars['String']>;
   readonly nodeType: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
-  /** Connection between the Portfolio_type type and the portfolio type */
-  readonly portfolios: Maybe<WpPortfolio_typeToPortfolioConnectionType>;
-  /** An alphanumeric identifier for the object unique to its type. */
+  readonly path: Maybe<Scalars['String']>;
+  readonly portfolios: Maybe<WpPortfolio_typePortfolios>;
   readonly slug: Maybe<Scalars['String']>;
-  /** Connection between the Portfolio_type type and the Taxonomy type */
-  readonly taxonomy: Maybe<WpPortfolio_typeToTaxonomyConnectionEdgeType>;
-  /** The name of the taxonomy that the object is associated with */
+  readonly taxonomy: Maybe<WpPortfolio_typeTaxonomy>;
   readonly taxonomyName: Maybe<Scalars['String']>;
-  /** The ID of the term group that this term object belongs to */
-  readonly termGroupId: Maybe<Scalars['Int']>;
-  /** The taxonomy ID that the object is associated with */
   readonly termTaxonomyId: Maybe<Scalars['Int']>;
-  /** The unique resource identifier path */
+  readonly type: Maybe<Scalars['String']>;
   readonly uri: Maybe<Scalars['String']>;
 };
 
@@ -10200,15 +10377,264 @@ type WpPortfolio_typeConnection_sumArgs = {
   field: WpPortfolio_typeFieldSelector;
 };
 
-type WpPortfolio_typeConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
+type WpPortfolio_typeContentNodes = {
+  readonly nodes: Maybe<ReadonlyArray<Maybe<WpPortfolio_typeContentNodesNodes>>>;
+  readonly pageInfo: Maybe<WpPortfolio_typeContentNodesPageInfo>;
+};
+
+type WpPortfolio_typeContentNodesFieldSelector = {
+  readonly nodes: InputMaybe<WpPortfolio_typeContentNodesNodesFieldSelector>;
+  readonly pageInfo: InputMaybe<WpPortfolio_typeContentNodesPageInfoFieldSelector>;
+};
+
+type WpPortfolio_typeContentNodesFilterInput = {
+  readonly nodes: InputMaybe<WpPortfolio_typeContentNodesNodesFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPortfolio_typeContentNodesPageInfoFilterInput>;
+};
+
+type WpPortfolio_typeContentNodesNodes = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly contentType: Maybe<WpPortfolio_typeContentNodesNodesContentType>;
+  readonly contentTypeName: Maybe<Scalars['String']>;
+  readonly databaseId: Maybe<Scalars['Int']>;
+  readonly date: Maybe<Scalars['Date']>;
+  readonly dateGmt: Maybe<Scalars['Date']>;
+  readonly guid: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+  readonly isContentNode: Maybe<Scalars['Boolean']>;
+  readonly isTermNode: Maybe<Scalars['Boolean']>;
+  readonly lastEditedBy: Maybe<WpPortfolio_typeContentNodesNodesLastEditedBy>;
+  readonly link: Maybe<Scalars['String']>;
+  readonly modified: Maybe<Scalars['Date']>;
+  readonly modifiedGmt: Maybe<Scalars['Date']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly status: Maybe<Scalars['String']>;
+  readonly template: Maybe<WpPortfolio_typeContentNodesNodesTemplate>;
+  readonly uri: Maybe<Scalars['String']>;
+};
+
+
+type WpPortfolio_typeContentNodesNodes_dateArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type WpPortfolio_typeContentNodesNodes_dateGmtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type WpPortfolio_typeContentNodesNodes_modifiedArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type WpPortfolio_typeContentNodesNodes_modifiedGmtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentType = {
+  readonly node: Maybe<WpPortfolio_typeContentNodesNodesContentTypeNode>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentTypeFieldSelector = {
+  readonly node: InputMaybe<WpPortfolio_typeContentNodesNodesContentTypeNodeFieldSelector>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentTypeFilterInput = {
+  readonly node: InputMaybe<WpPortfolio_typeContentNodesNodesContentTypeNodeFilterInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentTypeNode = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentTypeNodeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentTypeNodeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentTypeNodeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolio_typeContentNodesNodesContentTypeSortInput = {
+  readonly node: InputMaybe<WpPortfolio_typeContentNodesNodesContentTypeNodeSortInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly contentType: InputMaybe<WpPortfolio_typeContentNodesNodesContentTypeFieldSelector>;
+  readonly contentTypeName: InputMaybe<FieldSelectorEnum>;
+  readonly databaseId: InputMaybe<FieldSelectorEnum>;
+  readonly date: InputMaybe<FieldSelectorEnum>;
+  readonly dateGmt: InputMaybe<FieldSelectorEnum>;
+  readonly guid: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
+  readonly lastEditedBy: InputMaybe<WpPortfolio_typeContentNodesNodesLastEditedByFieldSelector>;
+  readonly link: InputMaybe<FieldSelectorEnum>;
+  readonly modified: InputMaybe<FieldSelectorEnum>;
+  readonly modifiedGmt: InputMaybe<FieldSelectorEnum>;
+  readonly slug: InputMaybe<FieldSelectorEnum>;
+  readonly status: InputMaybe<FieldSelectorEnum>;
+  readonly template: InputMaybe<WpPortfolio_typeContentNodesNodesTemplateFieldSelector>;
+  readonly uri: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolio_typeContentNodesNodesFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly contentType: InputMaybe<WpPortfolio_typeContentNodesNodesContentTypeFilterInput>;
+  readonly contentTypeName: InputMaybe<StringQueryOperatorInput>;
+  readonly databaseId: InputMaybe<IntQueryOperatorInput>;
+  readonly date: InputMaybe<DateQueryOperatorInput>;
+  readonly dateGmt: InputMaybe<DateQueryOperatorInput>;
+  readonly guid: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly lastEditedBy: InputMaybe<WpPortfolio_typeContentNodesNodesLastEditedByFilterInput>;
+  readonly link: InputMaybe<StringQueryOperatorInput>;
+  readonly modified: InputMaybe<DateQueryOperatorInput>;
+  readonly modifiedGmt: InputMaybe<DateQueryOperatorInput>;
+  readonly slug: InputMaybe<StringQueryOperatorInput>;
+  readonly status: InputMaybe<StringQueryOperatorInput>;
+  readonly template: InputMaybe<WpPortfolio_typeContentNodesNodesTemplateFilterInput>;
+  readonly uri: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesFilterListInput = {
+  readonly elemMatch: InputMaybe<WpPortfolio_typeContentNodesNodesFilterInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedBy = {
+  readonly node: Maybe<WpPortfolio_typeContentNodesNodesLastEditedByNode>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedByFieldSelector = {
+  readonly node: InputMaybe<WpPortfolio_typeContentNodesNodesLastEditedByNodeFieldSelector>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedByFilterInput = {
+  readonly node: InputMaybe<WpPortfolio_typeContentNodesNodesLastEditedByNodeFilterInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedByNode = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedByNodeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedByNodeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedByNodeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolio_typeContentNodesNodesLastEditedBySortInput = {
+  readonly node: InputMaybe<WpPortfolio_typeContentNodesNodesLastEditedByNodeSortInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly contentType: InputMaybe<WpPortfolio_typeContentNodesNodesContentTypeSortInput>;
+  readonly contentTypeName: InputMaybe<SortOrderEnum>;
+  readonly databaseId: InputMaybe<SortOrderEnum>;
+  readonly date: InputMaybe<SortOrderEnum>;
+  readonly dateGmt: InputMaybe<SortOrderEnum>;
+  readonly guid: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isTermNode: InputMaybe<SortOrderEnum>;
+  readonly lastEditedBy: InputMaybe<WpPortfolio_typeContentNodesNodesLastEditedBySortInput>;
+  readonly link: InputMaybe<SortOrderEnum>;
+  readonly modified: InputMaybe<SortOrderEnum>;
+  readonly modifiedGmt: InputMaybe<SortOrderEnum>;
+  readonly slug: InputMaybe<SortOrderEnum>;
+  readonly status: InputMaybe<SortOrderEnum>;
+  readonly template: InputMaybe<WpPortfolio_typeContentNodesNodesTemplateSortInput>;
+  readonly uri: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolio_typeContentNodesNodesTemplate = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly templateName: Maybe<Scalars['String']>;
+};
+
+type WpPortfolio_typeContentNodesNodesTemplateFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly templateName: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolio_typeContentNodesNodesTemplateFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly templateName: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolio_typeContentNodesNodesTemplateSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly templateName: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolio_typeContentNodesPageInfo = {
   readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
+  readonly hasNextPage: Maybe<Scalars['Boolean']>;
+  readonly hasPreviousPage: Maybe<Scalars['Boolean']>;
   readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPortfolio_typeContentNodesPageInfoFieldSelector = {
+  readonly endCursor: InputMaybe<FieldSelectorEnum>;
+  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
+  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
+  readonly startCursor: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolio_typeContentNodesPageInfoFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolio_typeContentNodesPageInfoSortInput = {
+  readonly endCursor: InputMaybe<SortOrderEnum>;
+  readonly hasNextPage: InputMaybe<SortOrderEnum>;
+  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
+  readonly startCursor: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolio_typeContentNodesSortInput = {
+  readonly nodes: InputMaybe<WpPortfolio_typeContentNodesNodesSortInput>;
+  readonly pageInfo: InputMaybe<WpPortfolio_typeContentNodesPageInfoSortInput>;
 };
 
 type WpPortfolio_typeEdge = {
@@ -10218,11 +10644,11 @@ type WpPortfolio_typeEdge = {
 };
 
 type WpPortfolio_typeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contentNodes: InputMaybe<WpPortfolio_typeToContentNodeConnectionTypeFieldSelector>;
+  readonly contentNodes: InputMaybe<WpPortfolio_typeContentNodesFieldSelector>;
   readonly count: InputMaybe<FieldSelectorEnum>;
   readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
@@ -10231,21 +10657,22 @@ type WpPortfolio_typeFieldSelector = {
   readonly name: InputMaybe<FieldSelectorEnum>;
   readonly nodeType: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly portfolios: InputMaybe<WpPortfolio_typeToPortfolioConnectionTypeFieldSelector>;
+  readonly path: InputMaybe<FieldSelectorEnum>;
+  readonly portfolios: InputMaybe<WpPortfolio_typePortfoliosFieldSelector>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly taxonomy: InputMaybe<WpPortfolio_typeToTaxonomyConnectionEdgeTypeFieldSelector>;
+  readonly taxonomy: InputMaybe<WpPortfolio_typeTaxonomyFieldSelector>;
   readonly taxonomyName: InputMaybe<FieldSelectorEnum>;
-  readonly termGroupId: InputMaybe<FieldSelectorEnum>;
   readonly termTaxonomyId: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
   readonly uri: InputMaybe<FieldSelectorEnum>;
 };
 
 type WpPortfolio_typeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
-  readonly contentNodes: InputMaybe<WpPortfolio_typeToContentNodeConnectionTypeFilterInput>;
+  readonly contentNodes: InputMaybe<WpPortfolio_typeContentNodesFilterInput>;
   readonly count: InputMaybe<IntQueryOperatorInput>;
   readonly databaseId: InputMaybe<IntQueryOperatorInput>;
-  readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
@@ -10254,17 +10681,14 @@ type WpPortfolio_typeFilterInput = {
   readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
-  readonly portfolios: InputMaybe<WpPortfolio_typeToPortfolioConnectionTypeFilterInput>;
+  readonly path: InputMaybe<StringQueryOperatorInput>;
+  readonly portfolios: InputMaybe<WpPortfolio_typePortfoliosFilterInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
-  readonly taxonomy: InputMaybe<WpPortfolio_typeToTaxonomyConnectionEdgeTypeFilterInput>;
+  readonly taxonomy: InputMaybe<WpPortfolio_typeTaxonomyFilterInput>;
   readonly taxonomyName: InputMaybe<StringQueryOperatorInput>;
-  readonly termGroupId: InputMaybe<IntQueryOperatorInput>;
   readonly termTaxonomyId: InputMaybe<IntQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
   readonly uri: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPortfolio_typeFilterListInput = {
-  readonly elemMatch: InputMaybe<WpPortfolio_typeFilterInput>;
 };
 
 type WpPortfolio_typeGroupConnection = {
@@ -10308,12 +10732,84 @@ type WpPortfolio_typeGroupConnection_sumArgs = {
   field: WpPortfolio_typeFieldSelector;
 };
 
+type WpPortfolio_typePortfolios = {
+  readonly nodes: Maybe<ReadonlyArray<Maybe<WpPortfolio_typePortfoliosNodes>>>;
+  readonly pageInfo: Maybe<WpPortfolio_typePortfoliosPageInfo>;
+};
+
+type WpPortfolio_typePortfoliosFieldSelector = {
+  readonly nodes: InputMaybe<WpPortfolio_typePortfoliosNodesFieldSelector>;
+  readonly pageInfo: InputMaybe<WpPortfolio_typePortfoliosPageInfoFieldSelector>;
+};
+
+type WpPortfolio_typePortfoliosFilterInput = {
+  readonly nodes: InputMaybe<WpPortfolio_typePortfoliosNodesFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPortfolio_typePortfoliosPageInfoFilterInput>;
+};
+
+type WpPortfolio_typePortfoliosNodes = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+};
+
+type WpPortfolio_typePortfoliosNodesFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolio_typePortfoliosNodesFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolio_typePortfoliosNodesFilterListInput = {
+  readonly elemMatch: InputMaybe<WpPortfolio_typePortfoliosNodesFilterInput>;
+};
+
+type WpPortfolio_typePortfoliosNodesSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolio_typePortfoliosPageInfo = {
+  readonly endCursor: Maybe<Scalars['String']>;
+  readonly hasNextPage: Maybe<Scalars['Boolean']>;
+  readonly hasPreviousPage: Maybe<Scalars['Boolean']>;
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPortfolio_typePortfoliosPageInfoFieldSelector = {
+  readonly endCursor: InputMaybe<FieldSelectorEnum>;
+  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
+  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
+  readonly startCursor: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpPortfolio_typePortfoliosPageInfoFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpPortfolio_typePortfoliosPageInfoSortInput = {
+  readonly endCursor: InputMaybe<SortOrderEnum>;
+  readonly hasNextPage: InputMaybe<SortOrderEnum>;
+  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
+  readonly startCursor: InputMaybe<SortOrderEnum>;
+};
+
+type WpPortfolio_typePortfoliosSortInput = {
+  readonly nodes: InputMaybe<WpPortfolio_typePortfoliosNodesSortInput>;
+  readonly pageInfo: InputMaybe<WpPortfolio_typePortfoliosPageInfoSortInput>;
+};
+
 type WpPortfolio_typeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
-  readonly contentNodes: InputMaybe<WpPortfolio_typeToContentNodeConnectionTypeSortInput>;
+  readonly contentNodes: InputMaybe<WpPortfolio_typeContentNodesSortInput>;
   readonly count: InputMaybe<SortOrderEnum>;
   readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
@@ -10322,143 +10818,50 @@ type WpPortfolio_typeSortInput = {
   readonly name: InputMaybe<SortOrderEnum>;
   readonly nodeType: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
-  readonly portfolios: InputMaybe<WpPortfolio_typeToPortfolioConnectionTypeSortInput>;
+  readonly path: InputMaybe<SortOrderEnum>;
+  readonly portfolios: InputMaybe<WpPortfolio_typePortfoliosSortInput>;
   readonly slug: InputMaybe<SortOrderEnum>;
-  readonly taxonomy: InputMaybe<WpPortfolio_typeToTaxonomyConnectionEdgeTypeSortInput>;
+  readonly taxonomy: InputMaybe<WpPortfolio_typeTaxonomySortInput>;
   readonly taxonomyName: InputMaybe<SortOrderEnum>;
-  readonly termGroupId: InputMaybe<SortOrderEnum>;
   readonly termTaxonomyId: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
   readonly uri: InputMaybe<SortOrderEnum>;
 };
 
-/** Page Info on the &quot;Portfolio_typeToContentNodeConnection&quot; */
-type WpPortfolio_typeToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+type WpPortfolio_typeTaxonomy = {
+  readonly node: Maybe<WpPortfolio_typeTaxonomyNode>;
 };
 
-type WpPortfolio_typeToContentNodeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
+type WpPortfolio_typeTaxonomyFieldSelector = {
+  readonly node: InputMaybe<WpPortfolio_typeTaxonomyNodeFieldSelector>;
 };
 
-type WpPortfolio_typeToContentNodeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+type WpPortfolio_typeTaxonomyFilterInput = {
+  readonly node: InputMaybe<WpPortfolio_typeTaxonomyNodeFilterInput>;
 };
 
-type WpPortfolio_typeToContentNodeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+type WpPortfolio_typeTaxonomyNode = {
+  readonly _xtypename: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
 };
 
-/** Connection between the Portfolio_type type and the ContentNode type */
-type WpPortfolio_typeToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
-  /** The nodes of the connection, without the edges */
-  readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPortfolio_typeToContentNodeConnectionPageInfoType;
+type WpPortfolio_typeTaxonomyNodeFieldSelector = {
+  readonly _xtypename: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
 };
 
-type WpPortfolio_typeToContentNodeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPortfolio_typeToContentNodeConnectionPageInfoTypeFieldSelector>;
+type WpPortfolio_typeTaxonomyNodeFilterInput = {
+  readonly _xtypename: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpPortfolio_typeToContentNodeConnectionTypeFilterInput = {
-  readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPortfolio_typeToContentNodeConnectionPageInfoTypeFilterInput>;
+type WpPortfolio_typeTaxonomyNodeSortInput = {
+  readonly _xtypename: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
 };
 
-type WpPortfolio_typeToContentNodeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpPortfolio_typeToContentNodeConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;Portfolio_typeToPortfolioConnection&quot; */
-type WpPortfolio_typeToPortfolioConnectionPageInfoType = WpPageInfoType & WpPortfolioConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPortfolio_typeToPortfolioConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPortfolio_typeToPortfolioConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPortfolio_typeToPortfolioConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
-};
-
-/** Connection between the Portfolio_type type and the portfolio type */
-type WpPortfolio_typeToPortfolioConnectionType = WpConnectionType & WpPortfolioConnectionType & {
-  /** The nodes of the connection, without the edges */
-  readonly nodes: ReadonlyArray<WpPortfolio>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPortfolio_typeToPortfolioConnectionPageInfoType;
-};
-
-type WpPortfolio_typeToPortfolioConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPortfolioFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPortfolio_typeToPortfolioConnectionPageInfoTypeFieldSelector>;
-};
-
-type WpPortfolio_typeToPortfolioConnectionTypeFilterInput = {
-  readonly nodes: InputMaybe<WpPortfolioFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPortfolio_typeToPortfolioConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPortfolio_typeToPortfolioConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPortfolioSortInput>;
-  readonly pageInfo: InputMaybe<WpPortfolio_typeToPortfolioConnectionPageInfoTypeSortInput>;
-};
-
-/** Connection between the Portfolio_type type and the Taxonomy type */
-type WpPortfolio_typeToTaxonomyConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType & WpTaxonomyConnectionEdgeType & {
-  /** The node of the connection, without the edges */
-  readonly node: WpTaxonomy;
-};
-
-type WpPortfolio_typeToTaxonomyConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpTaxonomyFieldSelector>;
-};
-
-type WpPortfolio_typeToTaxonomyConnectionEdgeTypeFilterInput = {
-  readonly node: InputMaybe<WpTaxonomyFilterInput>;
-};
-
-type WpPortfolio_typeToTaxonomyConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpTaxonomySortInput>;
+type WpPortfolio_typeTaxonomySortInput = {
+  readonly node: InputMaybe<WpPortfolio_typeTaxonomyNodeSortInput>;
 };
 
 /** The post type */
