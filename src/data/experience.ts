@@ -11,7 +11,7 @@ export const Experience: ExperienceInterface[] = [
     title: 'Nearby Creative',
     date: '2019 - Present',
     link: 'https://nearbycreative.com',
-    position: 'VP of Engineering',
+    position: 'Lead Software Engineer',
     description: [
       'Engages as a lead full-stack engineer on a VC-backed telehealth organization in migrating vendor services onshore, while upgrading to best-of-class technologies: MongoDB, Express, Node, Laravel, React, Webpack, AWS, Kubernetes, and Docker.',
       'Deploys tooling such as Docker, PHP 7, Javascript, and AWS Services (EC2, ECS, SQS/SNS, Lambda, Code Pipeline, S3, and Cloud Formation Templates) for a New York-based Health Intelligence Company involved in the diagnosis of cancer and hereditary diseases.',
