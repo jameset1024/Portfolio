@@ -125,7 +125,7 @@ const PostPage: React.FC<PageProps> = ({data}) => {
                   <FontAwesomeIcon icon={faTwitter} color={'#000'} size={'lg'} />
                 </a>
                 {/* @ts-ignore */}
-                <a href={`http://pinterest.com/pin/create/button/?url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}&media=${data.wpPost.featuredImage.node.mediaItemUrl}&description=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
+                <a href={`https://pinterest.com/pin/create/button/?url=${data.site.siteMetadata.siteUrl}${data.wpPost.uri}&media=${data.wpPost.featuredImage.node.mediaItemUrl}&description=Check%20this%20new%20post%20from%20Erik%20Thomas`} target={'_blank'}>
                   <FontAwesomeIcon icon={faPinterest} color={'#000'} size={'lg'} />
                 </a>
               </div>
