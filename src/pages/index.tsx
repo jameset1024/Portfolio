@@ -14,6 +14,7 @@ import Contact from "@app/components/sections/contact";
 
 const IndexPage: React.FC<PageProps> = ({data}) => {
   const [active, setActive] = useState(true);
+  const [forHire, setForHire] = useState(false);
   const labelRef = useRef<HTMLSpanElement>(null);
   const labels = ['Nerd', 'Basketball\u00A0Fan', 'Movie\u00A0Lover', 'Anime\u00A0Fan', 'Video\u00A0Gamer', 'Foodie', 'Software\u00A0Engineer'];
 
@@ -23,6 +24,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
 
   useEffect(() => {
     headerLabelType();
+    setForHire(process.env.GATSBY_FOR_HIRE === "true");
 
     return () => {
       setActive(false);
@@ -110,6 +112,14 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
       <header className={'homePage'}>
         <div className={'wrapper'}>
           <div className={'headerWrapper'}>
+            { forHire && (
+              <div className={'open-for-hire'}>
+                <a href={'#'} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => contactScroll(e)}>
+                  Open For Hire
+                </a>
+              </div>
+            )}
+
             <div className={'home-intro'}>Hello There</div>
             <h1>My Name Is <span>Erik Thomas</span></h1>
             <h3>I am a <span ref={labelRef}>Software Engineer</span></h3>
