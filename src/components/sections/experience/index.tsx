@@ -14,7 +14,7 @@ export default function Experience() {
 
       <div className={'experience-wrap'}>
         <div className={'wrapper'}>
-          <p>Over the years I've worked at many companies either directly, as a contractor, or as a freelancer. Each position was enlightening in it's own way allowing me to learn and grow with this industry. These are some of the more recent positions that I held where I was performing daily activities.</p>
+          <p>Over the years I've worked at many companies either directly, as a contractor, or as a freelancer. Each position was enlightening in its own way allowing me to learn and grow within this industry. These are some of the more notable positions that I've held.</p>
 
           <ExperienceDrawer data={Ex}/>
         </div>

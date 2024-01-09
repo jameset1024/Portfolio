@@ -9,7 +9,7 @@ export default function Expertise() {
         <div className={'wrapper'}>
           <div className={'expertise-meta'}>
             <h2>Technologies and Frameworks</h2>
-            <p>Here are some the things that I've had the change to work with over the years</p>
+            <p>Here are some the things that I've had the chance to work with over the years</p>
           </div>
 
           <div className={'expertise-wrapper'}>
