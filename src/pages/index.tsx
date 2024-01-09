@@ -31,7 +31,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
       clearInterval(dropInterval);
       clearTimeout(dropTimeout);
     }
-  });
+  }, []);
 
   /**
    * Displays and removes text in a typewriter style
