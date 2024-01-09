@@ -1,11 +1,12 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./styles.sass"
 
 type LoadingType = {
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
 }
 export default function Loading({setLoading}: LoadingType) {
   const ref = useRef<HTMLDivElement>(null)
+  const [remove, setRemove] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,16 +15,20 @@ export default function Loading({setLoading}: LoadingType) {
 
         setLoading(false);
         setTimeout(() => {
-          if ( ref.current ) {
-            ref.current.remove()
+          if ( !remove ) {
+            setRemove(true);
           }
         }, 1500);
       }
     }, 6000);
-  });
+  }, []);
+
+  if (remove){
+    return <></>
+  }
 
   return (
-    <div className={'loadingScreen'} ref={ref}>
+    <div className={'loadingScreen'} data-testid={"loading-screen"} ref={ref}>
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width={"488"} height={"76"} viewBox="0 0 488 76">
           <path className="cls-1" d="m4,11.47h21.35v4.62H9.21v17.54h14.09v4.62h-14.09v17.9h16.14v4.62H4V11.47Z"/>

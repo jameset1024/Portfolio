@@ -16,7 +16,6 @@ type HeaderType = {
 
 const Header = ({setTheme}: HeaderType) => {
   const [open, setOpen] = useState(false);
-  const mobileRef = useRef<HTMLButtonElement|null>(null);
   const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
 
   const headerRef = useRef<HTMLDivElement | null>(null);
@@ -29,9 +28,6 @@ const Header = ({setTheme}: HeaderType) => {
 
   const closeDrawer = () => {
     setOpen(false);
-    if ( mobileRef ) {
-      mobileRef.current?.classList.remove('open');
-    }
   }
 
   const movePage = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -90,7 +86,7 @@ const Header = ({setTheme}: HeaderType) => {
 
           { isSmallDevice &&
               <div className={'mobileBtn'}>
-                  <MobileButton active={activate} btnRef={mobileRef} />
+                  <MobileButton active={activate} isActive={open} />
               </div>
           }
         </div>

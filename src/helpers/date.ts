@@ -1,4 +1,4 @@
-export function monthDisplay ( month ) {
+export function monthDisplay ( month: number ) {
   switch ( month ) {
     case 0:
       return 'January';
