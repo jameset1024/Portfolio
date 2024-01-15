@@ -9,7 +9,7 @@ type Page = {
 export default function Pagination ({currentPage, totalPages}: Page) {
   const newer = currentPage === 2 ? '/articles' : '/articles' + (currentPage - 1);
   return (
-    <div className={'wrapper'}>
+    <div className={'wrapper'} data-testid={'pagination'}>
       <div className={'pagination'}>
         { currentPage !== 1 &&
             <Link to={newer} className={'newer'}>Newer</Link>

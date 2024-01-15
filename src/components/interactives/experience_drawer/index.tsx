@@ -9,7 +9,7 @@ const ExperienceDrawer = ({data}: ExperienceData) => {
   const [active, setActive] = useState(0);
 
   return (
-    <div className={'experience-drawer'}>
+    <div className={'experience-drawer'} data-testid={'experience-drawer'}>
       <div className={'experience-navigation'} role={'tablist'}>
         {data.map((e, i) => {
           return (

@@ -3,7 +3,7 @@ import './styles.sass';
 
 export default function Sending () {
   return (
-    <div className="sending-container">
+    <div className="sending-container" data-testid={'sending-animation'}>
       <div className="box">
         <div className="border one"></div>
         <div className="border two"></div>

@@ -7,7 +7,6 @@ jest.spyOn(global, "setTimeout");
 
 test("Test Loading screen", () => {
   const setLoading = jest.fn();
-  const refSpy = jest.spyOn(React, "useRef").mockReturnValue({ current: document.createElement('div')})
   render(<Loading setLoading={setLoading}/>)
 
   const elem =screen.getByTestId('loading-screen');

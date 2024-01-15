@@ -4,14 +4,22 @@ import React from "react";
 import {userEvent} from "@testing-library/user-event";
 
 
-test("Mobile Button test", async () => {
+test("Mobile Button test 1", async () => {
   const mockClick = jest.fn();
-  render(<MobileButton active={mockClick} isActive={false}/>);
+  render(<MobileButton active={mockClick} isActive={false} />);
 
   const elem = screen.getByRole('button');
   expect(elem).toBeInTheDocument();
 
   await userEvent.click(elem);
   expect(mockClick).toHaveBeenCalled();
-  expect(elem.firstChild).not.toHaveClass('open');
+  expect(elem).not.toHaveClass('open');
+});
+
+test("Mobile Button test 2", async () => {
+  const mockClick = jest.fn();
+  render(<MobileButton active={mockClick} isActive={true} />);
+
+  const elem = screen.getByRole('button');
+  expect(elem).toHaveClass('open');
 });

@@ -23,7 +23,7 @@ export default function Loading({setLoading}: LoadingType) {
     }, 6000);
   }, []);
 
-  if (remove){
+  if (remove) {
     return <></>
   }
 
