@@ -25,6 +25,14 @@ export const WorkData: WorkType[] = [
     type: 'Frontend / Backend / DevOps'
   },
   {
+    title: 'RnB Planet',
+    description: "A passion project blog and music archive, built with Django, HTMX, and TailwindCSS. The site highlights R&B artists and utilizes Spotify's API to populate the artist data.",
+    tags: ['AWS', 'Django', 'HTMX', 'TailwindCSS'],
+    link: 'https://rnbplanet.com',
+    image: 'https://erik-portfolio.s3.amazonaws.com/projects/rnbplanet.jpg',
+    type: 'Frontend / Backend / DevOps'
+  },
+  {
     title: 'FruitStreet',
     description: 'A consumer quiz built to streamline the users experience for signing up for the companies services. The quiz makes calculations on the fly to determine eligibility into the program.',
     tags: ['Docker', 'Laravel', 'React', 'Node'],

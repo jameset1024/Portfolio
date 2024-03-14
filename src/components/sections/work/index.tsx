@@ -15,6 +15,7 @@ const WorkPage = () => {
         <div className={'sectionDescription'}>
           <p>Over the years I've worked on a large number of projects. Most were backend systems not accessible to the public so displaying those are a bit hard. But these projects are some of my more recent work that I able to highlight.</p>
         </div>
+
         <div className={'workWrapper'}>
           { WorkData.map((e, i) => {
             return (

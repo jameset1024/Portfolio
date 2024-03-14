@@ -99,9 +99,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
           </AnimatePresence>
 
           {/* @ts-ignore */}
-          {pageContext.pageCount > 1 &&
-          <Pagination currentPage={pageContext.currentPage} totalPages={pageContext.pageCount} />
-          }
+          {pageContext.pageCount > 1 && <Pagination currentPage={pageContext.currentPage} totalPages={pageContext.pageCount} /> }
         </div>
       </div>
     </section>
@@ -113,6 +111,7 @@ const Article: React.FC<PageProps> = ({ data, pageContext }) => {
   export const Head: HeadFC = ({data, location}) => {
     return (
       <SEO>
+        {/* @ts-ignore */}
         <link rel={'canonical'} href={`${data.site.siteMetadata.siteUrl}${location.pathname}`} />
         <title>Articles | Erik James Thomas - Senior Software Engineer</title>
       </SEO>

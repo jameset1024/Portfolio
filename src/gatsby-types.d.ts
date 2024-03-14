@@ -2496,6 +2496,7 @@ type Query_wpTaxonomyArgs = {
   archivePath: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
   connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeFilterInput>;
+  connectedTerms: InputMaybe<WpTaxonomyToTermNodeConnectionTypeFilterInput>;
   description: InputMaybe<StringQueryOperatorInput>;
   graphqlPluralName: InputMaybe<StringQueryOperatorInput>;
   graphqlSingleName: InputMaybe<StringQueryOperatorInput>;
@@ -11233,6 +11234,8 @@ type WpTaxonomy = Node & WpNode & {
   readonly children: ReadonlyArray<Node>;
   /** List of Content Types associated with the Taxonomy */
   readonly connectedContentTypes: Maybe<WpTaxonomyToContentTypeConnectionType>;
+  /** List of Term Nodes associated with the Taxonomy */
+  readonly connectedTerms: Maybe<WpTaxonomyToTermNodeConnectionType>;
   /** Description of the taxonomy. This field is equivalent to WP_Taxonomy-&gt;description */
   readonly description: Maybe<Scalars['String']>;
   /** The plural name of the post type within the GraphQL Schema. */
@@ -11251,7 +11254,7 @@ type WpTaxonomy = Node & WpNode & {
   readonly parent: Maybe<Node>;
   /** Whether the taxonomy is publicly queryable */
   readonly public: Maybe<Scalars['Boolean']>;
-  /** Name of content type to diplay in REST API &quot;wp/v2&quot; namespace. */
+  /** Name of content type to display in REST API &quot;wp/v2&quot; namespace. */
   readonly restBase: Maybe<Scalars['String']>;
   /** The REST Controller class assigned to handling this content type. */
   readonly restControllerClass: Maybe<Scalars['String']>;
@@ -11345,6 +11348,7 @@ type WpTaxonomyFieldSelector = {
   readonly archivePath: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeFieldSelector>;
+  readonly connectedTerms: InputMaybe<WpTaxonomyToTermNodeConnectionTypeFieldSelector>;
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly graphqlPluralName: InputMaybe<FieldSelectorEnum>;
   readonly graphqlSingleName: InputMaybe<FieldSelectorEnum>;
@@ -11372,6 +11376,7 @@ type WpTaxonomyFilterInput = {
   readonly archivePath: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeFilterInput>;
+  readonly connectedTerms: InputMaybe<WpTaxonomyToTermNodeConnectionTypeFilterInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly graphqlPluralName: InputMaybe<StringQueryOperatorInput>;
   readonly graphqlSingleName: InputMaybe<StringQueryOperatorInput>;
@@ -11444,6 +11449,7 @@ type WpTaxonomySortInput = {
   readonly archivePath: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeSortInput>;
+  readonly connectedTerms: InputMaybe<WpTaxonomyToTermNodeConnectionTypeSortInput>;
   readonly description: InputMaybe<SortOrderEnum>;
   readonly graphqlPluralName: InputMaybe<SortOrderEnum>;
   readonly graphqlSingleName: InputMaybe<SortOrderEnum>;
@@ -11521,6 +11527,62 @@ type WpTaxonomyToContentTypeConnectionTypeFilterInput = {
 type WpTaxonomyToContentTypeConnectionTypeSortInput = {
   readonly nodes: InputMaybe<WpContentTypeSortInput>;
   readonly pageInfo: InputMaybe<WpTaxonomyToContentTypeConnectionPageInfoTypeSortInput>;
+};
+
+/** Page Info on the &quot;TaxonomyToTermNodeConnection&quot; */
+type WpTaxonomyToTermNodeConnectionPageInfoType = WpPageInfoType & WpTermNodeConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpTaxonomyToTermNodeConnectionPageInfoTypeFieldSelector = {
+  readonly endCursor: InputMaybe<FieldSelectorEnum>;
+  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
+  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
+  readonly startCursor: InputMaybe<FieldSelectorEnum>;
+};
+
+type WpTaxonomyToTermNodeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpTaxonomyToTermNodeConnectionPageInfoTypeSortInput = {
+  readonly endCursor: InputMaybe<SortOrderEnum>;
+  readonly hasNextPage: InputMaybe<SortOrderEnum>;
+  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
+  readonly startCursor: InputMaybe<SortOrderEnum>;
+};
+
+/** Connection between the Taxonomy type and the TermNode type */
+type WpTaxonomyToTermNodeConnectionType = WpConnectionType & WpTermNodeConnectionType & {
+  /** The nodes of the connection, without the edges */
+  readonly nodes: ReadonlyArray<WpTermNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTaxonomyToTermNodeConnectionPageInfoType;
+};
+
+type WpTaxonomyToTermNodeConnectionTypeFieldSelector = {
+  readonly nodes: InputMaybe<WpTermNodeFieldSelector>;
+  readonly pageInfo: InputMaybe<WpTaxonomyToTermNodeConnectionPageInfoTypeFieldSelector>;
+};
+
+type WpTaxonomyToTermNodeConnectionTypeFilterInput = {
+  readonly nodes: InputMaybe<WpTermNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpTaxonomyToTermNodeConnectionPageInfoTypeFilterInput>;
+};
+
+type WpTaxonomyToTermNodeConnectionTypeSortInput = {
+  readonly nodes: InputMaybe<WpTermNodeSortInput>;
+  readonly pageInfo: InputMaybe<WpTaxonomyToTermNodeConnectionPageInfoTypeSortInput>;
 };
 
 type WpTermNode = {
@@ -11892,7 +11954,7 @@ type WpUser = Node & WpCommenter & WpDatabaseIdentifier & WpNode & WpUniformReso
   readonly lastName: Maybe<Scalars['String']>;
   /** The preferred language locale set for the user. Value derived from get_user_locale(). */
   readonly locale: Maybe<Scalars['String']>;
-  /** Display name of the user. This is equivalent to the WP_User-&gt;dispaly_name property. */
+  /** Display name of the user. This is equivalent to the WP_User-&gt;display_name property. */
   readonly name: Maybe<Scalars['String']>;
   /** The nicename for the user. This field is equivalent to WP_User-&gt;user_nicename */
   readonly nicename: Maybe<Scalars['String']>;
