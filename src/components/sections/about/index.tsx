@@ -16,7 +16,7 @@ const AboutPage = () => {
             <p>
               Hello! My name is Erik and I'm a full-stack software engineer
               currently residing in Charlotte, NC. I've been doing this internet
-              thing since around 2013 and I've been passionate about it ever
+              thing since 2013 and I've been passionate about it ever
               since. It's been a long and interesting journey to this point,
               learning and experiencing new and interesting things to help me
               grow as a developer.

@@ -16,7 +16,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
   const [active, setActive] = useState(true);
   const [forHire, setForHire] = useState(false);
   const labelRef = useRef<HTMLSpanElement>(null);
-  const labels = ['Nerd', 'Basketball\u00A0Fan', 'Movie\u00A0Lover', 'Anime\u00A0Fan', 'Video\u00A0Gamer', 'Foodie', 'Software\u00A0Engineer'];
+  const labels = ['Nerd', 'Basketball\u00A0Fan', 'Movie\u00A0Lover', 'Anime\u00A0Fan', 'Gamer', 'Foodie', 'Software\u00A0Engineer'];
 
 
   let dropInterval: ReturnType<typeof setInterval>;
@@ -124,7 +124,7 @@ const IndexPage: React.FC<PageProps> = ({data}) => {
             <h1>My Name Is <span>Erik Thomas</span></h1>
             <h3>I am a <span ref={labelRef}>Software Engineer</span></h3>
 
-            <p>I'm a full-stack engineer currently managing full cycle development and AWS infrastructure for clients at <a href={'https://nearbycreative.com'} target={'_blank'}>Nearby Creative</a>. If you have a project or just something interesting please reach out.</p>
+            <p>I'm a full-stack engineer that has worn many hats across numerous projects in varying roles. Always pushing myself to learn and try new things, I fill my time with both work and passion projects.</p>
 
             <Button to={'#'} data-target={'#contact'} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => contactScroll(e)}>Contact Me</Button>
           </div>

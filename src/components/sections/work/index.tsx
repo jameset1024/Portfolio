@@ -13,7 +13,7 @@ const WorkPage = () => {
 
       <div className={'workContainer'}>
         <div className={'sectionDescription'}>
-          <p>Over the years I've worked on a large number of projects. Most were backend systems not accessible to the public so displaying those are a bit hard. But these projects are some of my more recent work that I able to highlight.</p>
+          <p>Over the years I've worked on a large number of projects. Most were backend systems not accessible to the public so displaying those are challenging. Here are some of the more recent projects that I've worked or are working on.</p>
         </div>
 
         <div className={'workWrapper'}>
@@ -26,14 +26,18 @@ const WorkPage = () => {
                       <img src={e.image} alt={e.title} />
                     </a>
                   </div>
+
                   <div className={'workInfo'}>
                     <div className={'workInfoWrapper'}>
                       <h6>{e.type}</h6>
                       <h2>{e.title}</h2>
+
                       <div className={'description'}>{e.description}</div>
+
                       <ul>
                         {e.tags.map((e,i) => <li key={`tags-${i}`}>{e}</li>)}
                       </ul>
+
                       <div className={'meta'}>
                         <a href={e.link} target={'_blank'}>
                           <FontAwesomeIcon icon={faArrowUpRightFromSquare} fixedWidth />
