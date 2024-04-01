@@ -1922,7 +1922,10 @@ type Query_wpCategoryArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -1954,7 +1957,13 @@ type Query_wpCommentArgs = {
   dateGmt: InputMaybe<DateQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
+  isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
+  isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   karma: InputMaybe<IntQueryOperatorInput>;
+  link: InputMaybe<StringQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
   parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
@@ -1962,6 +1971,7 @@ type Query_wpCommentArgs = {
   replies: InputMaybe<WpCommentToCommentConnectionTypeFilterInput>;
   status: InputMaybe<WpCommentStatusEnumQueryOperatorInput>;
   type: InputMaybe<StringQueryOperatorInput>;
+  uri: InputMaybe<StringQueryOperatorInput>;
   wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeFilterInput>;
 };
 
@@ -2006,7 +2016,10 @@ type Query_wpContentNodeArgs = {
   guid: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   link: InputMaybe<StringQueryOperatorInput>;
@@ -2036,6 +2049,7 @@ type Query_wpContentTypeArgs = {
   hierarchical: InputMaybe<BooleanQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -2074,7 +2088,10 @@ type Query_wpHierarchicalContentNodeArgs = {
   guid: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   link: InputMaybe<StringQueryOperatorInput>;
@@ -2112,7 +2129,10 @@ type Query_wpHierarchicalTermNodeArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2155,7 +2175,10 @@ type Query_wpMediaItemArgs = {
   height: InputMaybe<IntQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   link: InputMaybe<StringQueryOperatorInput>;
@@ -2232,7 +2255,10 @@ type Query_wpMenuItemLinkableArgs = {
   databaseId: InputMaybe<IntQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
@@ -2370,6 +2396,7 @@ type Query_wpPageArgs = {
   guid: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -2419,7 +2446,10 @@ type Query_wpPostArgs = {
   guid: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isRevision: InputMaybe<BooleanQueryOperatorInput>;
   isSticky: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
@@ -2452,7 +2482,10 @@ type Query_wpPostFormatArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2476,7 +2509,10 @@ type Query_wpTagArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2528,7 +2564,10 @@ type Query_wpTermNodeArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2546,7 +2585,10 @@ type Query_wpUniformResourceIdentifiableArgs = {
   children: InputMaybe<NodeFilterListInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
@@ -2567,7 +2609,10 @@ type Query_wpUserArgs = {
   firstName: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastName: InputMaybe<StringQueryOperatorInput>;
   locale: InputMaybe<StringQueryOperatorInput>;
@@ -3600,8 +3645,14 @@ type WpCategory = Node & WpDatabaseIdentifier & WpHierarchicalNode & WpHierarchi
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -3711,7 +3762,10 @@ type WpCategoryFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly link: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
@@ -3739,7 +3793,10 @@ type WpCategoryFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -3812,7 +3869,10 @@ type WpCategorySortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly link: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
@@ -4092,7 +4152,7 @@ type WpCategoryToTaxonomyConnectionEdgeTypeSortInput = {
 };
 
 /** A Comment object */
-type WpComment = Node & WpDatabaseIdentifier & WpNode & {
+type WpComment = Node & WpDatabaseIdentifier & WpNode & WpUniformResourceIdentifiable & {
   /** User agent used to post the comment. This field is equivalent to WP_Comment-&gt;comment_agent and the value matching the &quot;comment_agent&quot; column in SQL. */
   readonly agent: Maybe<Scalars['String']>;
   /** The author of the comment */
@@ -4112,8 +4172,20 @@ type WpComment = Node & WpDatabaseIdentifier & WpNode & {
   readonly dateGmt: Maybe<Scalars['Date']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
+  /** Whether the node is a Content Node */
+  readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
+  /** Whether the node is a Term */
+  readonly isTermNode: Scalars['Boolean'];
   /** Karma value for the comment. This field is equivalent to WP_Comment-&gt;comment_karma and the value matching the &quot;comment_karma&quot; column in SQL. */
   readonly karma: Maybe<Scalars['Int']>;
+  /** The permalink of the comment */
+  readonly link: Maybe<Scalars['String']>;
   readonly nodeType: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
   /** The database id of the parent comment node or null if it is the root comment */
@@ -4126,6 +4198,8 @@ type WpComment = Node & WpDatabaseIdentifier & WpNode & {
   readonly status: Maybe<WpCommentStatusEnum>;
   /** Type of comment. This field is equivalent to WP_Comment-&gt;comment_type and the value matching the &quot;comment_type&quot; column in SQL. */
   readonly type: Maybe<Scalars['String']>;
+  /** The unique resource identifier path */
+  readonly uri: Maybe<Scalars['String']>;
   /** Connection between the Comment type and the Comment type */
   readonly wpParent: Maybe<WpCommentToParentCommentConnectionEdgeType>;
 };
@@ -4372,7 +4446,13 @@ type WpCommentFieldSelector = {
   readonly dateGmt: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
+  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
+  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly karma: InputMaybe<FieldSelectorEnum>;
+  readonly link: InputMaybe<FieldSelectorEnum>;
   readonly nodeType: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
@@ -4380,6 +4460,7 @@ type WpCommentFieldSelector = {
   readonly replies: InputMaybe<WpCommentToCommentConnectionTypeFieldSelector>;
   readonly status: InputMaybe<FieldSelectorEnum>;
   readonly type: InputMaybe<FieldSelectorEnum>;
+  readonly uri: InputMaybe<FieldSelectorEnum>;
   readonly wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeFieldSelector>;
 };
 
@@ -4395,7 +4476,13 @@ type WpCommentFilterInput = {
   readonly dateGmt: InputMaybe<DateQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly karma: InputMaybe<IntQueryOperatorInput>;
+  readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
@@ -4403,6 +4490,7 @@ type WpCommentFilterInput = {
   readonly replies: InputMaybe<WpCommentToCommentConnectionTypeFilterInput>;
   readonly status: InputMaybe<WpCommentStatusEnumQueryOperatorInput>;
   readonly type: InputMaybe<StringQueryOperatorInput>;
+  readonly uri: InputMaybe<StringQueryOperatorInput>;
   readonly wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeFilterInput>;
 };
 
@@ -4463,7 +4551,13 @@ type WpCommentSortInput = {
   readonly dateGmt: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
+  readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
+  readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly karma: InputMaybe<SortOrderEnum>;
+  readonly link: InputMaybe<SortOrderEnum>;
   readonly nodeType: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
@@ -4471,6 +4565,7 @@ type WpCommentSortInput = {
   readonly replies: InputMaybe<WpCommentToCommentConnectionTypeSortInput>;
   readonly status: InputMaybe<SortOrderEnum>;
   readonly type: InputMaybe<SortOrderEnum>;
+  readonly uri: InputMaybe<SortOrderEnum>;
   readonly wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeSortInput>;
 };
 
@@ -4812,8 +4907,14 @@ type WpContentNode = {
   readonly guid: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The user that most recently edited the node */
@@ -4948,7 +5049,10 @@ type WpContentNodeFieldSelector = {
   readonly guid: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
   readonly link: InputMaybe<FieldSelectorEnum>;
@@ -4974,7 +5078,10 @@ type WpContentNodeFilterInput = {
   readonly guid: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
@@ -5045,7 +5152,10 @@ type WpContentNodeSortInput = {
   readonly guid: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
   readonly link: InputMaybe<SortOrderEnum>;
@@ -5147,6 +5257,8 @@ type WpContentType = Node & WpNode & WpUniformResourceIdentifiable & {
   readonly hierarchical: Maybe<Scalars['Boolean']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
   /** Whether this page is set to the static front page. */
@@ -5274,6 +5386,7 @@ type WpContentTypeFieldSelector = {
   readonly hierarchical: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
   readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
   readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
@@ -5313,6 +5426,7 @@ type WpContentTypeFilterInput = {
   readonly hierarchical: InputMaybe<BooleanQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -5397,6 +5511,7 @@ type WpContentTypeSortInput = {
   readonly hierarchical: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
   readonly isFrontPage: InputMaybe<SortOrderEnum>;
   readonly isPostsPage: InputMaybe<SortOrderEnum>;
@@ -5727,8 +5842,14 @@ type WpHierarchicalContentNode = {
   readonly guid: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The user that most recently edited the node */
@@ -5849,7 +5970,10 @@ type WpHierarchicalContentNodeFieldSelector = {
   readonly guid: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
   readonly link: InputMaybe<FieldSelectorEnum>;
@@ -5880,7 +6004,10 @@ type WpHierarchicalContentNodeFilterInput = {
   readonly guid: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
@@ -5952,7 +6079,10 @@ type WpHierarchicalContentNodeSortInput = {
   readonly guid: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
   readonly link: InputMaybe<SortOrderEnum>;
@@ -6243,8 +6373,14 @@ type WpHierarchicalTermNode = {
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -6321,7 +6457,10 @@ type WpHierarchicalTermNodeFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly link: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
@@ -6343,7 +6482,10 @@ type WpHierarchicalTermNodeFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -6406,7 +6548,10 @@ type WpHierarchicalTermNodeSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly link: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
@@ -6507,8 +6652,14 @@ type WpMediaItem = Node & RemoteFile & WpContentNode & WpDatabaseIdentifier & Wp
   readonly height: Maybe<Scalars['Int']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The user that most recently edited the node */
@@ -6719,7 +6870,10 @@ type WpMediaItemFieldSelector = {
   readonly height: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
   readonly link: InputMaybe<FieldSelectorEnum>;
@@ -6776,7 +6930,10 @@ type WpMediaItemFilterInput = {
   readonly height: InputMaybe<IntQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
@@ -6947,7 +7104,10 @@ type WpMediaItemSortInput = {
   readonly height: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
   readonly link: InputMaybe<SortOrderEnum>;
@@ -7455,8 +7615,14 @@ type WpMenuItemLinkable = {
   readonly databaseId: Scalars['Int'];
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   readonly nodeType: Maybe<Scalars['String']>;
@@ -7520,7 +7686,10 @@ type WpMenuItemLinkableFieldSelector = {
   readonly databaseId: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly nodeType: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
@@ -7532,7 +7701,10 @@ type WpMenuItemLinkableFilterInput = {
   readonly databaseId: InputMaybe<IntQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
@@ -7585,7 +7757,10 @@ type WpMenuItemLinkableSortInput = {
   readonly databaseId: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly nodeType: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
@@ -9151,6 +9326,8 @@ type WpPage = Node & WpContentNode & WpDatabaseIdentifier & WpHierarchicalConten
   readonly guid: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
   /** Whether this page is set to the static front page. */
@@ -9322,6 +9499,7 @@ type WpPageFieldSelector = {
   readonly guid: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
   readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
   readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
@@ -9369,6 +9547,7 @@ type WpPageFilterInput = {
   readonly guid: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -9472,6 +9651,7 @@ type WpPageSortInput = {
   readonly guid: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
   readonly isFrontPage: InputMaybe<SortOrderEnum>;
   readonly isPostsPage: InputMaybe<SortOrderEnum>;
@@ -9597,8 +9777,14 @@ type WpPost = Node & WpContentNode & WpDatabaseIdentifier & WpMenuItemLinkable &
   readonly guid: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** True if the node is a revision of another node */
   readonly isRevision: Maybe<Scalars['Boolean']>;
   /** Whether this page is sticky */
@@ -9769,7 +9955,10 @@ type WpPostFieldSelector = {
   readonly guid: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isRevision: InputMaybe<FieldSelectorEnum>;
   readonly isSticky: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
@@ -9817,7 +10006,10 @@ type WpPostFilterInput = {
   readonly guid: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isRevision: InputMaybe<BooleanQueryOperatorInput>;
   readonly isSticky: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
@@ -9858,8 +10050,14 @@ type WpPostFormat = Node & WpDatabaseIdentifier & WpNode & WpTermNode & WpUnifor
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -9960,7 +10158,10 @@ type WpPostFormatFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly link: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
@@ -9983,7 +10184,10 @@ type WpPostFormatFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -10051,7 +10255,10 @@ type WpPostFormatSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly link: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
@@ -10261,7 +10468,10 @@ type WpPostSortInput = {
   readonly guid: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isRevision: InputMaybe<SortOrderEnum>;
   readonly isSticky: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
@@ -10889,8 +11099,14 @@ type WpTag = Node & WpDatabaseIdentifier & WpMenuItemLinkable & WpNode & WpTermN
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -10991,7 +11207,10 @@ type WpTagFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly link: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
@@ -11014,7 +11233,10 @@ type WpTagFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -11082,7 +11304,10 @@ type WpTagSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly link: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
@@ -11595,8 +11820,14 @@ type WpTermNode = {
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -11692,7 +11923,10 @@ type WpTermNodeFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly link: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
@@ -11712,7 +11946,10 @@ type WpTermNodeFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -11777,7 +12014,10 @@ type WpTermNodeSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly link: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
@@ -11794,8 +12034,14 @@ type WpUniformResourceIdentifiable = {
   readonly children: ReadonlyArray<Node>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   readonly nodeType: Maybe<Scalars['String']>;
@@ -11853,7 +12099,10 @@ type WpUniformResourceIdentifiableFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly nodeType: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
@@ -11864,7 +12113,10 @@ type WpUniformResourceIdentifiableFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
@@ -11916,7 +12168,10 @@ type WpUniformResourceIdentifiableSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly nodeType: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
@@ -11946,8 +12201,14 @@ type WpUser = Node & WpCommenter & WpDatabaseIdentifier & WpNode & WpUniformReso
   readonly firstName: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** Last name of the user. This is equivalent to the WP_User-&gt;user_last_name property. */
@@ -12063,7 +12324,10 @@ type WpUserFieldSelector = {
   readonly firstName: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly isComment: InputMaybe<FieldSelectorEnum>;
   readonly isContentNode: InputMaybe<FieldSelectorEnum>;
+  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
+  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
   readonly isTermNode: InputMaybe<FieldSelectorEnum>;
   readonly lastName: InputMaybe<FieldSelectorEnum>;
   readonly locale: InputMaybe<FieldSelectorEnum>;
@@ -12096,7 +12360,10 @@ type WpUserFilterInput = {
   readonly firstName: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastName: InputMaybe<StringQueryOperatorInput>;
   readonly locale: InputMaybe<StringQueryOperatorInput>;
@@ -12331,7 +12598,10 @@ type WpUserSortInput = {
   readonly firstName: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly isComment: InputMaybe<SortOrderEnum>;
   readonly isContentNode: InputMaybe<SortOrderEnum>;
+  readonly isFrontPage: InputMaybe<SortOrderEnum>;
+  readonly isPostsPage: InputMaybe<SortOrderEnum>;
   readonly isTermNode: InputMaybe<SortOrderEnum>;
   readonly lastName: InputMaybe<SortOrderEnum>;
   readonly locale: InputMaybe<SortOrderEnum>;
@@ -12652,10 +12922,12 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
-type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type MyQueryQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
 
 
-type MyQueryQuery = { readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
+type MyQueryQuery = { readonly allWpPost: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly content: string | null, readonly excerpt: string | null, readonly uri: string | null, readonly date: string | null, readonly categories: { readonly nodes: ReadonlyArray<{ readonly name: string | null }> } | null, readonly featuredImage: { readonly node: { readonly id: string, readonly mediaItemUrl: string | null, readonly altText: string | null } } | null }> }, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
 type PostByIdQueryVariables = Exact<{
   id: Scalars['String'];
